@@ -1,26 +1,42 @@
-# 🐍 Connor's Snake Game
+# 🐍 Connor's Game Studio
 
-The official arcade game designed by **Game Director Connor** and built by **Antigravity**.
+Designed by **Lead Architect & Game Director Connor** | Built by **Antigravity**
 
-## Quest Levels
+---
 
-- [x] Level 1 — Open a game window 🪟
-- [x] Level 2 — Draw the snake 🟩
-- [x] Level 3 — Move with arrow keys & WASD 🕹️
-- [x] Level 4 — Add food (Juicy red apples!) 🍎
-- [x] Level 5 — Make the snake grow 📏
-- [x] Level 6 — Add collisions (Danger solid walls + don't bite your tail!) 💥
-- [x] Level 7 — Add a score & High Score tracker 🏆
-- [x] Level 8 — Add Game Over screen & instant replay with SPACEBAR 💀
-- [x] Level 9 — Make it look cool (Arcade neon glow, snake eyes, and slick colors) ✨
+## 🎮 Game Modes
 
-## How to Play
+### 1. 🤖 Snake: Bot Hunter (NEW EDITION!)
+Hunt down AI bots, collect gold credits, and evolve into a giant mythical snake!
 
-```bash
-uv run python src/snake_game/__init__.py
-```
+- **Command to play**:
+  ```bash
+  uv run python src/snake_game/__init__.py
+  ```
+- **How it works**:
+  - 🤖 **Enemy Bots**: 3 enemy bots roam the arena (Cyber-Red, Shadow-Purple, Rust-Orange).
+  - ⚔️ **Combat**: Trap enemy bots so their heads slam into your body! When a bot dies, it explodes into **Glowing Gold Credits** (🪙).
+  - 🪙 **Credits**: Grab the credits (+20 Credits each) to level up!
+  - 🌟 **Snake Evolutions**:
+    1. **Baby Viper** (Tier 1) — Green starting scout
+    2. **Cobra Striker** (Tier 2, 60 Credits) — Cyan armor + instant length growth!
+    3. **Titan Python** (Tier 3, 150 Credits) — Gold armor + wider, chunkier body!
+    4. **Apex Dragon** (Tier 4, 300 Credits) — Giant crimson dragon with golden aura!
 
-### Controls
-- **Arrow Keys** or **W, A, S, D** — Steer the snake
-- **Spacebar** — Restart immediately when you crash
-- **Esc** — Exit game
+---
+
+### 2. 🏛️ Save Point 1: Connor's First Coding Attempt (Classic Arcade)
+The classic game you built from scratch in your first coding session!
+
+- **Command to play**:
+  ```bash
+  uv run python src/snake_game/classic_snake.py
+  ```
+- **Features**: Classic apple collecting, solid red danger walls, speed boost every 5 apples, and high score board.
+
+---
+
+## 🕹️ Controls
+- **Arrow Keys** or **W, A, S, D** — Steer your snake
+- **Spacebar** — Instant replay when game ends
+- **Esc** — Quit to desktop
