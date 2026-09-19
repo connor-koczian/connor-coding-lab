@@ -14,7 +14,7 @@ def main() -> None:
     BORDER_THICKNESS = 25
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Connor's Snake: The 25,000 Credit Victory Quest 🍊👑")
+    pygame.display.set_caption("Connor's Snake: The 3-Stage Grand Championship 🏆🐍")
     clock = pygame.time.Clock()
 
     # --- Fonts ---
@@ -23,18 +23,33 @@ def main() -> None:
     font_medium = pygame.font.SysFont("comicsansms", 24, bold=True)
     font_small = pygame.font.SysFont("comicsansms", 18, bold=True)
 
-    # --- Color Palette ---
-    BG_COLOR = (15, 23, 42)          # Cosmic Navy
-    BORDER_COLOR = (239, 68, 68)     # Danger Red Border
-    BORDER_GLOW = (185, 28, 28)
-    TEXT_COLOR = (248, 250, 252)
-    GOLD = (250, 204, 21)
-    CYAN = (34, 211, 238)
-    PURPLE = (192, 132, 252)
-    MELON_PINK = (251, 113, 133)
-    MELON_RIND = (34, 197, 94)
-    ORANGE_COLOR = (249, 115, 22)    # Mythic Orange
-    ORANGE_GLOW = (251, 146, 60)
+    # --- 3-Stage World Campaign ---
+    STAGES = [
+        {
+            "stage_num": 1,
+            "name": "Stage 1: Emerald Realm",
+            "target_credits": 25000,
+            "border_color": (34, 197, 94),     # Emerald Green
+            "border_glow": (22, 101, 52),
+            "bg_color": (15, 23, 42),          # Space Navy
+        },
+        {
+            "stage_num": 2,
+            "name": "Stage 2: Neon Metropolis",
+            "target_credits": 40000,
+            "border_color": (34, 211, 238),    # Cyber Cyan
+            "border_glow": (14, 116, 144),
+            "bg_color": (20, 15, 38),          # Deep Cyber Purple
+        },
+        {
+            "stage_num": 3,
+            "name": "Stage 3: Mythic Dragon Lair (FINAL)",
+            "target_credits": 50000,
+            "border_color": (250, 204, 21),    # Radiant Gold
+            "border_glow": (225, 29, 72),      # Fiery Crimson
+            "bg_color": (28, 12, 24),          # Volcanic Shadow
+        },
+    ]
 
     # Food Definitions
     FOOD_TYPES = {
@@ -72,7 +87,7 @@ def main() -> None:
             "growth": 3,
             "interval": 11000,
             "max": 3,
-            "color": MELON_PINK,
+            "color": (251, 113, 133),
         },
         "diamond": {
             "name": "Diamond Star Fruit",
@@ -129,7 +144,8 @@ def main() -> None:
         change_y = 0
         score = 0
         credits = 0
-        level = 1
+        growth_level = 1
+        current_stage_idx = 0
         game_over = False
         game_won = False
         banner_text = ""
@@ -165,7 +181,8 @@ def main() -> None:
             change_y,
             score,
             credits,
-            level,
+            growth_level,
+            current_stage_idx,
             game_over,
             game_won,
             banner_text,
@@ -183,7 +200,8 @@ def main() -> None:
         change_y,
         score,
         credits,
-        level,
+        growth_level,
+        current_stage_idx,
         game_over,
         game_won,
         banner_text,
@@ -200,6 +218,7 @@ def main() -> None:
 
     while running:
         current_time = pygame.time.get_ticks()
+        current_stage = STAGES[current_stage_idx]
 
         # --- Event Handling ---
         for event in pygame.event.get():
@@ -214,7 +233,8 @@ def main() -> None:
                             change_y,
                             score,
                             credits,
-                            level,
+                            growth_level,
+                            current_stage_idx,
                             game_over,
                             game_won,
                             banner_text,
@@ -243,15 +263,15 @@ def main() -> None:
 
         # --- Game Logic ---
         if not game_over and not game_won:
-            # 1. Check 10-Second Level-Up Rule!
+            # 1. 10-Second Level-Up Rule (Snake Grows & Mythic Orange Spawns!)
             time_alive = current_time - game_start_time
-            if time_alive >= level * 10000:
-                level += 1
+            if time_alive >= growth_level * 10000:
+                growth_level += 1
                 pending_growth += 4
                 credits += 25
                 score += 100
 
-                # SPAWN A NEW MYTHIC ORANGE (+10,000 CREDITS)!
+                # Spawn Mythic Orange (+10,000 Credits)
                 occupied = set(snake)
                 for flist in food_items.values():
                     occupied.update(flist)
@@ -259,12 +279,12 @@ def main() -> None:
                 new_orange = spawn_random_cell(occupied)
                 oranges.append(new_orange)
 
-                theme_idx = min(level - 1, len(LEVEL_THEMES) - 1)
+                theme_idx = min(growth_level - 1, len(LEVEL_THEMES) - 1)
                 theme_name = LEVEL_THEMES[theme_idx]["name"]
-                banner_text = f"⚡ LEVEL {level} ({theme_name.upper()})! 🍊 MYTHIC ORANGE SPAWNED (+10,000 CR)! ⚡"
-                banner_timer = 55
+                banner_text = f"⚡ SIZE UP! {theme_name.upper()}! 🍊 MYTHIC ORANGE SPAWNED (+10,000 CR)! ⚡"
+                banner_timer = 50
 
-            # 2. Spawn Regular Food Variety on Timers
+            # 2. Spawn Regular Food
             occupied = set(snake)
             for f_list in food_items.values():
                 occupied.update(f_list)
@@ -282,18 +302,18 @@ def main() -> None:
             head_x, head_y = snake[0]
             new_head = (head_x + change_x, head_y + change_y)
 
-            # Wall Crash Check
+            # Wall Crash
             if not is_inside_arena(new_head):
                 game_over = True
 
-            # Self Crash Check
+            # Self Crash
             if new_head in snake:
                 game_over = True
 
             if not game_over:
                 snake.insert(0, new_head)
 
-                # 4. Check Eating Mythic Orange (+10,000 Credits!)
+                # 4. Check Eating Mythic Orange (+10,000 CR)
                 eaten_orange = None
                 for o in oranges:
                     if new_head == o:
@@ -347,18 +367,32 @@ def main() -> None:
                 if score > high_score:
                     high_score = score
 
-                # 6. VICTORY CHECK: 25,000 Credits to WIN THE GAME!
-                if credits >= 25000:
-                    game_won = True
+                # 6. Check Level Progression: Level 1 (25k) -> Level 2 (40k) -> Final Level 3 (50k)
+                stage_target = current_stage["target_credits"]
+                if credits >= stage_target:
+                    if current_stage_idx == 0:
+                        # Move to Stage 2 (Goal: 40,000 Credits)
+                        current_stage_idx = 1
+                        banner_text = "🚀 STAGE 1 CLEAR (25,000 CR)! ENTERING STAGE 2 (GOAL: 40,000 CR)! 🚀"
+                        banner_timer = 70
+                    elif current_stage_idx == 1:
+                        # Move to Stage 3 (Goal: 50,000 Credits)
+                        current_stage_idx = 2
+                        banner_text = "🔥 STAGE 2 CLEAR (40,000 CR)! ENTERING FINAL STAGE 3 (GOAL: 50,000 CR)! 🔥"
+                        banner_timer = 70
+                    elif current_stage_idx == 2:
+                        # Reached 50,000 Credits on Final Stage -> YOU WIN!
+                        game_won = True
 
         # --- Drawing the Arena ---
-        screen.fill(BG_COLOR)
+        current_stage = STAGES[current_stage_idx]
+        screen.fill(current_stage["bg_color"])
 
-        # 1. Solid Walls
-        pygame.draw.rect(screen, BORDER_GLOW, (0, 0, WIDTH, HEIGHT), BORDER_THICKNESS)
+        # 1. Solid Walls (Theme matches current stage!)
+        pygame.draw.rect(screen, current_stage["border_glow"], (0, 0, WIDTH, HEIGHT), BORDER_THICKNESS)
         pygame.draw.rect(
             screen,
-            BORDER_COLOR,
+            current_stage["border_color"],
             (4, 4, WIDTH - 8, HEIGHT - 8),
             BORDER_THICKNESS - 8,
         )
@@ -369,19 +403,19 @@ def main() -> None:
             pygame.draw.circle(screen, (101, 163, 13), (ax + GRID_SIZE // 2 + 3, ay + 4), 3)
 
         for bx, by in food_items["berry"]:
-            pygame.draw.circle(screen, PURPLE, (bx + GRID_SIZE // 2, by + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
+            pygame.draw.circle(screen, (168, 85, 247), (bx + GRID_SIZE // 2, by + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
             pygame.draw.circle(screen, (232, 121, 249), (bx + GRID_SIZE // 2 - 2, by + GRID_SIZE // 2 - 2), 3)
             pygame.draw.circle(screen, (56, 189, 248), (bx + GRID_SIZE // 2, by + 4), 2)
 
         for gx, gy in food_items["golden_apple"]:
             pygame.draw.circle(screen, (253, 224, 71), (gx + GRID_SIZE // 2, gy + GRID_SIZE // 2), GRID_SIZE // 2)
-            pygame.draw.circle(screen, GOLD, (gx + GRID_SIZE // 2, gy + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
+            pygame.draw.circle(screen, (250, 204, 21), (gx + GRID_SIZE // 2, gy + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
             pygame.draw.circle(screen, (255, 255, 255), (gx + GRID_SIZE // 2 - 3, gy + GRID_SIZE // 2 - 3), 3)
             pygame.draw.circle(screen, (16, 185, 129), (gx + GRID_SIZE // 2 + 3, gy + 4), 3)
 
         for wx, wy in food_items["watermelon"]:
-            pygame.draw.rect(screen, MELON_RIND, (wx + 2, wy + 4, GRID_SIZE - 4, GRID_SIZE - 6), border_radius=6)
-            pygame.draw.rect(screen, MELON_PINK, (wx + 4, wy + 6, GRID_SIZE - 8, GRID_SIZE - 10), border_radius=4)
+            pygame.draw.rect(screen, (34, 197, 94), (wx + 2, wy + 4, GRID_SIZE - 4, GRID_SIZE - 6), border_radius=6)
+            pygame.draw.rect(screen, (251, 113, 133), (wx + 4, wy + 6, GRID_SIZE - 8, GRID_SIZE - 10), border_radius=4)
             pygame.draw.circle(screen, (15, 23, 42), (wx + 9, wy + 11), 1)
             pygame.draw.circle(screen, (15, 23, 42), (wx + 15, wy + 11), 1)
 
@@ -392,24 +426,20 @@ def main() -> None:
                 (dx + GRID_SIZE // 2, dy + GRID_SIZE - 2),
                 (dx + 2, dy + GRID_SIZE // 2),
             ]
-            pygame.draw.polygon(screen, CYAN, pts)
+            pygame.draw.polygon(screen, (34, 211, 238), pts)
             pygame.draw.circle(screen, (255, 255, 255), (dx + GRID_SIZE // 2, dy + GRID_SIZE // 2), 4)
 
-        # 3. Draw MYTHIC ORANGES (10,000 Credits) — Golden Orange Halo & Big Green Leaf
+        # 3. Draw Mythic Oranges (10,000 Credits!)
         for ox, oy in oranges:
-            # Radiant Outer Glow
-            pygame.draw.circle(screen, ORANGE_GLOW, (ox + GRID_SIZE // 2, oy + GRID_SIZE // 2), GRID_SIZE // 2 + 2)
-            # Juicy Orange Core
-            pygame.draw.circle(screen, ORANGE_COLOR, (ox + GRID_SIZE // 2, oy + GRID_SIZE // 2), GRID_SIZE // 2 - 1)
-            # Center bright shine
+            pygame.draw.circle(screen, (251, 146, 60), (ox + GRID_SIZE // 2, oy + GRID_SIZE // 2), GRID_SIZE // 2 + 2)
+            pygame.draw.circle(screen, (249, 115, 22), (ox + GRID_SIZE // 2, oy + GRID_SIZE // 2), GRID_SIZE // 2 - 1)
             pygame.draw.circle(screen, (254, 215, 170), (ox + GRID_SIZE // 2 - 3, oy + GRID_SIZE // 2 - 3), 4)
-            # Emerald Leaf
             pygame.draw.circle(screen, (34, 197, 94), (ox + GRID_SIZE // 2 + 4, oy + 3), 3)
 
-        # 4. Draw Player Snake — Scales with Level!
-        theme_idx = min(level - 1, len(LEVEL_THEMES) - 1)
+        # 4. Draw Player Snake — Scales with Growth Level
+        theme_idx = min(growth_level - 1, len(LEVEL_THEMES) - 1)
         theme = LEVEL_THEMES[theme_idx]
-        pad = max(-7, 2 - (level - 1) * 1)
+        pad = max(-7, 2 - (growth_level - 1) * 1)
 
         for index, (sx, sy) in enumerate(snake):
             draw_x = sx + pad
@@ -418,8 +448,8 @@ def main() -> None:
             draw_h = GRID_SIZE - (2 * pad)
 
             if index == 0:
-                if level >= 3:
-                    aura_col = GOLD if level < 6 else ((244, 63, 94) if level < 9 else (251, 146, 60))
+                if growth_level >= 3:
+                    aura_col = (250, 204, 21) if growth_level < 6 else ((244, 63, 94) if growth_level < 9 else (251, 146, 60))
                     pygame.draw.rect(
                         screen,
                         aura_col,
@@ -434,7 +464,7 @@ def main() -> None:
                     border_radius=8,
                 )
 
-                eye_r = min(5, 3 + (level // 3))
+                eye_r = min(5, 3 + (growth_level // 3))
                 if change_x > 0:
                     e1 = (sx + GRID_SIZE - 6, sy + 6)
                     e2 = (sx + GRID_SIZE - 6, sy + GRID_SIZE - 6)
@@ -461,85 +491,87 @@ def main() -> None:
         # 5. HUD / Dashboard
         if not game_over and not game_won:
             time_alive = current_time - game_start_time
-            time_until_next = max(0, (level * 10000 - time_alive))
+            time_until_next = max(0, (growth_level * 10000 - time_alive))
             seconds_left = math.ceil(time_until_next / 1000)
         else:
             seconds_left = 0
 
-        score_surf = font_medium.render(f"SCORE: {score:,}", True, TEXT_COLOR)
-        cred_surf = font_medium.render(f"🪙 CREDITS: {credits:,} / 25,000", True, GOLD)
-        lvl_surf = font_medium.render(f"⭐ LEVEL: {level} ({theme['name']})", True, CYAN)
-        countdown_surf = font_medium.render(f"⏳ NEXT ORANGE: {seconds_left}s", True, (253, 224, 71))
-        high_surf = font_medium.render(f"🏆 HIGH: {high_score:,}", True, (250, 204, 21))
+        stage_target = current_stage["target_credits"]
+        stage_title = f"STAGE {current_stage_idx + 1}/3: {current_stage['name']}"
 
-        screen.blit(score_surf, (BORDER_THICKNESS + 15, BORDER_THICKNESS + 8))
-        screen.blit(cred_surf, (BORDER_THICKNESS + 210, BORDER_THICKNESS + 8))
-        screen.blit(lvl_surf, (BORDER_THICKNESS + 530, BORDER_THICKNESS + 8))
-        screen.blit(countdown_surf, (BORDER_THICKNESS + 900, BORDER_THICKNESS + 8))
-        screen.blit(high_surf, (WIDTH - BORDER_THICKNESS - 200, BORDER_THICKNESS + 8))
+        stage_surf = font_medium.render(stage_title, True, current_stage["border_color"])
+        cred_surf = font_medium.render(f"🪙 CREDITS: {credits:,} / {stage_target:,}", True, (250, 204, 21))
+        size_surf = font_medium.render(f"⭐ SIZE: Lv {growth_level} ({theme['name']})", True, (34, 211, 238))
+        orange_timer_surf = font_medium.render(f"⏳ NEXT ORANGE: {seconds_left}s", True, (253, 224, 71))
+        score_surf = font_small.render(f"SCORE: {score:,}", True, (248, 250, 252))
+
+        screen.blit(stage_surf, (BORDER_THICKNESS + 15, BORDER_THICKNESS + 8))
+        screen.blit(cred_surf, (BORDER_THICKNESS + 450, BORDER_THICKNESS + 8))
+        screen.blit(size_surf, (BORDER_THICKNESS + 820, BORDER_THICKNESS + 8))
+        screen.blit(orange_timer_surf, (WIDTH - BORDER_THICKNESS - 230, BORDER_THICKNESS + 8))
 
         # 6. Banner Notification
         if banner_timer > 0:
             banner_timer -= 1
-            banner_surf = font_large.render(banner_text, True, GOLD)
+            banner_surf = font_large.render(banner_text, True, (250, 204, 21))
             screen.blit(
                 banner_surf,
                 banner_surf.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 160)),
             )
 
-        # 7. VICTORY SCREEN (25,000 Credits Reached!)
+        # 7. GRAND VICTORY SCREEN (Reached 50,000 Credits on Final Stage 3!)
         if game_won:
             overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
-            overlay.fill((10, 25, 47, 215))
+            overlay.fill((10, 25, 47, 220))
             screen.blit(overlay, (0, 0))
 
-            win_title = font_xl.render("🏆 YOU WIN! 🏆", True, GOLD)
-            screen.blit(win_title, win_title.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 120)))
+            win_title = font_xl.render("🏆 YOU WIN! THE GAME HAS FINISHED! 🏆", True, (250, 204, 21))
+            screen.blit(win_title, win_title.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 130)))
 
-            congrats_text = font_large.render("👑 THE GAME HAS FINISHED — KINGDOM CONQUERED! 👑", True, (74, 222, 128))
-            screen.blit(congrats_text, congrats_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 50)))
+            congrats_text = font_large.render("👑 GRAND CHAMPION — ALL 3 LEVELS CONQUERED! 👑", True, (74, 222, 128))
+            screen.blit(congrats_text, congrats_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 55)))
 
-            cred_text = font_large.render(f"Final Credits: {credits:,}  (Goal: 25,000)", True, GOLD)
-            screen.blit(cred_text, cred_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 15)))
+            stages_cleared = font_medium.render("Stage 1 (25,000 CR) ✅   Stage 2 (40,000 CR) ✅   Final Level 3 (50,000 CR) ✅", True, (34, 211, 238))
+            screen.blit(stages_cleared, stages_cleared.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 10)))
 
-            stats_text = font_medium.render(f"Final Score: {score:,}   |   Reached Level {level} ({theme['name']})", True, TEXT_COLOR)
-            screen.blit(stats_text, stats_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 70)))
+            cred_text = font_large.render(f"Final Credits: {credits:,}   |   Final Score: {score:,}", True, (250, 204, 21))
+            screen.blit(cred_text, cred_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 65)))
 
-            replay_text = font_medium.render("Press SPACEBAR to Play Again or ESC to Quit", True, CYAN)
+            replay_text = font_medium.render("Press SPACEBAR to Play Campaign Again or ESC to Quit", True, (248, 250, 252))
             screen.blit(replay_text, replay_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 130)))
 
-        # 8. Game Over Screen (Crashed into wall or tail)
+        # 8. Game Over Screen
         elif game_over:
             overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 195))
             screen.blit(overlay, (0, 0))
 
-            go_text = font_xl.render("💥 GAME OVER 💥", True, BORDER_COLOR)
+            go_text = font_xl.render("💥 GAME OVER 💥", True, (239, 68, 68))
             screen.blit(
                 go_text,
                 go_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 90)),
             )
 
             stats_text = font_large.render(
-                f"Credits: {credits:,} / 25,000   |   Level: {level}",
+                f"Credits: {credits:,} / {stage_target:,}   |   Failed on {current_stage['name']}",
                 True,
-                GOLD,
+                (250, 204, 21),
             )
             screen.blit(
                 stats_text,
                 stats_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 15)),
             )
 
-            final_text = font_medium.render(f"Final Score: {score:,}   |   Best: {high_score:,}", True, TEXT_COLOR)
+            final_text = font_medium.render(f"Final Score: {score:,}   |   Best: {high_score:,}", True, (248, 250, 252))
             screen.blit(
                 final_text,
                 final_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 45)),
             )
 
             replay_text = font_medium.render(
-                "Press SPACEBAR to Play Again or ESC to Quit",
+                "Press SPACEBAR to Try Again or ESC to Quit",
                 True,
-                CYAN,
+                (34, 211, 238),
             )
             screen.blit(
                 replay_text,
@@ -547,7 +579,7 @@ def main() -> None:
             )
 
         pygame.display.flip()
-        current_speed = min(15, 8 + (level - 1) * 0.4)
+        current_speed = min(15, 8 + (growth_level - 1) * 0.4)
         clock.tick(current_speed)
 
     pygame.quit()

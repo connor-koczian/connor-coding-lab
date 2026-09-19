@@ -43,10 +43,15 @@ A massive single-player arena with no bots, 5 types of magical fruit, credit eco
 
 ---
 
-### 👑 THE 25,000 CREDIT VICTORY QUEST
-- **Your Ultimate Mission**: Reach **25,000 Credits** to **WIN THE GAME**!
-- Snag 2 or 3 Mythic Oranges, collect apples, and beat the final boss goal!
-- Reaching 25,000 Credits triggers the grand **🏆 YOU WIN! 🏆** celebration screen!
+### 🏆 THE 3-STAGE GRAND CHAMPIONSHIP CAMPAIGN
+Conquer all 3 stages to beat the entire game!
+
+1. 🟢 **Stage 1: Emerald Realm** — Goal: **25,000 Credits**
+   - Grab your first Mythic Oranges, survive, and break through the first threshold!
+2. 🔵 **Stage 2: Neon Metropolis** — Goal: **40,000 Credits**
+   - The arena shifts to Cyber Neon Cyan! Survive longer and push to 40,000 Credits!
+3. 🔥 **Stage 3: Mythic Dragon Lair (THE FINAL LEVEL)** — Goal: **50,000 Credits**
+   - The arena transforms into Volcanic Shadow with Golden Borders! Reach **50,000 Credits** to unlock the Grand Victory screen: **"YOU WIN! THE GAME HAS FINISHED!"** 👑🏆
 
 ---
 
