@@ -30,6 +30,7 @@ def main() -> None:
     FOOD_COLOR = (244, 63, 94)       # Apple Red
     FOOD_STEM = (101, 163, 13)
     CREDIT_COLOR = (250, 204, 21)    # Shiny Gold
+    GOLD = (250, 204, 21)
     CREDIT_CORE = (254, 240, 138)
     TEXT_COLOR = (248, 250, 252)
     CYAN = (34, 211, 238)
