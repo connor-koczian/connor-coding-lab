@@ -14,6 +14,8 @@ Hunt down AI bots, collect gold credits, and evolve into a giant mythical snake!
   uv run python src/snake_game/__init__.py
   ```
 - **How it works**:
+  - 🍎 **Food Buffet (+1 Apple every 2s)**: The arena fills with fresh apples! Every red apple eaten makes you longer and grants **+5 Credits**!
+  - ✨ **Golden Apples (Every 5s)**: Glowing, shiny golden apples spawn every 5 seconds. Snag one for an instant **+20 Credits**!
   - 🤖 **Enemy Bots**: 3 enemy bots roam the arena (Cyber-Red, Shadow-Purple, Rust-Orange).
   - ⚔️ **Combat**: Trap enemy bots so their heads slam into your body! When a bot dies, it explodes into **Glowing Gold Credits** (🪙).
   - 🪙 **Credits**: Grab the credits (+20 Credits each) to level up!
