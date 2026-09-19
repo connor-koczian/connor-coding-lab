@@ -1,23 +1,26 @@
 # 🐍 Connor's Snake Game
 
-This is your first proper game project.
+The official arcade game designed by **Game Director Connor** and built by **Antigravity**.
 
-Your goal is not to finish it as fast as possible.
+## Quest Levels
 
-Your goal is to understand how each part works.
+- [x] Level 1 — Open a game window 🪟
+- [x] Level 2 — Draw the snake 🟩
+- [x] Level 3 — Move with arrow keys & WASD 🕹️
+- [x] Level 4 — Add food (Juicy red apples!) 🍎
+- [x] Level 5 — Make the snake grow 📏
+- [x] Level 6 — Add collisions (Danger solid walls + don't bite your tail!) 💥
+- [x] Level 7 — Add a score & High Score tracker 🏆
+- [x] Level 8 — Add Game Over screen & instant replay with SPACEBAR 💀
+- [x] Level 9 — Make it look cool (Arcade neon glow, snake eyes, and slick colors) ✨
 
-## Levels
+## How to Play
 
-- [ ] Level 1 — Open a game window
-- [ ] Level 2 — Draw the snake
-- [ ] Level 3 — Move with arrow keys
-- [ ] Level 4 — Add food
-- [ ] Level 5 — Make the snake grow
-- [ ] Level 6 — Add collisions
-- [ ] Level 7 — Add a score
-- [ ] Level 8 — Add game over
-- [ ] Level 9 — Make it look cool
+```bash
+uv run python src/snake_game/__init__.py
+```
 
-Use Antigravity as your helper.
-
-Ask for one level at a time.
+### Controls
+- **Arrow Keys** or **W, A, S, D** — Steer the snake
+- **Spacebar** — Restart immediately when you crash
+- **Esc** — Exit game
