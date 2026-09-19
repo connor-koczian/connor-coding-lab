@@ -30,14 +30,31 @@ A massive single-player arena with no bots, 5 types of magical fruit, credit eco
 
 ---
 
-### 🌟 Snake Evolution Tiers
-Watch your snake grow **visibly wider and thicker** with custom color palettes and glowing armor:
+---
 
-1. 🟢 **Tier 1: Baby Viper** (0 Credits) — Agile green starter snake
-2. 🔵 **Tier 2: Cobra Striker** (80 Credits) — Cyan armor + thicker body
-3. 🟡 **Tier 3: Golden Python** (200 Credits) — Metallic gold scales + glowing aura
-4. 🟣 **Tier 4: Shadow Hydra** (450 Credits) — Cosmic purple scales
-5. 🔴 **Tier 5: Mythic Solar Dragon** (800 Credits) — Giant crimson beast with radiant golden aura!
+### ⏳ 10-Second Level-Up Rule!
+- **Every 10 seconds** of survival, you automatically **LEVEL UP**!
+- ⏳ **Live Countdown**: Watch the `NEXT LEVEL: Xs` timer tick down in real-time on your HUD!
+- 📏 **Automatic Expansion**: On every level up, your snake gets:
+  - **THICKER & WIDER**: Snake segments bulge larger and larger on screen!
+  - **LONGER**: +4 instant bonus segments added to your tail!
+  - **MORE CREDITS**: +25 bonus credits awarded instantly!
+  - **MORE SCORE**: +100 level survival points!
+
+---
+
+### 🌟 Level Progression & Themes
+As you survive and level up every 10 seconds:
+- **Level 1**: 🟢 Baby Viper
+- **Level 2**: 🔵 Cobra Striker (Thicker segments!)
+- **Level 3**: 🟡 Golden Python (Golden scales & aura!)
+- **Level 4**: 🟣 Shadow Hydra (Cosmic purple body!)
+- **Level 5**: 🔴 Solar Dragon (Crimson armor & flaming aura!)
+- **Level 6**: 🔷 Titan Behemoth (Heavy armor!)
+- **Level 7**: 🌸 Cosmic Leviathan (Neon pink scales!)
+- **Level 8**: 💎 Quantum Colossus (Diamond emerald!)
+- **Level 9**: 🔮 Void Overlord (Dark obsidian & gold!)
+- **Level 10+**: 🔥 **APEX OMEGA DRAGON** (Massive giant snake with pulsing cosmic aura!)
 
 ---
 

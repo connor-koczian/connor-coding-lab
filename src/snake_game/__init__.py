@@ -7,19 +7,19 @@ def main() -> None:
     pygame.init()
     pygame.font.init()
 
-    # --- Screen Setup (Expanded Giant Arena) ---
+    # --- Screen Setup (Giant 1400x950 Arena) ---
     WIDTH = 1400
     HEIGHT = 950
     GRID_SIZE = 25
     BORDER_THICKNESS = 25
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Connor's Snake: Single Player Fruit Kingdom 🍎✨🍉")
+    pygame.display.set_caption("Connor's Snake: 10s Level-Up & Infinite Growth 🐍⚡")
     clock = pygame.time.Clock()
 
     # --- Fonts ---
     font_xl = pygame.font.SysFont("comicsansms", 60, bold=True)
-    font_large = pygame.font.SysFont("comicsansms", 38, bold=True)
+    font_large = pygame.font.SysFont("comicsansms", 36, bold=True)
     font_medium = pygame.font.SysFont("comicsansms", 24, bold=True)
     font_small = pygame.font.SysFont("comicsansms", 18, bold=True)
 
@@ -41,7 +41,7 @@ def main() -> None:
             "credits": 5,
             "score": 10,
             "growth": 1,
-            "interval": 1500,       # Every 1.5s
+            "interval": 1500,
             "max": 18,
             "color": (244, 63, 94),
         },
@@ -50,7 +50,7 @@ def main() -> None:
             "credits": 20,
             "score": 50,
             "growth": 2,
-            "interval": 5000,       # Every 5s
+            "interval": 5000,
             "max": 6,
             "color": (250, 204, 21),
         },
@@ -59,7 +59,7 @@ def main() -> None:
             "credits": 15,
             "score": 35,
             "growth": 1,
-            "interval": 7000,       # Every 7s
+            "interval": 7000,
             "max": 5,
             "color": (168, 85, 247),
         },
@@ -68,7 +68,7 @@ def main() -> None:
             "credits": 40,
             "score": 100,
             "growth": 3,
-            "interval": 11000,      # Every 11s
+            "interval": 11000,
             "max": 3,
             "color": MELON_PINK,
         },
@@ -77,19 +77,24 @@ def main() -> None:
             "credits": 80,
             "score": 250,
             "growth": 4,
-            "interval": 18000,      # Every 18s
+            "interval": 18000,
             "max": 2,
             "color": (56, 189, 248),
         },
     }
 
-    # Evolution Tiers (Bigger snake, thicker body, and epic armor!)
-    TIERS = [
-        {"name": "Baby Viper", "credits_needed": 0, "head": (74, 222, 128), "body": (34, 197, 94), "pad": 2, "speed": 8},
-        {"name": "Cobra Striker", "credits_needed": 80, "head": (56, 189, 248), "body": (14, 165, 233), "pad": 0, "speed": 9},
-        {"name": "Golden Python", "credits_needed": 200, "head": (250, 204, 21), "body": (234, 179, 8), "pad": -2, "speed": 10},
-        {"name": "Shadow Hydra", "credits_needed": 450, "head": (192, 132, 252), "body": (147, 51, 234), "pad": -4, "speed": 11},
-        {"name": "Mythic Solar Dragon", "credits_needed": 800, "head": (244, 63, 94), "body": (225, 29, 72), "pad": -6, "speed": 12},
+    # Level Titles & Themes (Every 10 seconds: level up, grows thicker, longer, and evolves!)
+    LEVEL_THEMES = [
+        {"name": "Baby Viper", "head": (74, 222, 128), "body": (34, 197, 94)},
+        {"name": "Cobra Striker", "head": (56, 189, 248), "body": (14, 165, 233)},
+        {"name": "Golden Python", "head": (250, 204, 21), "body": (234, 179, 8)},
+        {"name": "Shadow Hydra", "head": (192, 132, 252), "body": (147, 51, 234)},
+        {"name": "Solar Dragon", "head": (244, 63, 94), "body": (225, 29, 72)},
+        {"name": "Titan Behemoth", "head": (14, 165, 233), "body": (2, 132, 199)},
+        {"name": "Cosmic Leviathan", "head": (244, 114, 182), "body": (219, 39, 119)},
+        {"name": "Quantum Colossus", "head": (52, 211, 153), "body": (5, 150, 105)},
+        {"name": "Void Overlord", "head": (168, 85, 247), "body": (88, 28, 135)},
+        {"name": "APEX OMEGA DRAGON", "head": (251, 146, 60), "body": (234, 88, 12)},
     ]
 
     def is_inside_arena(pos: tuple[int, int]) -> bool:
@@ -123,7 +128,7 @@ def main() -> None:
         change_y = 0
         score = 0
         credits = 0
-        tier_index = 0
+        level = 1
         game_over = False
         banner_text = ""
         banner_timer = 0
@@ -138,7 +143,6 @@ def main() -> None:
             "diamond": [],
         }
 
-        # Start with 5 apples + 1 golden apple
         for _ in range(5):
             pos = spawn_random_cell(occupied)
             food_items["apple"].append(pos)
@@ -150,6 +154,7 @@ def main() -> None:
 
         now = pygame.time.get_ticks()
         spawn_timers = {k: now for k in FOOD_TYPES}
+        game_start_time = now
 
         return (
             snake,
@@ -157,13 +162,14 @@ def main() -> None:
             change_y,
             score,
             credits,
-            tier_index,
+            level,
             game_over,
             banner_text,
             banner_timer,
             pending_growth,
             food_items,
             spawn_timers,
+            game_start_time,
         )
 
     (
@@ -172,19 +178,22 @@ def main() -> None:
         change_y,
         score,
         credits,
-        tier_index,
+        level,
         game_over,
         banner_text,
         banner_timer,
         pending_growth,
         food_items,
         spawn_timers,
+        game_start_time,
     ) = reset_game()
 
     high_score = 0
     running = True
 
     while running:
+        current_time = pygame.time.get_ticks()
+
         # --- Event Handling ---
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -198,13 +207,14 @@ def main() -> None:
                             change_y,
                             score,
                             credits,
-                            tier_index,
+                            level,
                             game_over,
                             banner_text,
                             banner_timer,
                             pending_growth,
                             food_items,
                             spawn_timers,
+                            game_start_time,
                         ) = reset_game()
                     elif event.key == pygame.K_ESCAPE:
                         running = False
@@ -224,9 +234,20 @@ def main() -> None:
 
         # --- Game Logic ---
         if not game_over:
-            current_time = pygame.time.get_ticks()
+            # 1. 10-Second Level-Up Rule!
+            time_alive = current_time - game_start_time
+            # Level target: every 10 seconds (10000ms)
+            if time_alive >= level * 10000:
+                level += 1
+                pending_growth += 4   # Snake gets longer!
+                credits += 25         # +25 Bonus Credits!
+                score += 100          # +100 Level Bonus!
+                theme_idx = min(level - 1, len(LEVEL_THEMES) - 1)
+                theme_name = LEVEL_THEMES[theme_idx]["name"]
+                banner_text = f"⚡ LEVEL {level} ({theme_name.upper()})! +25 CREDITS & SIZE BOOST! ⚡"
+                banner_timer = 45
 
-            # 1. Spawn Food Variety on Timers
+            # 2. Spawn Food Variety
             occupied = set(snake)
             for f_list in food_items.values():
                 occupied.update(f_list)
@@ -239,7 +260,7 @@ def main() -> None:
                         food_items[f_type].append(new_f)
                         occupied.add(new_f)
 
-            # 2. Move Snake Head
+            # 3. Move Snake Head
             head_x, head_y = snake[0]
             new_head = (head_x + change_x, head_y + change_y)
 
@@ -254,7 +275,7 @@ def main() -> None:
             if not game_over:
                 snake.insert(0, new_head)
 
-                # 3. Check Eating Any Food
+                # 4. Check Eating Food
                 eaten_type = None
                 eaten_pos = None
                 for f_type, f_list in food_items.items():
@@ -268,23 +289,22 @@ def main() -> None:
                     f_info = FOOD_TYPES[eaten_type]
                     credits += f_info["credits"]
                     score += f_info["score"]
-                    pending_growth += (f_info["growth"] - 1)  # -1 because insert already grew 1
+                    pending_growth += (f_info["growth"] - 1)
 
-                    # Banner Notification
                     if eaten_type == "diamond":
-                        banner_text = f"💎 DIAMOND STAR FRUIT! +{f_info['credits']} CREDITS! 💎"
-                        banner_timer = 35
+                        banner_text = f"💎 DIAMOND STAR FRUIT! +{f_info['credits']} CR! 💎"
+                        banner_timer = 30
                     elif eaten_type == "watermelon":
-                        banner_text = f"🍉 MEGA WATERMELON! +{f_info['credits']} CREDITS! 🍉"
+                        banner_text = f"🍉 MEGA WATERMELON! +{f_info['credits']} CR! 🍉"
                         banner_timer = 25
                     elif eaten_type == "golden_apple":
-                        banner_text = f"✨ GOLDEN APPLE! +{f_info['credits']} CREDITS! ✨"
+                        banner_text = f"✨ GOLDEN APPLE! +{f_info['credits']} CR! ✨"
                         banner_timer = 20
                     elif eaten_type == "berry":
-                        banner_text = f"🍇 COSMIC BERRY! +{f_info['credits']} CREDITS! 🍇"
-                        banner_timer = 18
+                        banner_text = f"🍇 COSMIC BERRY! +{f_info['credits']} CR! 🍇"
+                        banner_timer = 16
                     else:
-                        banner_text = f"🍎 RED APPLE! +{f_info['credits']} CREDITS! 🍎"
+                        banner_text = f"🍎 RED APPLE! +{f_info['credits']} CR! 🍎"
                         banner_timer = 12
 
                 else:
@@ -293,20 +313,10 @@ def main() -> None:
                     else:
                         snake.pop()
 
-                # 4. Check Tier Evolution
-                if tier_index + 1 < len(TIERS):
-                    next_tier = TIERS[tier_index + 1]
-                    if credits >= next_tier["credits_needed"]:
-                        tier_index += 1
-                        # Instant bonus growth on evolution
-                        pending_growth += 4
-                        banner_text = f"⭐ EVOLVED TO {TIERS[tier_index]['name'].upper()}! ⭐"
-                        banner_timer = 45
-
                 if score > high_score:
                     high_score = score
 
-        # --- Drawing the World ---
+        # --- Drawing the Arena ---
         screen.fill(BG_COLOR)
 
         # 1. Solid Walls
@@ -319,33 +329,27 @@ def main() -> None:
         )
 
         # 2. Draw Food Variety
-        # Red Apples
         for ax, ay in food_items["apple"]:
             pygame.draw.circle(screen, FOOD_TYPES["apple"]["color"], (ax + GRID_SIZE // 2, ay + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
             pygame.draw.circle(screen, (101, 163, 13), (ax + GRID_SIZE // 2 + 3, ay + 4), 3)
 
-        # Cosmic Berries (Purple with Cyan core)
         for bx, by in food_items["berry"]:
             pygame.draw.circle(screen, PURPLE, (bx + GRID_SIZE // 2, by + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
             pygame.draw.circle(screen, (232, 121, 249), (bx + GRID_SIZE // 2 - 2, by + GRID_SIZE // 2 - 2), 3)
             pygame.draw.circle(screen, (56, 189, 248), (bx + GRID_SIZE // 2, by + 4), 2)
 
-        # Golden Apples (Shining Gold + sparkle)
         for gx, gy in food_items["golden_apple"]:
             pygame.draw.circle(screen, (253, 224, 71), (gx + GRID_SIZE // 2, gy + GRID_SIZE // 2), GRID_SIZE // 2)
             pygame.draw.circle(screen, GOLD, (gx + GRID_SIZE // 2, gy + GRID_SIZE // 2), GRID_SIZE // 2 - 2)
             pygame.draw.circle(screen, (255, 255, 255), (gx + GRID_SIZE // 2 - 3, gy + GRID_SIZE // 2 - 3), 3)
             pygame.draw.circle(screen, (16, 185, 129), (gx + GRID_SIZE // 2 + 3, gy + 4), 3)
 
-        # Watermelons (Green rind arc + pink wedge)
         for wx, wy in food_items["watermelon"]:
             pygame.draw.rect(screen, MELON_RIND, (wx + 2, wy + 4, GRID_SIZE - 4, GRID_SIZE - 6), border_radius=6)
             pygame.draw.rect(screen, MELON_PINK, (wx + 4, wy + 6, GRID_SIZE - 8, GRID_SIZE - 10), border_radius=4)
-            # Seeds
             pygame.draw.circle(screen, (15, 23, 42), (wx + 9, wy + 11), 1)
             pygame.draw.circle(screen, (15, 23, 42), (wx + 15, wy + 11), 1)
 
-        # Diamond Star Fruits (Cyan Diamond + white star spark)
         for dx, dy in food_items["diamond"]:
             pts = [
                 (dx + GRID_SIZE // 2, dy + 2),
@@ -356,9 +360,13 @@ def main() -> None:
             pygame.draw.polygon(screen, CYAN, pts)
             pygame.draw.circle(screen, (255, 255, 255), (dx + GRID_SIZE // 2, dy + GRID_SIZE // 2), 4)
 
-        # 3. Draw Player Snake (Size scales with Tier!)
-        current_tier = TIERS[tier_index]
-        pad = current_tier["pad"]
+        # 3. Draw Player Snake — Gets BIGGER & CHUNKIER every level!
+        theme_idx = min(level - 1, len(LEVEL_THEMES) - 1)
+        theme = LEVEL_THEMES[theme_idx]
+
+        # Pad formula: Level 1 has pad 2 (21px), Level 2 pad 0 (25px), Level 3 pad -2 (29px), Level 4 pad -4 (33px), up to pad -7 (39px massive!)
+        pad = max(-7, 2 - (level - 1) * 1)
+
         for index, (sx, sy) in enumerate(snake):
             draw_x = sx + pad
             draw_y = sy + pad
@@ -366,25 +374,25 @@ def main() -> None:
             draw_h = GRID_SIZE - (2 * pad)
 
             if index == 0:
-                # Mythic / Titan Glowing Aura
-                if tier_index >= 2:
-                    aura_color = GOLD if tier_index < 4 else (255, 100, 100)
+                # Glowing Evolution Aura for Level 3+
+                if level >= 3:
+                    aura_col = GOLD if level < 6 else ((244, 63, 94) if level < 9 else (251, 146, 60))
                     pygame.draw.rect(
                         screen,
-                        aura_color,
+                        aura_col,
                         (draw_x - 3, draw_y - 3, draw_w + 6, draw_h + 6),
-                        border_radius=9,
+                        border_radius=10,
                     )
 
                 pygame.draw.rect(
                     screen,
-                    current_tier["head"],
+                    theme["head"],
                     (draw_x, draw_y, draw_w, draw_h),
                     border_radius=8,
                 )
 
-                # Big expressive eyes
-                eye_r = 4 if tier_index >= 2 else 3
+                # Snake eyes scale with head
+                eye_r = min(5, 3 + (level // 3))
                 if change_x > 0:
                     e1 = (sx + GRID_SIZE - 6, sy + 6)
                     e2 = (sx + GRID_SIZE - 6, sy + GRID_SIZE - 6)
@@ -403,40 +411,31 @@ def main() -> None:
             else:
                 pygame.draw.rect(
                     screen,
-                    current_tier["body"],
+                    theme["body"],
                     (draw_x, draw_y, draw_w, draw_h),
                     border_radius=6,
                 )
 
         # 4. HUD / Dashboard
-        tier_name = current_tier["name"]
+        # Calculate countdown to next level
+        if not game_over:
+            time_alive = current_time - game_start_time
+            time_until_next = max(0, (level * 10000 - time_alive))
+            seconds_left = math.ceil(time_until_next / 1000)
+        else:
+            seconds_left = 0
+
         score_surf = font_medium.render(f"SCORE: {score}", True, TEXT_COLOR)
         cred_surf = font_medium.render(f"🪙 CREDITS: {credits}", True, GOLD)
-        tier_surf = font_medium.render(f"⭐ {tier_name.upper()} (T{tier_index + 1})", True, CYAN)
+        lvl_surf = font_medium.render(f"⭐ LEVEL: {level} ({theme['name']})", True, CYAN)
+        countdown_surf = font_medium.render(f"⏳ NEXT LEVEL: {seconds_left}s", True, (253, 224, 71))
         high_surf = font_medium.render(f"🏆 HIGH: {high_score}", True, (250, 204, 21))
 
-        screen.blit(score_surf, (BORDER_THICKNESS + 20, BORDER_THICKNESS + 10))
-        screen.blit(cred_surf, (BORDER_THICKNESS + 250, BORDER_THICKNESS + 10))
-        screen.blit(tier_surf, (BORDER_THICKNESS + 520, BORDER_THICKNESS + 10))
-        screen.blit(high_surf, (WIDTH - BORDER_THICKNESS - 220, BORDER_THICKNESS + 10))
-
-        # Progress bar to next evolution
-        if tier_index + 1 < len(TIERS):
-            next_tier = TIERS[tier_index + 1]
-            prev_req = current_tier["credits_needed"]
-            next_req = next_tier["credits_needed"]
-            progress = min(1.0, max(0.0, (credits - prev_req) / (next_req - prev_req)))
-            bar_w = 200
-            bar_h = 10
-            bar_x = BORDER_THICKNESS + 520
-            bar_y = BORDER_THICKNESS + 42
-            pygame.draw.rect(screen, (51, 65, 85), (bar_x, bar_y, bar_w, bar_h), border_radius=5)
-            pygame.draw.rect(screen, CYAN, (bar_x, bar_y, int(bar_w * progress), bar_h), border_radius=5)
-            next_label = font_small.render(f"Next: {next_tier['name']} ({credits}/{next_req} CR)", True, (148, 163, 184))
-            screen.blit(next_label, (bar_x + bar_w + 10, bar_y - 4))
-        else:
-            max_label = font_small.render("MAX TIER REACHED!", True, GOLD)
-            screen.blit(max_label, (BORDER_THICKNESS + 520, BORDER_THICKNESS + 40))
+        screen.blit(score_surf, (BORDER_THICKNESS + 15, BORDER_THICKNESS + 8))
+        screen.blit(cred_surf, (BORDER_THICKNESS + 220, BORDER_THICKNESS + 8))
+        screen.blit(lvl_surf, (BORDER_THICKNESS + 460, BORDER_THICKNESS + 8))
+        screen.blit(countdown_surf, (BORDER_THICKNESS + 850, BORDER_THICKNESS + 8))
+        screen.blit(high_surf, (WIDTH - BORDER_THICKNESS - 200, BORDER_THICKNESS + 8))
 
         # 5. Banner Notification
         if banner_timer > 0:
@@ -460,7 +459,7 @@ def main() -> None:
             )
 
             stats_text = font_large.render(
-                f"Credits: {credits}   |   Tier: {tier_name}",
+                f"Survived to Level {level} ({theme['name']})   |   Credits: {credits}",
                 True,
                 GOLD,
             )
@@ -486,7 +485,10 @@ def main() -> None:
             )
 
         pygame.display.flip()
-        clock.tick(current_tier["speed"])
+
+        # Speed starts chill (8 FPS) and accelerates slightly with level
+        current_speed = min(15, 8 + (level - 1) * 0.4)
+        clock.tick(current_speed)
 
     pygame.quit()
 
