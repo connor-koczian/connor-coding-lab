@@ -32,14 +32,21 @@ A massive single-player arena with no bots, 5 types of magical fruit, credit eco
 
 ---
 
-### ⏳ 10-Second Level-Up Rule!
+### ⏳ 10-Second Level-Up & Mythic Orange!
 - **Every 10 seconds** of survival, you automatically **LEVEL UP**!
-- ⏳ **Live Countdown**: Watch the `NEXT LEVEL: Xs` timer tick down in real-time on your HUD!
+- 🍊 **MYTHIC ORANGE SPAWNS**: On every level up, a radiant Mythic Orange drops onto the arena!
+  - Eating the Orange awards an insane **+10,000 CREDITS**, +1,000 Score, and +5 Length!
 - 📏 **Automatic Expansion**: On every level up, your snake gets:
-  - **THICKER & WIDER**: Snake segments bulge larger and larger on screen!
+  - **THICKER & WIDER**: Snake segments bulge larger and chunkier!
   - **LONGER**: +4 instant bonus segments added to your tail!
   - **MORE CREDITS**: +25 bonus credits awarded instantly!
-  - **MORE SCORE**: +100 level survival points!
+
+---
+
+### 👑 THE 25,000 CREDIT VICTORY QUEST
+- **Your Ultimate Mission**: Reach **25,000 Credits** to **WIN THE GAME**!
+- Snag 2 or 3 Mythic Oranges, collect apples, and beat the final boss goal!
+- Reaching 25,000 Credits triggers the grand **🏆 YOU WIN! 🏆** celebration screen!
 
 ---
 
