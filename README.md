@@ -4,41 +4,52 @@ Designed by **Lead Architect & Game Director Connor** | Built by **Antigravity**
 
 ---
 
-## 🎮 Game Modes
+## 🎮 Main Game: 🍎✨ Snake — Fruit Kingdom (Single-Player Edition)
 
-### 1. 🤖 Snake: Bot Hunter (NEW EDITION!)
-Hunt down AI bots, collect gold credits, and evolve into a giant mythical snake!
+A massive single-player arena with no bots, 5 types of magical fruit, credit economy, and snake evolutions!
 
 - **Command to play**:
   ```bash
   uv run python src/snake_game/__init__.py
   ```
-- **How it works**:
-  - 🍎 **Food Buffet (+1 Apple every 2s)**: The arena fills with fresh apples! Every red apple eaten makes you longer and grants **+5 Credits**!
-  - ✨ **Golden Apples (Every 5s)**: Glowing, shiny golden apples spawn every 5 seconds. Snag one for an instant **+20 Credits**!
-  - 🤖 **Enemy Bots**: 3 enemy bots roam the arena (Cyber-Red, Shadow-Purple, Rust-Orange).
-  - ⚔️ **Combat**: Trap enemy bots so their heads slam into your body! When a bot dies, it explodes into **Glowing Gold Credits** (🪙).
-  - 🪙 **Credits**: Grab the credits (+20 Credits each) to level up!
-  - 🌟 **Snake Evolutions**:
-    1. **Baby Viper** (Tier 1) — Green starting scout
-    2. **Cobra Striker** (Tier 2, 60 Credits) — Cyan armor + instant length growth!
-    3. **Titan Python** (Tier 3, 150 Credits) — Gold armor + wider, chunkier body!
-    4. **Apex Dragon** (Tier 4, 300 Credits) — Giant crimson dragon with golden aura!
+
+### 🗺️ The Arena
+- **Giant Widescreen Arena**: `1400 x 950` pixels with 2,000+ grid tiles!
+- **Pure Single Player**: Relax, slither, and hunt down fruit to build the ultimate giant snake!
 
 ---
 
-### 2. 🏛️ Save Point 1: Connor's First Coding Attempt (Classic Arcade)
-The classic game you built from scratch in your first coding session!
-
-- **Command to play**:
-  ```bash
-  uv run python src/snake_game/classic_snake.py
-  ```
-- **Features**: Classic apple collecting, solid red danger walls, speed boost every 5 apples, and high score board.
+### 🍉 The Fruit Market
+| Fruit | Appearance | Spawn Time | Credits | Score | Length Growth |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 🍎 **Red Apple** | Classic Red | Every 1.5s | **+5 CR** | +10 pts | +1 segment |
+| ✨ **Golden Apple** | Radiant Gold & Sparkle | Every 5s | **+20 CR** | +50 pts | +2 segments |
+| 🍇 **Cosmic Berry** | Deep Purple & Cyan | Every 7s | **+15 CR** | +35 pts | +1 segment |
+| 🍉 **Mega Watermelon** | Green Rind & Pink Core | Every 11s | **+40 CR** | +100 pts | +3 segments! |
+| 💎 **Diamond Star Fruit** | Glowing Cyan Diamond | Every 18s | **+80 CR** | +250 pts | +4 segments! |
 
 ---
 
-## 🕹️ Controls
+### 🌟 Snake Evolution Tiers
+Watch your snake grow **visibly wider and thicker** with custom color palettes and glowing armor:
+
+1. 🟢 **Tier 1: Baby Viper** (0 Credits) — Agile green starter snake
+2. 🔵 **Tier 2: Cobra Striker** (80 Credits) — Cyan armor + thicker body
+3. 🟡 **Tier 3: Golden Python** (200 Credits) — Metallic gold scales + glowing aura
+4. 🟣 **Tier 4: Shadow Hydra** (450 Credits) — Cosmic purple scales
+5. 🔴 **Tier 5: Mythic Solar Dragon** (800 Credits) — Giant crimson beast with radiant golden aura!
+
+---
+
+### 🕹️ Controls
 - **Arrow Keys** or **W, A, S, D** — Steer your snake
 - **Spacebar** — Instant replay when game ends
 - **Esc** — Quit to desktop
+
+---
+
+### 🏛️ Classic Save Point (First Coding Attempt)
+To play your very first classic arcade game:
+```bash
+uv run python src/snake_game/classic_snake.py
+```
