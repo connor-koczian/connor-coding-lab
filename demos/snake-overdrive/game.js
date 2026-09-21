@@ -1,7 +1,7 @@
 "use strict";
 const canvas=document.getElementById("game"),ctx=canvas.getContext("2d");
 const start=document.getElementById("start"),over=document.getElementById("gameOver"),play=document.getElementById("play"),again=document.getElementById("again"),runtime=document.getElementById("runtime"),resultStats=document.getElementById("resultStats");
-const W=canvas.width,H=canvas.height,TAU=Math.PI*2,keys=new Set();
+const W=canvas.width,H=canvas.height,TAU=Math.PI*2,keys=new Set(),keyLatch=new Map();let lastInput="NONE";function latchKey(k,ms=180){keyLatch.set(k,performance.now()+ms)}function inputDown(k){return keys.has(k)||(keyLatch.get(k)??0)>performance.now()}
 let running=false,paused=false,last=performance.now(),score=0,wave=1,combo=1,comboTimer=0,shake=0,flash=0,spawnTimer=0,shotTimer=0,boss=null,tickCount=0;
 const arena={w:2400,h:1600},camera={x:0,y:0};
 const snake={x:1200,y:800,a:0,speed:245,turn:3.2,hp:100,shield:100,dash:100,segments:[],trail:[]};
@@ -39,10 +39,10 @@ function killEnemy(e){
   if(Math.random()<.18)powerups.push({x:e.x,y:e.y,type:["shield","heal","rapid"][Math.floor(Math.random()*3)],life:9});
 }
 function updateSnake(dt){
-  let turn=0;if(keys.has("a")||keys.has("arrowleft"))turn-=1;if(keys.has("d")||keys.has("arrowright"))turn+=1;snake.a+=turn*snake.turn*dt;
-  const accelerating=keys.has("w")||keys.has("arrowup"),braking=keys.has("s")||keys.has("arrowdown");
+  let turn=0;if(inputDown("a")||inputDown("arrowleft"))turn-=1;if(inputDown("d")||inputDown("arrowright"))turn+=1;snake.a+=turn*snake.turn*dt;
+  const accelerating=inputDown("w")||inputDown("arrowup"),braking=inputDown("s")||inputDown("arrowdown");
   const target=accelerating?340:braking?170:245;snake.speed+=(target-snake.speed)*Math.min(1,dt*4);
-  if(keys.has(" ")&&snake.dash>0){snake.speed+=420;snake.dash=Math.max(0,snake.dash-70*dt);if(Math.random()<dt*35)burst(snake.x-Math.cos(snake.a)*18,snake.y-Math.sin(snake.a)*18,"#ffd35c",2,75)}
+  if(inputDown(" ")&&snake.dash>0){snake.speed+=420;snake.dash=Math.max(0,snake.dash-70*dt);if(Math.random()<dt*35)burst(snake.x-Math.cos(snake.a)*18,snake.y-Math.sin(snake.a)*18,"#ffd35c",2,75)}
   else snake.dash=Math.min(100,snake.dash+15*dt);
   snake.x=clamp(snake.x+Math.cos(snake.a)*snake.speed*dt,24,arena.w-24);snake.y=clamp(snake.y+Math.sin(snake.a)*snake.speed*dt,24,arena.h-24);
   snake.trail.unshift({x:snake.x,y:snake.y});if(snake.trail.length>500)snake.trail.pop();
@@ -95,9 +95,9 @@ function render(){
   if(paused){ctx.fillStyle="#000b";ctx.fillRect(0,0,W,H);ctx.fillStyle="#fff";ctx.font="1000 54px system-ui";ctx.textAlign="center";ctx.fillText("PAUSED",W/2,H/2)}
   if(flash>0){ctx.fillStyle=`rgba(255,255,255,${flash*.22})`;ctx.fillRect(0,0,W,H)}
 }
-function tick(){const now=performance.now(),dt=Math.min(.04,Math.max(.001,(now-last)/1000));last=now;try{update(dt);render();tickCount++;if(tickCount%20===0){runtime.textContent=`ENGINE OK • ${Math.round(1/dt)} FPS • ${enemies.length} HOSTILES`;runtime.classList.remove("error")}}catch(e){runtime.textContent=`RUNTIME ERROR: ${e?.message??e}`;runtime.classList.add("error");console.error(e)}}
+function tick(){const now=performance.now(),dt=Math.min(.04,Math.max(.001,(now-last)/1000));last=now;try{update(dt);render();tickCount++;if(tickCount%20===0){runtime.textContent=`ENGINE OK • ${Math.round(1/dt)} FPS • ${enemies.length} HOSTILES • INPUT ${lastInput}`;runtime.classList.remove("error")}}catch(e){runtime.textContent=`RUNTIME ERROR: ${e?.message??e}`;runtime.classList.add("error");console.error(e)}}
 setInterval(tick,16);
-document.addEventListener("keydown",e=>{const map={KeyW:"w",KeyA:"a",KeyS:"s",KeyD:"d",Space:" ",ArrowUp:"arrowup",ArrowDown:"arrowdown",ArrowLeft:"arrowleft",ArrowRight:"arrowright",KeyP:"p",KeyR:"r"},k=map[e.code]??e.key.toLowerCase();if(["w","a","s","d"," ","arrowup","arrowdown","arrowleft","arrowright"].includes(k))e.preventDefault();keys.add(k);if(k==="p"&&running)paused=!paused;if(k==="r"&&running)reset()},true);
+document.addEventListener("keydown",e=>{const map={KeyW:"w",KeyA:"a",KeyS:"s",KeyD:"d",Space:" ",ArrowUp:"arrowup",ArrowDown:"arrowdown",ArrowLeft:"arrowleft",ArrowRight:"arrowright",KeyP:"p",KeyR:"r"},k=map[e.code]??e.key.toLowerCase();if(["w","a","s","d"," ","arrowup","arrowdown","arrowleft","arrowright"].includes(k))e.preventDefault();keys.add(k);latchKey(k);lastInput=k===" "?"SPACE":k.toUpperCase();if(k==="p"&&running)paused=!paused;if(k==="r"&&running)reset()},true);
 document.addEventListener("keyup",e=>{const map={KeyW:"w",KeyA:"a",KeyS:"s",KeyD:"d",Space:" ",ArrowUp:"arrowup",ArrowDown:"arrowdown",ArrowLeft:"arrowleft",ArrowRight:"arrowright"},k=map[e.code]??e.key.toLowerCase();keys.delete(k)},true);
 window.addEventListener("blur",()=>keys.clear());
 play.addEventListener("click",()=>{start.classList.add("hidden");reset();canvas.focus()});again.addEventListener("click",()=>{over.classList.add("hidden");reset();canvas.focus()});
