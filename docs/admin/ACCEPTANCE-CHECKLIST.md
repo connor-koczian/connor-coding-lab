@@ -77,11 +77,29 @@ Confirm:
 - no project depends on a hidden machine-specific path;
 - Connor can run the documented commands without admin privileges.
 
-## 6. Neon City
+## 6. Browser demos
 
-Do not mark this complete until a reviewed `neon-city/` starter exists.
+Use the repository launcher:
 
-Acceptance will require its documented setup, run, lint and test commands to work from a fresh clone.
+    ./scripts/run-lab.sh
+
+Test the AI-built demonstrations separately from Connor's historical work:
+
+- Neon City technology preview;
+- Snake: OVERDRIVE showcase.
+
+Confirm for each applicable demo:
+
+- the page opens;
+- the visible runtime indicator reports a healthy engine rather than an error;
+- keyboard controls respond;
+- animation continues;
+- browser console shows no obvious runtime error;
+- performance is acceptable on the actual Dell.
+
+These demos are demonstrations, not Connor's historical work.
+
+Connor's future real `neon-city/` project is intentionally not created yet.
 
 ## 7. Security and cleanliness
 
