@@ -2,20 +2,29 @@
 
 ## The idea
 
-Build an original top-down open-world game called **Neon City**.
+Neon City is the proposed next flagship project: an original top-down open-world game.
 
-It can have the kinds of systems that make large games exciting:
+It can eventually teach systems such as:
 
-- a city map
-- exploration
-- missions
-- vehicles
-- NPCs
-- upgrades
-- collectibles
-- timed arena challenges
+- movement;
+- maps;
+- collision;
+- missions;
+- NPCs;
+- vehicles;
+- credits and pickups;
+- inventory;
+- upgrades;
+- game state;
+- save/load.
 
 It must use Connor's own names, map, characters and ideas. Do not copy GTA, Fortnite, their assets or their worlds.
+
+## Important
+
+This mission describes the roadmap. Do not generate the whole game.
+
+The `neon-city/` project should be created as its own reviewed repository save point. Until that project exists, use this page for design decisions only.
 
 ## Connor is Game Director
 
@@ -27,7 +36,7 @@ Before coding, decide:
 4. What can the player collect?
 5. What makes the player win Mission 1?
 
-Write the answers down.
+Write the answers down before expanding the game.
 
 ## Development roadmap
 
@@ -45,48 +54,41 @@ Create obstacles the player cannot walk through.
 
 ### Save Point 4 — First mission
 
-Example: reach three checkpoints before the timer expires.
+Connor chooses the actual mission.
 
-Connor should choose the actual mission.
+### Later systems
 
-### Save Point 5 — World systems
+Only one at a time:
 
-Add one system at a time:
+- mission marker;
+- credits;
+- inventory;
+- NPC;
+- vehicle;
+- map;
+- arena challenge;
+- save/load.
 
-- mission marker
-- credits
-- inventory
-- NPC
-- vehicle
-- map
-- arena challenge
+## AI pair-programming prompt
 
-## Antigravity prompt
+    We are working on Connor's original game Neon City.
 
-Use:
+    Connor is the Game Director.
+    Work on only the next save point.
 
-```text
-We are building Connor's original game Neon City.
+    Before changing code:
+    1. explain the goal,
+    2. tell me which files will change,
+    3. explain the important programming idea.
 
-Connor is the Game Director.
-Work on only the next save point.
+    After the change:
+    1. explain the code,
+    2. give me the exact run/test command,
+    3. help me inspect git diff,
+    4. let me decide what to change or keep before we commit.
 
-Before changing code:
-1. explain the goal,
-2. tell me which files will change,
-3. show me the important idea I am learning.
-
-After the change:
-1. explain the code,
-2. give me the exact run command,
-3. help me inspect git diff,
-4. ask me what I want to change before we commit.
-
-Do not build future save points yet.
-```
+    Do not build future save points yet.
 
 ## Mission complete when
 
 Save Point 1 runs and Connor can explain how the game window is created.
-
-Reward: Open World Developer Level 1

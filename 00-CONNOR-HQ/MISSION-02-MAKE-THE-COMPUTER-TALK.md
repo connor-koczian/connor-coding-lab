@@ -6,44 +6,38 @@ Run and change a real Python program.
 
 Python is a language used to give instructions to computers.
 
----
+## Challenge 1 — Enter Python Basics
 
-## Challenge 1
+    cd ~/Projects/connor-coding-lab/python-basics
 
-Go to your first Python project:
+## Challenge 2 — Recreate the project environment
 
-    cd ~/Projects/python-basics
+    uv sync
 
----
+This uses the project's checked-in configuration rather than the Ubuntu system Python environment.
 
-## Challenge 2
-
-Run your program:
+## Challenge 3 — Run the program
 
     uv run python src/python_basics/hello.py
 
 See what it does.
 
----
+## Challenge 4 — Change one thing
 
-## Challenge 3
-
-In the left side of VS Code, open:
+In VS Code, open:
 
     python-basics
     → src
     → python_basics
     → hello.py
 
-Change something it says.
+Choose one small change yourself.
 
-Save it with:
+Before saving it to Git, run:
 
-    Ctrl + S
+    git diff
 
-Run it again.
-
----
+Then run the program again.
 
 ## Bonus challenge
 
@@ -53,16 +47,18 @@ Make the program ask:
 
 Then make it say something using the answer.
 
-If you get stuck, ask Antigravity:
+If you get stuck, ask your AI helper:
 
     Give me a clue.
     Do not write the whole answer for me.
 
----
-
 ## ✅ Mission complete when
 
-Show Apa your changed program running.
+Show Apa:
+
+- the program running;
+- the change in `git diff`;
+- what your change does.
 
 ## 🏆 Reward
 

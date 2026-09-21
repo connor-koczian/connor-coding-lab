@@ -1,85 +1,99 @@
 # Connor Coding Lab
 
-Connor's long-term programming, game-development and Git learning workspace.
+Connor's long-term programming, game-development and Git learning repository.
 
-This repository is designed to grow with Connor from beginner projects into progressively more structured software and games. The goal is not to let AI build everything for him; the goal is for Connor to understand, change, test and save what he builds.
+The goal is progressive independence: understand → build → run → break → debug → improve → test → commit → explain.
 
 ## Start here
 
-Connor: open `00-CONNOR-HQ/00-START-HERE-CONNOR.md`.
+Connor should open:
 
-Then use:
+- `00-CONNOR-HQ/00-START-HERE-CONNOR.md`
+- `00-CONNOR-HQ/LEARNING-PATH.md`
+- `00-CONNOR-HQ/GIT-PLAYBOOK.md`
 
-- `LEARNING-PATH.md` — what to learn next
-- `GIT-PLAYBOOK.md` — how to save and manage work
-- `AI-CODING-RULES.md` — how to use Antigravity as a useful pair programmer
-- `00-CONNOR-HQ/` — missions and challenges
+Repository-wide AI guidance lives in:
 
-## Current projects
+- `AI-CODING-RULES.md`
+- `GEMINI.md`
 
-### python-basics
+Parent/admin material lives under `docs/admin/`.
 
-Small Python experiments. This is where syntax, variables, input/output, conditions, loops and functions should be learned before they disappear inside larger games.
+## Repository layout
 
-### snake-game
+### `00-CONNOR-HQ/`
 
-Connor's first substantial game project. Its history is intentionally preserved, including the Classic Snake save point and later Fruit Kingdom / Championship versions.
+Connor-facing missions, learning progression, Git guidance and achievements.
 
-### experiments
+### `python-basics/`
 
-Small throwaway investigations. It is fine for these to fail.
+Small Python programs for syntax, control flow, functions, debugging, Ruff and the first simple tests.
 
-### web-playground
+### `snake-game/`
 
-HTML, CSS and JavaScript experiments.
+Connor's first substantial historical game project. Its imported Git history and save points are intentionally preserved.
 
-## Next game track: Neon City
+The current Pygame game, Classic Snake and historical browser Snake remain here so they can be compared rather than rewritten into a new architecture.
 
-`00-CONNOR-HQ/MISSION-06-START-NEON-CITY.md` introduces an original top-down open-world game project.
+### `experiments/`
 
-The inspiration is the *kind* of systems found in games Connor enjoys — exploration, missions, vehicles, upgrades, maps and arena challenges — without copying GTA, Fortnite, their assets, characters or worlds.
+Small disposable investigations. Experiments may fail; important ideas should graduate into a real project deliberately.
 
-## Developer workflow
+### `web-playground/`
 
-Before changing code:
+New HTML, CSS and JavaScript learning work. Historical browser Snake remains under `snake-game/web/`.
 
-```bash
-git status
-git pull --ff-only
-```
+### `neon-city/`
 
-For a new piece of work:
+Reserved for the next flagship project. It should be introduced in a separate reviewed change rather than generated all at once.
 
-```bash
-git switch -c mission/short-name
-```
+## Python environments
+
+Each Python project owns its own `pyproject.toml` and `uv.lock`.
+
+There is intentionally no root Python workspace yet. That keeps project boundaries visible while Connor is learning.
+
+The imported projects currently declare Python 3.10. Python 3.12 is the intended future baseline, but changing interpreter requirements and lock files is a separate migration that must be run and validated before integration.
+
+Do not copy old `.venv` directories between computers. Recreate environments with `uv sync`.
+
+## Git workflow
+
+Treat `main` as stable.
+
+Before work:
+
+    cd ~/Projects/connor-coding-lab
+    git status
+
+For a bounded mission or feature:
+
+    git switch main
+    git pull --ff-only
+    git switch -c mission/short-name
 
 Inspect changes:
 
-```bash
-git status
-git diff
-```
+    git status
+    git diff
 
-Save a checkpoint:
+Stage only the intended files:
 
-```bash
-git add <files>
-git commit -m "Explain what changed"
-```
+    git add path/to/file
+    git diff --cached
 
-Python projects use `uv`. Do not use raw `pip` as the normal project workflow.
+Then commit a useful save point.
 
 ## Safety
 
-Connor works as a normal non-admin Linux user.
+Ordinary development must not require `sudo`.
 
-Ordinary coding must not require `sudo`. If system software needs installing, ask Apa/Geza.
-
-Never commit passwords, tokens, API keys, private keys or secret `.env` files.
+Never commit passwords, tokens, API keys, SSH private keys or secret `.env` values.
 
 ## Repository ownership
 
-During preparation this repository may be hosted temporarily under `WebshopCompany`. The intended long-term home is Connor's own GitHub account.
+During preparation this repository is hosted under `WebshopCompany`.
 
-Existing history must be preserved during that handover.
+The intended long-term home is `connor-koczian/connor-coding-lab`. Any handover must preserve the imported Python Basics and Snake histories.
+
+The repository must not be described as Dell-ready until the fresh-clone acceptance checks in `docs/admin/ACCEPTANCE-CHECKLIST.md` have actually passed.

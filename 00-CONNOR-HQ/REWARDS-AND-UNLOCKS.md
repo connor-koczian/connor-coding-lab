@@ -1,87 +1,51 @@
 # 🏆 Connor's Rewards and Unlocks
 
-These are your coding achievements.
+These are coding achievements, not a race.
 
-Show Apa when you unlock one.
-
----
-
-## ⭐ Level 1 — Explorer
+## ⭐ Explorer
 
 Complete Mission 1.
 
-Reward:
+Reward: Developer Level 1
 
-⭐ Developer Level 1
+## 🐍 Python Rookie
 
----
+Run and intentionally change a Python program.
 
-## 🐍 Level 2 — Python Rookie
+Reward: First Python Program
 
-Run and change your first Python program.
+## 🧠 AI Apprentice
 
-Reward:
+Use an AI helper to learn something, then explain it back in your own words.
 
-🏅 First Python Program
+Reward: AI Developer Level 1
 
----
+## 🎮 Game Developer
 
-## 🧠 Level 3 — AI Apprentice
+Run the Classic Snake save point and the later Snake game, then explain one game mechanic.
 
-Use Antigravity to learn something.
-
-Explain it back to Apa.
-
-Reward:
-
-⭐ AI Developer Level 1
-
----
-
-## 🎮 Level 4 — Game Developer
-
-Get your first Snake game window working.
-
-Reward:
-
-🏅 Game Developer
-
----
+Reward: Game Developer
 
 ## 🐛 Bug Hunter
 
-Find a mistake and fix it.
+Reproduce a mistake, find the cause and fix it.
 
-Reward:
-
-🐛 Bug Hunter Badge
-
----
+Reward: Bug Hunter Badge
 
 ## 💾 Save Point Master
 
-Make your own Git commit.
+Inspect a diff, stage the intended file and make your own Git commit.
 
-Reward:
-
-💾 Save Point Unlocked
-
----
+Reward: Save Point Unlocked
 
 ## 🧪 Experimenter
 
-Try something that was not part of a mission.
+Try a small idea that was not part of a mission and record what happened.
 
-Reward:
+Reward: Experimenter
 
-🧪 Experimenter
+## 🏆 Inventor
 
----
+Design and build something that started as your own idea.
 
-## 🏆 Secret achievement — Inventor
-
-Build something Apa did not ask you to build.
-
-Reward:
-
-🏆 INVENTOR
+Reward: Inventor

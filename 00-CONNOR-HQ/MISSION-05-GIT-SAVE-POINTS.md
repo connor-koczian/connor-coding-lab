@@ -4,62 +4,56 @@
 
 Learn how developers safely save progress.
 
-Git is not just for uploading code. It lets you see what changed and return to earlier save points.
+Git is not just for uploading code. It records meaningful checkpoints and lets you inspect exactly what changed.
 
 ## Challenge 1 — Check your position
 
 From the repository root:
 
-```bash
-pwd
-git status
-```
+    cd ~/Projects/connor-coding-lab
+    git status
 
 Explain what branch you are on and whether anything has changed.
 
-## Challenge 2 — Make one tiny change
+## Challenge 2 — Create a mission branch
 
-Open `python-basics/src/python_basics/hello.py`.
+Before editing:
 
-Make one small change that *you* choose.
+    git switch -c mission/git-save-point
+    git status
 
-Before saving it to Git:
+A branch gives your experiment its own lane while `main` stays stable.
 
-```bash
-git diff
-```
+## Challenge 3 — Make one tiny change
 
-Read the diff.
+Open:
 
-## Challenge 3 — Create a branch
+`python-basics/src/python_basics/hello.py`
 
-```bash
-git switch -c mission/git-save-point
-```
+Make one small change that you choose.
 
-Check:
+Now inspect it:
 
-```bash
-git status
-```
+    git diff
 
-## Challenge 4 — Commit
+Read the diff before staging anything.
 
-Add only the file you changed:
+## Challenge 4 — Stage only your file
 
-```bash
-git add python-basics/src/python_basics/hello.py
-git diff --cached
-git commit -m "Improve favourite game question"
-```
+    git add python-basics/src/python_basics/hello.py
+    git diff --cached
 
-## Challenge 5 — Inspect history
+The staged diff is what your next commit will record.
 
-```bash
-git log --oneline --decorate -8
-```
+## Challenge 5 — Commit
 
-Find your new save point.
+Choose a short message that describes your actual change:
+
+    git commit -m "Improve favourite game question"
+
+Then inspect history:
+
+    git log --oneline --decorate -8
 
 ## Mission complete when
 
@@ -67,6 +61,7 @@ You can explain:
 
 - what a branch is;
 - what a diff shows;
+- what staging means;
 - what a commit records;
 - why a useful commit message matters.
 

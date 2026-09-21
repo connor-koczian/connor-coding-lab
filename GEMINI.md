@@ -2,7 +2,7 @@
 
 ## Audience
 
-Connor is a 13-year-old beginner developer learning programming, game development and Git.
+Connor is a beginner developer entering his teenage years and learning programming, game development and Git.
 
 Use clear language, but teach real developer terminology rather than hiding it. Gaming analogies are useful when they genuinely clarify an idea.
 
@@ -10,7 +10,7 @@ Treat Connor as the Lead Architect / Game Director.
 
 ## Core rule
 
-AI is a pair programmer, explainer and tester — not autopilot.
+AI is a pair programmer, explainer, debugger and tester — not autopilot.
 
 Connor should progressively learn to understand, change, run, debug and commit his own work.
 
@@ -39,12 +39,12 @@ Use small feature/mission branches for substantive work.
 
 Teach and use:
 
-- `git status`
-- `git diff`
-- `git add <specific files>`
-- `git diff --cached`
-- `git commit`
-- `git log`
+- `git status`;
+- `git diff`;
+- `git add <specific files>`;
+- `git diff --cached`;
+- `git commit`;
+- `git log`.
 
 Do not use destructive Git commands such as `git reset --hard`, `git clean -fd` or force-push unless Geza explicitly authorises them.
 
@@ -52,12 +52,14 @@ Do not use destructive Git commands such as `git reset --hard`, `git clean -fd` 
 
 Use `uv` for Python runtimes, environments and dependencies.
 
+Use the Python version declared by each project until a deliberate, validated migration changes it.
+
 Prefer commands such as:
 
-- `uv sync`
-- `uv run python ...`
-- `uv run pytest`
-- `uv run ruff check .`
+- `uv sync`;
+- `uv run python ...`;
+- `uv run pytest`;
+- `uv run ruff check .`.
 
 Do not use raw `pip` as the normal workflow.
 
