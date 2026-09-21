@@ -750,25 +750,52 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 
-window.addEventListener("keydown", (event) => {
-  const key = event.key.toLowerCase();
-  if (["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(key)) event.preventDefault();
+function normaliseKey(event) {
+  const codeMap = {
+    KeyW: "w",
+    KeyA: "a",
+    KeyS: "s",
+    KeyD: "d",
+    KeyE: "e",
+    KeyP: "p",
+    KeyR: "r",
+    ShiftLeft: "shift",
+    ShiftRight: "shift",
+    ArrowUp: "arrowup",
+    ArrowDown: "arrowdown",
+    ArrowLeft: "arrowleft",
+    ArrowRight: "arrowright",
+  };
+  return codeMap[event.code] ?? event.key.toLowerCase();
+}
+
+document.addEventListener("keydown", (event) => {
+  const key = normaliseKey(event);
+  if (["w", "a", "s", "d", "e", "p", "r", "shift", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)) {
+    event.preventDefault();
+  }
   if (!keys.has(key)) pressed.add(key);
   keys.add(key);
   if (key === "p" && running) paused = !paused;
   if (key === "r" && running) reset();
-});
-window.addEventListener("keyup", (event) => keys.delete(event.key.toLowerCase()));
+}, true);
+
+document.addEventListener("keyup", (event) => {
+  keys.delete(normaliseKey(event));
+}, true);
+
 window.addEventListener("blur", () => {
   keys.clear();
   pressed.clear();
-  if (running) paused = true;
 });
+
+canvas.addEventListener("pointerdown", () => canvas.focus());
 
 playButton.addEventListener("click", () => {
   try { audio ??= new AudioContext(); } catch { audio = null; }
   startOverlay.classList.add("hidden");
   reset();
+  canvas.focus();
 });
 againButton.addEventListener("click", () => {
   finishOverlay.classList.add("hidden");
