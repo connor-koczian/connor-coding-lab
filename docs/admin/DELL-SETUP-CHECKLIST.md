@@ -10,6 +10,9 @@ Target machine:
 
 Connor uses a normal non-admin account. Ordinary coding must not require `sudo`.
 
+For the next-session restart point and exact sequence, read
+`docs/admin/NEXT-DELL-BUILD.md` first.
+
 ## Before replacing the existing OS
 
 Boot the Ubuntu installer in its live/try mode and verify the actual machine:
@@ -61,9 +64,11 @@ Do not depend on custom shell aliases for the learning missions.
 
 ## Python version policy
 
-The imported Python Basics and Snake projects currently declare Python 3.10.
+Python Basics and Snake now declare Python 3.12 as the repository baseline.
 
-Python 3.12 is the intended future baseline, but the migration must be performed as a separate repository change with regenerated/validated lock state and runtime checks. Do not edit version declarations on the Dell merely to make them look current.
+Use `uv` to install/manage Python 3.12 and recreate each project's environment
+from its committed lock file. Do not copy old `.venv` directories from the
+ThinkPad or edit version declarations locally on the Dell.
 
 ## Validation
 

@@ -19,6 +19,12 @@ Repository-wide AI guidance lives in:
 
 Parent/admin material lives under `docs/admin/`.
 
+For the next Dell rebuild session, start with:
+
+- `docs/admin/NEXT-DELL-BUILD.md`
+- `docs/admin/INSTALL-UBUNTU.md`
+- `docs/admin/ACCEPTANCE-CHECKLIST.md`
+
 ## Run the lab
 
 Connor's normal starting point is the stable `main` branch. From the repository root:
