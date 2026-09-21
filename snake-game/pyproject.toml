@@ -5,7 +5,7 @@ description = "Add your description here"
 authors = [
     { name = "Connor", email = "connor@localhost" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "pygame>=2.6.1",
 ]
