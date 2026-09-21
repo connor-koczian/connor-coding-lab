@@ -1,4 +1,4 @@
-name = input("What is your name? ")
+game = input("what is youre favourite video game? ")
 
-print(f"Hello, {name}!")
-print("Welcome to Python.")
+print(f"That is great! What is {game} all about?")
+print("Can you tell me more?.")
