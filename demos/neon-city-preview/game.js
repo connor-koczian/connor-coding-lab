@@ -15,7 +15,17 @@ const WORLD_W = 3200;
 const WORLD_H = 2200;
 const TAU = Math.PI * 2;
 const keys = new Set();
+const keyLatch = new Map();
 let pressed = new Set();
+let lastInput = "NONE";
+
+function latchKey(key, milliseconds = 180) {
+  keyLatch.set(key, performance.now() + milliseconds);
+}
+
+function inputDown(key) {
+  return keys.has(key) || (keyLatch.get(key) ?? 0) > performance.now();
+}
 let running = false;
 let paused = false;
 let last = performance.now();
@@ -191,10 +201,10 @@ function updatePlayer(dt) {
   if (player.inCar) return;
   let dx = 0;
   let dy = 0;
-  if (keys.has("w") || keys.has("arrowup")) dy -= 1;
-  if (keys.has("s") || keys.has("arrowdown")) dy += 1;
-  if (keys.has("a") || keys.has("arrowleft")) dx -= 1;
-  if (keys.has("d") || keys.has("arrowright")) dx += 1;
+  if (inputDown("w") || inputDown("arrowup")) dy -= 1;
+  if (inputDown("s") || inputDown("arrowdown")) dy += 1;
+  if (inputDown("a") || inputDown("arrowleft")) dx -= 1;
+  if (inputDown("d") || inputDown("arrowright")) dx += 1;
   if (dx || dy) {
     const len = Math.hypot(dx, dy);
     dx /= len;
@@ -212,11 +222,11 @@ function updateCar(dt) {
     car.speed *= Math.max(0, 1 - dt * 1.8);
     return;
   }
-  const forward = keys.has("w") || keys.has("arrowup");
-  const back = keys.has("s") || keys.has("arrowdown");
-  const left = keys.has("a") || keys.has("arrowleft");
-  const right = keys.has("d") || keys.has("arrowright");
-  const boosting = keys.has("shift") && car.boost > 0 && car.speed > 80;
+  const forward = inputDown("w") || inputDown("arrowup");
+  const back = inputDown("s") || inputDown("arrowdown");
+  const left = inputDown("a") || inputDown("arrowleft");
+  const right = inputDown("d") || inputDown("arrowright");
+  const boosting = inputDown("shift") && car.boost > 0 && car.speed > 80;
 
   if (forward) car.speed += 430 * dt;
   if (back) car.speed += car.speed > 25 ? -540 * dt : -310 * dt;
@@ -758,7 +768,7 @@ function tick() {
 
     if (tickCount % 20 === 0 && runtimeStatus) {
       const mode = player.inCar ? "CAR" : "ON FOOT";
-      runtimeStatus.textContent = `ENGINE OK • ${mode} • ${Math.round(1 / dt)} FPS`;
+      runtimeStatus.textContent = `ENGINE OK • ${mode} • ${Math.round(1 / dt)} FPS • INPUT ${lastInput}`;
       runtimeStatus.classList.remove("error");
     }
   } catch (error) {
@@ -803,6 +813,8 @@ document.addEventListener("keydown", (event) => {
   }
   if (!keys.has(key)) pressed.add(key);
   keys.add(key);
+  latchKey(key);
+  lastInput = key.toUpperCase();
   if (key === "p" && running) paused = !paused;
   if (key === "r" && running) reset();
 }, true);
