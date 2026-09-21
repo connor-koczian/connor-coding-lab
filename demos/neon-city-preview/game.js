@@ -7,6 +7,7 @@ const finishOverlay = document.getElementById("finish");
 const statsEl = document.getElementById("stats");
 const playButton = document.getElementById("play");
 const againButton = document.getElementById("again");
+const runtimeStatus = document.getElementById("runtimeStatus");
 
 const W = canvas.width;
 const H = canvas.height;
@@ -741,13 +742,39 @@ function render(dt) {
   }
 }
 
-function frame(now) {
-  const dt = Math.min(0.04, (now - last) / 1000);
+let tickTimer = null;
+let tickCount = 0;
+
+function tick() {
+  const now = performance.now();
+  const dt = Math.min(0.04, Math.max(0.001, (now - last) / 1000));
   last = now;
-  update(dt);
-  render(dt);
-  pressed = new Set();
-  requestAnimationFrame(frame);
+
+  try {
+    update(dt);
+    render(dt);
+    pressed = new Set();
+    tickCount += 1;
+
+    if (tickCount % 20 === 0 && runtimeStatus) {
+      const mode = player.inCar ? "CAR" : "ON FOOT";
+      runtimeStatus.textContent = `ENGINE OK • ${mode} • ${Math.round(1 / dt)} FPS`;
+      runtimeStatus.classList.remove("error");
+    }
+  } catch (error) {
+    if (runtimeStatus) {
+      runtimeStatus.textContent = `RUNTIME ERROR: ${error?.message ?? error}`;
+      runtimeStatus.classList.add("error");
+    }
+    console.error("Neon City runtime error", error);
+  }
+}
+
+function startTicker() {
+  if (tickTimer !== null) return;
+  last = performance.now();
+  tick();
+  tickTimer = window.setInterval(tick, 16);
 }
 
 function normaliseKey(event) {
@@ -804,4 +831,4 @@ againButton.addEventListener("click", () => {
 
 camera.x = clamp(player.x - W / 2, 0, WORLD_W - W);
 camera.y = clamp(player.y - H / 2, 0, WORLD_H - H);
-requestAnimationFrame(frame);
+startTicker();

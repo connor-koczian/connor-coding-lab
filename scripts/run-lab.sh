@@ -22,8 +22,9 @@ echo "  2) Classic Snake"
 echo "  3) Campaign Snake"
 echo "  4) Original Browser Snake"
 echo "  5) Neon City — AI Technology Preview"
-echo "  6) Show My Computer"
-echo "  7) Check My Environment"
+echo "  6) Snake: OVERDRIVE — AI Showcase"
+echo "  7) Show My Computer"
+echo "  8) Check My Environment"
 echo "  q) Quit"
 echo
 
@@ -60,9 +61,16 @@ case "$choice" in
     uv run --python 3.12 python -m http.server 8001
     ;;
   6)
-    "$repo/scripts/show-my-computer.sh"
+    cd "$repo/demos/snake-overdrive"
+    echo "Opening Snake: OVERDRIVE at http://127.0.0.1:8002/"
+    echo "Press Ctrl+C in this terminal when you are finished."
+    open_url "http://127.0.0.1:8002/"
+    uv run --python 3.12 python -m http.server 8002
     ;;
   7)
+    "$repo/scripts/show-my-computer.sh"
+    ;;
+  8)
     "$repo/scripts/check-environment.sh"
     ;;
   q|Q)
