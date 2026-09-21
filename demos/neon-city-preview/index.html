@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neon City — AI Technology Preview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">AI TECHNOLOGY DEMO • BUILT FOR CONNOR TO EXPLORE</p>
+        <h1>NEON CITY</h1>
+        <p>Walk the city, enter the cyan car, collect data shards and complete a delivery mission.</p>
+      </div>
+      <div class="keys">WASD / arrows · E enter/exit · Shift boost · P pause · R reset</div>
+    </header>
+
+    <section class="game">
+      <canvas id="game" width="1280" height="720"></canvas>
+      <div id="start" class="overlay">
+        <div class="panel">
+          <p class="eyebrow">THIS IS A DEMO — NOT CONNOR'S OWN GAME</p>
+          <h2>A city larger than the screen.</h2>
+          <p>Walk to the cyan car and press <b>E</b>. Drive to DATA PICKUP, then deliver the package to the SAFEHOUSE. The browser draws everything itself.</p>
+          <button id="play">ENTER NEON CITY</button>
+        </div>
+      </div>
+      <div id="finish" class="overlay hidden">
+        <div class="panel">
+          <p class="eyebrow">MISSION COMPLETE</p>
+          <h2>Package delivered.</h2>
+          <p id="stats"></p>
+          <button id="again">RUN IT AGAIN</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <article><h3>World + camera</h3><p>The map is bigger than the screen. A camera follows the player and car through world coordinates.</p></article>
+      <article><h3>Systems</h3><p>Walking, driving, collisions, traffic, pedestrians, missions, collectibles and the minimap are separate systems.</p></article>
+      <article><h3>Connor's real game</h3><p>The future <code>neon-city/</code> starts small and is built with Connor. He decides the world, missions and mechanics.</p></article>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
