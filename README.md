@@ -19,6 +19,14 @@ Repository-wide AI guidance lives in:
 
 Parent/admin material lives under `docs/admin/`.
 
+## Run the lab
+
+Connor's normal starting point is the stable `main` branch. From the repository root:
+
+    ./scripts/run-lab.sh
+
+The menu can launch Python Basics, Classic Snake, Campaign Snake, the original browser Snake, the AI-built Neon City technology preview, and the environment/hardware checks. Connor does not need to switch branches to run accepted work.
+
 ## Repository layout
 
 ### `00-CONNOR-HQ/`
@@ -43,9 +51,13 @@ Small disposable investigations. Experiments may fail; important ideas should gr
 
 New HTML, CSS and JavaScript learning work. Historical browser Snake remains under `snake-game/web/`.
 
+### `demos/neon-city-preview/`
+
+An AI-built technology demonstration for Connor to explore. It is explicitly not Connor's own game and exists to show where movement, maps, vehicles, missions and game-state skills can eventually lead.
+
 ### `neon-city/`
 
-Reserved for the next flagship project. It should be introduced in a separate reviewed change rather than generated all at once.
+Reserved for Connor's next flagship project. It will start small and be built with Connor one save point at a time; Connor decides its world, mechanics, characters, vehicles and missions.
 
 ## Python environments
 
@@ -53,7 +65,7 @@ Each Python project owns its own `pyproject.toml` and `uv.lock`.
 
 There is intentionally no root Python workspace yet. That keeps project boundaries visible while Connor is learning.
 
-The imported projects currently declare Python 3.10. Python 3.12 is the intended future baseline, but changing interpreter requirements and lock files is a separate migration that must be run and validated before integration.
+Both Python projects now declare Python 3.12 as their repository baseline. `uv` should install/manage that interpreter and recreate each project's environment from its lock file.
 
 Do not copy old `.venv` directories between computers. Recreate environments with `uv sync`.
 
