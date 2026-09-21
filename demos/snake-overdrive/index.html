@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Snake: OVERDRIVE — AI Showcase</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="shell">
+  <header>
+    <div><p class="eyebrow">AI SHOWCASE • BUILT TO DEMONSTRATE WHAT CODE CAN BECOME</p><h1>SNAKE: <span>OVERDRIVE</span></h1><p>Not Connor's game. A deliberately over-the-top combat evolution of Snake.</p></div>
+    <div class="keys">WASD / arrows · Space dash · P pause · R restart</div>
+  </header>
+  <section class="stage">
+    <canvas id="game" width="1280" height="720" tabindex="0"></canvas>
+    <div id="start" class="overlay"><div class="panel"><p class="eyebrow">AI-BUILT TECHNOLOGY SHOWCASE</p><h2>Snake, but turned into an arena combat game.</h2><p>Collect cores to grow. Your snake auto-fires at hostile drones. Dash through danger, build a combo and survive boss waves.</p><button id="play">START OVERDRIVE</button></div></div>
+    <div id="gameOver" class="overlay hidden"><div class="panel danger"><p class="eyebrow">RUN ENDED</p><h2 id="resultTitle">SYSTEM FAILURE</h2><p id="resultStats"></p><button id="again">REBOOT RUN</button></div></div>
+    <div id="runtime" class="runtime">ENGINE READY</div>
+  </section>
+  <section class="cards">
+    <article><h3>Combat snake</h3><p>The body still follows the head, but now it carries shields, health, dash energy and auto-targeting weapons.</p></article>
+    <article><h3>Enemy systems</h3><p>Drones steer towards the player. Elite enemies shoot back. Bosses have multiple attacks and large health pools.</p></article>
+    <article><h3>Game feel</h3><p>Camera shake, particles, glow, hit flashes, combo scoring and power-ups create feedback beyond basic Snake.</p></article>
+  </section>
+</main>
+<script src="game.js?v=1"></script>
+</body>
+</html>
