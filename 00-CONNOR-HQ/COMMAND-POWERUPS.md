@@ -1,34 +1,18 @@
 # ⚡ Command Power-Ups
 
-You do not need to memorise these.
-
-Real programmers look commands up all the time.
-
----
+You do not need to memorise these. Real developers look commands up.
 
 ## Where am I?
 
     pwd
 
-Shows which folder you are currently inside.
+Shows the folder you are currently inside.
 
----
-
-## What is around me?
+## What is here?
 
     ls
 
 Shows files and folders.
-
----
-
-## Show me a map
-
-    tree -L 2
-
-Shows your folders as a tree.
-
----
 
 ## Enter a folder
 
@@ -38,63 +22,64 @@ Example:
 
     cd snake-game
 
----
-
 ## Go back one folder
 
     cd ..
 
----
+## Return to Connor Coding Lab
 
-## Return to your coding base
+    cd ~/Projects/connor-coding-lab
 
-    projects
-
-Takes you straight to:
-
-    ~/Projects
-
----
+This command is deliberately explicit so the repository works after a fresh clone without special shell shortcuts.
 
 ## Clear the terminal
 
     clear
 
----
-
-## What changed in my project?
+## What changed?
 
     git status
 
-This tells you which files have changed.
+Then inspect the actual changes:
 
----
+    git diff
 
-## Save a checkpoint
+## Save one intentional change
 
-    git add .
-    git commit -m "What I changed"
+Add the specific file you changed:
 
-Think of a Git commit like a save point in a game.
+    git add path/to/file
 
----
+Check what will be committed:
+
+    git diff --cached
+
+Then create a save point:
+
+    git commit -m "Explain what changed"
+
+Avoid `git add .` while you are learning. It is better to know exactly what you are saving.
+
+## Look at recent save points
+
+    git log --oneline --decorate -10
 
 ## Run Python
 
-    uv run python filename.py
+From inside a Python project such as `python-basics/`:
 
----
+    uv run python filename.py
 
 ## Check Python code
 
+Where Ruff is configured:
+
     uv run ruff check .
-
-This looks for common mistakes.
-
----
 
 ## Run tests
 
+Where tests are configured:
+
     uv run pytest
 
-Tests check whether your code behaves how you expect.
+Tests check whether code behaves the way you expect.

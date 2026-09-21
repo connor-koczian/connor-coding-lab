@@ -2,11 +2,11 @@
 
 ## Goal
 
-Learn how to move around your computer like a programmer.
+Learn how to move around the Connor Coding Lab repository from the terminal.
 
-Use the terminal at the bottom of VS Code.
+Open the repository folder in VS Code:
 
----
+`/home/connor/Projects/connor-coding-lab`
 
 ## Challenge 1 — Where am I?
 
@@ -14,71 +14,55 @@ Type:
 
     pwd
 
-This asks:
+When you are at the repository root, you should see:
 
-**"Which folder am I standing in?"**
-
-You should see:
-
-    /home/connor/Projects
-
----
+    /home/connor/Projects/connor-coding-lab
 
 ## Challenge 2 — What is here?
 
 Type:
 
-    tree -L 2
+    ls
 
-This gives you a map of your coding folders.
-
-Can you find:
+Find:
 
 - `00-CONNOR-HQ`
 - `python-basics`
 - `snake-game`
 - `experiments`
-
----
+- `web-playground`
 
 ## Challenge 3 — Visit the Snake project
 
 Type:
 
-    cd ~/Projects/snake-game
-
-Then:
-
+    cd snake-game
     pwd
 
-You should now be inside the Snake project.
+You should now be inside:
 
----
+    /home/connor/Projects/connor-coding-lab/snake-game
 
-## Challenge 4 — Return to base
+## Challenge 4 — Return to the repository root
 
 Type:
 
-    projects
+    cd ~/Projects/connor-coding-lab
 
-Apa made this shortcut for you.
+Then confirm:
 
-It should take you back to:
-
-    /home/connor/Projects
-
----
+    pwd
+    git status
 
 ## ✅ Mission complete when
 
-You can show Apa:
+You can explain:
 
-1. where you are
-2. how to enter the Snake folder
-3. how to return to Projects
+1. what the repository root is;
+2. how to enter a project folder;
+3. how to return to the repository root;
+4. what `git status` tells you.
 
 ## 🏆 Reward
 
 ⭐ Developer Level 1
-
-You now know how to move around your coding computer.

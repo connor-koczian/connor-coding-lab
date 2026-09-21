@@ -1,86 +1,63 @@
-# 🐍 Mission 4 — Build Snake
+# 🐍 Mission 4 — Explore Your Snake History
 
-Now you start your first proper game.
+Snake is already an important part of your coding history.
 
-You will not build everything at once.
+This mission is not about replacing it with a cleaner AI rewrite. It is about learning how a game grows through save points.
 
-Real games are made one small part at a time.
+## Goal
 
----
+Run two versions of Snake and identify some of the programming ideas inside them.
 
-# Level 1
+## Challenge 1 — Run the current game
 
-Open a game window.
+    cd ~/Projects/connor-coding-lab/snake-game
+    uv sync
+    uv run python src/snake_game/__init__.py
 
-# Level 2
+Play it, then close it normally.
 
-Put the snake on the screen.
+## Challenge 2 — Run the Classic save point
 
-# Level 3
+    uv run python src/snake_game/classic_snake.py
 
-Move it with the arrow keys.
+Compare it with the current game.
 
-# Level 4
+What changed?
 
-Add food.
+## Challenge 3 — Find three game ideas in the code
 
-# Level 5
+Open:
 
-Make the snake grow.
+`snake-game/src/snake_game/classic_snake.py`
 
-# Level 6
+Try to find code for three of these:
 
-Make hitting something end the game.
+- player input;
+- position;
+- movement;
+- food;
+- collision;
+- score;
+- the game loop.
 
-# Level 7
+Ask for an explanation if you need one, but point to the code yourself.
 
-Add a score.
+## Challenge 4 — Look at history
 
-# Level 8
+Return to the repository root:
 
-Make it look better.
+    cd ~/Projects/connor-coding-lab
 
----
+Then run:
 
-## How to start
+    git log --oneline --all --decorate -20
 
-Go to:
+Find some of the Snake save points.
 
-    cd ~/Projects/snake-game
+## ✅ Mission complete when
 
-Then ask Antigravity:
+You can explain one way the Classic version and the later version are different, and one programming idea both games use.
 
-    I want to build Snake in Python.
+## 🏆 Reward
 
-    Help me complete Level 1 only.
-
-    Explain what we are doing in simple language.
-
-    Explain every command before I run it.
-
-    Let me type and understand the code myself.
-
-    Do not build later levels yet.
-
----
-
-## Why Snake?
-
-Snake will teach you ideas used in much bigger games:
-
-- movement
-- controls
-- positions
-- collisions
-- scores
-- game rules
-
-Small games teach the same building blocks used inside much larger games.
-
----
-
-## 🏆 First reward
-
-When you get your first game window working:
-
-🏅 GAME DEVELOPER UNLOCKED
+🏅 Game Developer
