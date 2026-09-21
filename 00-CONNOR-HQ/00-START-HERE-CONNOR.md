@@ -16,6 +16,14 @@ Your job is simply to:
 
 You already have real developer tools.
 
+## Start the Coding Lab
+
+From a terminal at the repository root, you can open the launcher:
+
+    ./scripts/run-lab.sh
+
+That menu runs the accepted games and tools from stable `main`. You do not need to change Git branches just to play or explore them.
+
 ## Your screen
 
 Look at VS Code.
