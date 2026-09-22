@@ -1,0 +1,146 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Connor Lab: Mission Control Terminal",
+      "type": "shell",
+      "command": "exec \"$SHELL\" -l",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen",
+        "instanceLimit": 1
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "Connor Lab: Open Start Here",
+      "type": "shell",
+      "command": "code --reuse-window START-HERE.md",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Connor Lab: Git Status",
+      "type": "shell",
+      "command": "git status --short --branch",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Connor Lab: Run Menu",
+      "type": "shell",
+      "command": "./scripts/run-lab.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Python Basics: Run",
+      "type": "shell",
+      "command": "uv run python src/python_basics/hello.py",
+      "options": {
+        "cwd": "${workspaceFolder}/python-basics"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Python Basics: Tests",
+      "type": "shell",
+      "command": "uv run pytest",
+      "options": {
+        "cwd": "${workspaceFolder}/python-basics"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Python Basics: Ruff",
+      "type": "shell",
+      "command": "uv run ruff check .",
+      "options": {
+        "cwd": "${workspaceFolder}/python-basics"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Snake: Classic",
+      "type": "shell",
+      "command": "uv run python src/snake_game/classic_snake.py",
+      "options": {
+        "cwd": "${workspaceFolder}/snake-game"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Snake: Campaign",
+      "type": "shell",
+      "command": "uv run python src/snake_game/__init__.py",
+      "options": {
+        "cwd": "${workspaceFolder}/snake-game"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    }
+  ]
+}
