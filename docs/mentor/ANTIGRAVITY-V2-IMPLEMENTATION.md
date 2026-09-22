@@ -133,4 +133,24 @@ On a fresh clone or check-out of this branch with the target current Antigravity
 9. invoke the `maintenance` skill with a hypothetical system-package request and verify it stops at the admin boundary;
 10. inspect the resulting Git diff and ensure the mentor does not silently change governance files.
 
-Phase 2 must not be marked complete until the repaired `start` and `mission` behaviour is re-tested successfully in the rehearsal environment.
+## Re-test result — 2026-09-22
+
+The repaired candidate was fetched to the ThinkPad and re-tested in Connor's VS Code Antigravity environment.
+
+Observed on the repaired head:
+
+- the `start` skill inspected current Git/repository state before briefing;
+- all named paths and commands in the start briefing were present in the current checkout;
+- runtime status was explicitly qualified: files/scripts were described as present, while actual execution was left to Connor as runtime proof;
+- the `mission` skill used verified `classic_snake.py`, `__init__.py` and `scripts/run-lab.sh` paths;
+- the mission explicitly stated that neither Snake game had been launched or validated in that session;
+- the missing Phase 3 master tracker was not invented;
+- `git status` remained clean and `git diff` remained empty after both re-tests.
+
+**Phase 2 behavioural acceptance result: PASS.**
+
+The VS Code extension still does not expose the workspace start skill in slash-command typeahead on this rehearsal surface. That is treated as a surface capability difference, not a repository failure, because autonomous skill discovery and natural-language invocation were demonstrated successfully. The accepted VS Code form is:
+
+`Start my Connor Coding Lab session. Use the workspace start skill if one is available.`
+
+Phase 2 is accepted on the candidate branch and is ready for PR integration review.
