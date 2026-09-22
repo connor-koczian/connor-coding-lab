@@ -83,15 +83,17 @@ Changes to root `GEMINI.md`, `.agents/rules/` or the canonical V2 implementation
 
 ## Manual acceptance checks before Phase 2 completion
 
-On a fresh clone or check-out of this branch with current Antigravity:
+On a fresh clone or check-out of this branch with the target current Antigravity surface:
 
-1. confirm workspace rules are visible or loaded;
-2. confirm the skills are discovered;
-3. invoke `/start` and verify it does not invent a tracker;
-4. invoke `/mission` and verify it proposes one bounded visible mission;
-5. invoke `/build` with a harmless test request and verify it states goal, files, concept and acceptance checks before editing;
-6. invoke `/debug` and verify it follows reproduce, observe, hypothesise, isolate, fix, rerun, verify;
-7. invoke `/maintenance` with a hypothetical system-package request and verify it stops at the admin boundary;
-8. inspect the resulting Git diff and ensure the mentor does not silently change governance files.
+1. open the Antigravity Customizations/Rules view and confirm all six workspace rules are discovered;
+2. verify the intended activation behaviour: core mentor, learning, safety, Git/change-control, project-engineering and system-maintenance governance must be continuously enforced (use **Always On** where the target Antigravity surface requires an explicit activation mode);
+3. confirm all 19 skills are discovered;
+4. confirm root `GEMINI.md` is respected on the chosen target surface, or treat `.agents/rules/` as the enforceable workspace authority if that surface does not consume root project context;
+5. invoke `/start` and verify it does not invent a tracker;
+6. invoke `/mission` and verify it proposes one bounded visible mission;
+7. invoke `/build` with a harmless test request and verify it states goal, files, concept and acceptance checks before editing;
+8. invoke `/debug` and verify it follows reproduce, observe, hypothesise, isolate, fix, rerun, verify;
+9. invoke `/maintenance` with a hypothetical system-package request and verify it stops at the admin boundary;
+10. inspect the resulting Git diff and ensure the mentor does not silently change governance files.
 
 Phase 2 must not be marked complete until these behavioural checks are run in a real Antigravity environment.
