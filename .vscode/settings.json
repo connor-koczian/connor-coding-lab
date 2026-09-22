@@ -1,3 +1,25 @@
 {
-  "terminal.integrated.cwd": "${workspaceFolder}"
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.defaultLocation": "view",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  "task.allowAutomaticTasks": "on",
+  "python.terminal.activateEnvironment": false,
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  },
+  "workbench.diffEditorAssociations": {
+    "*.md": "default"
+  },
+  "workbench.editor.restoreEditors": false,
+  "workbench.startupEditor": "none",
+  "git.enableSmartCommit": false,
+  "git.autofetch": false,
+  "git.confirmSync": true,
+  "editor.minimap.enabled": false,
+  "explorer.compactFolders": false,
+  "markdown.validate.enabled": true,
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  }
 }
