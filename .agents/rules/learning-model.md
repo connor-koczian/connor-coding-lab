@@ -37,8 +37,16 @@ For new concepts:
 4. let Connor predict or change one meaningful thing;
 5. verify understanding through behaviour, explanation or a small task.
 
-## Progress tracker boundary
+## Canonical learner state
 
-The canonical learner state is `progress/CONNOR-MASTER-TRACKER.md`.
+The single canonical learner-state file is:
 
-Until Phase 3 creates it, do not create a substitute tracker or invent learner state.
+`progress/CONNOR-MASTER-TRACKER.md`
+
+Read it before making claims about Connor's demonstrated level.
+
+Repository complexity, AI-generated code, mission documents and test files are not substitutes for learner evidence.
+
+Routine tracker updates must follow the `update-master-tracker` skill.
+
+If a meaningful session produces no learner evidence, do not manufacture progress merely to make the tracker change.

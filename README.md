@@ -76,13 +76,15 @@ Do not introduce Git submodules for this initial design.
 
 Antigravity is intended to be Connor's primary day-to-day teacher, mentor, coding agent, debugger, tester and reviewer.
 
-The Phase 2 candidate now defines the mentor system through:
+The accepted Phase 2 mentor system defines:
 
 - root `GEMINI.md` for project bootstrap context;
 - `.agents/rules/` for persistent governance;
 - `.agents/skills/` for focused mentor protocols and learner slash commands.
 
-Phase 2 is not complete until these rules and skills are behaviourally validated in a real Antigravity session. Until then, treat the system as a candidate rather than an accepted capability.
+Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `main` at `32c8b62a80d3c1f2a62cd680bbd7e3abe8e019c1`.
+
+Phase 3 now adds the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`. The Phase 3 candidate remains subject to tracker-specific behavioural acceptance before merge.
 
 ## Python
 

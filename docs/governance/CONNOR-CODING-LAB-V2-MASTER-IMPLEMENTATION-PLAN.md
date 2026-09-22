@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 2 ACCEPTED / PENDING MERGE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 3 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -698,14 +698,24 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - ThinkPad behavioural acceptance found and repaired evidence-grounding defects in `start` and `mission`.
   - Re-test passed on 2026-09-22: verified paths/commands, evidence-qualified runtime claims, no invented tracker state, and a clean Git working tree.
   - After the repaired branch was reloaded in VS Code, Antigravity slash autocomplete displayed the workspace `start`, `start-session` and other skills; `/start` discovery therefore passed on the rehearsal surface. Natural-language invocation remains a valid fallback.
-  - Phase 2 is accepted on the candidate branch and pending merge into `main`.
+  - Phase 2 merged into `main` at `32c8b62a80d3c1f2a62cd680bbd7e3abe8e019c1` after behavioural acceptance.
 
-- [ ] **Phase 3 — Master tracker**
+- [x] **Phase 3 — Master tracker**
   - Branch: `learning/master-tracker-v1`
-  - Implement `CONNOR-MASTER-TRACKER.md`.
-  - Seed only source-supported current capabilities.
-  - Implement Antigravity update protocol.
-  - Validate distinction between AI-produced output and Connor-demonstrated competence.
+  - PR: `#13`
+  - Added canonical `progress/CONNOR-MASTER-TRACKER.md`.
+  - Seeded a conservative repository-supported baseline with no capability above INTRODUCED from historical artefacts alone.
+  - Implemented learner evidence classes and guarded capability-state promotion.
+  - Activated the `update-master-tracker` protocol.
+  - Integrated tracker authority into `start-session` and evidence-based updates into `finish`.
+  - Rehearsal `/start` read the tracker correctly and preserved the conservative baseline.
+  - First `/start` exposed an incorrect system-`python3` suggestion for the uv-managed Python project; repaired by requiring declared project-workflow inspection before run/setup/test commands.
+  - Re-test used the documented `uv` workflow correctly.
+  - Anti-inflation test confirmed that advanced Snake/AI artefacts do not promote Connor's competence.
+  - Controlled simulated `/finish` test changed only the relevant Linux/Terminal capability, its detail section and one clearly labelled session-log entry; unrelated capabilities, historical missions and governance remained unchanged.
+  - The simulated learner-state mutation was restored completely; the rehearsal working tree returned clean.
+  - `CAN DIRECT AI` and `CAN VERIFY AI` remained distinct throughout acceptance.
+  - Phase 3 is behaviourally accepted on the candidate branch and pending merge into `main`.
 
 - [ ] **Phase 4 — VS Code / cockpit UX**
   - Branch: `ux/vscode-mission-control-v1`
@@ -827,18 +837,18 @@ V2 is complete only when:
 
 ## 24. Next-session restart instruction
 
-The next implementation session must begin with:
+Every implementation session must begin with:
 
 1. fetch CURRENT GitHub `main`;
 2. verify the pre-V2 backup branch still points to `07871cbf2e96e919b63437a5c91bec8e86a2ffea`;
 3. read this entire document;
-4. inspect any changes made after this plan was approved;
-5. begin **Phase 1 only** on a bounded branch from current `main`;
-6. do not split `python-basics` or `snake-game`;
-7. do not touch the Dell;
-8. validate and review Phase 1 before moving to Phase 2.
+4. inspect changes made since the previous phase;
+5. continue the **first incomplete phase** in the tracker above on its bounded branch;
+6. do not skip behavioural acceptance requirements merely because static implementation exists;
+7. do not split `python-basics` or `snake-game` before their dedicated migration phase;
+8. do not touch the Dell without separate `gk-home-lab` release authority.
 
-A later session must continue from the phase tracker in this file rather than redesigning the programme from scratch.
+Continue from the phase tracker in this file rather than reconstructing or redesigning the programme from chat history.
 
 ---
 
