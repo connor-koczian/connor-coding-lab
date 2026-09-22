@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 2 CANDIDATE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 2 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -687,15 +687,18 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Replaced the old HQ start page with a compatibility pointer.
   - Documented transition debt instead of opportunistically rewriting later-phase material.
 
-- [ ] **Phase 2 — Antigravity mentor system**
+- [x] **Phase 2 — Antigravity mentor system**
   - Branch: `agent/antigravity-mentor-v1`
-  - Re-verify current Antigravity project instruction/rules/skills format against official documentation.
-  - Implement persistent mentor rules under `.agents/rules/`.
-  - Implement focused task skills under `.agents/skills/`.
-  - Implement the approved learner slash-command experience as skills, not deprecated workflow files.
-  - Implement evidence/validation behaviour.
-  - Implement governance self-modification boundary.
-  - Validate discovery and behaviour in a real Antigravity session before marking Phase 2 complete.
+  - PR: `#12`
+  - Re-verified current Antigravity project instruction/rules/skills format against official documentation.
+  - Implemented 6 persistent mentor rules under `.agents/rules/`.
+  - Implemented 19 workspace skills under `.agents/skills/`, including the 8 approved learner command skills.
+  - Preserved the learner command model as skills rather than deprecated workflow files.
+  - Implemented evidence/validation behaviour and governance self-modification boundaries.
+  - ThinkPad behavioural acceptance found and repaired evidence-grounding defects in `start` and `mission`.
+  - Re-test passed on 2026-09-22: verified paths/commands, evidence-qualified runtime claims, no invented tracker state, and a clean Git working tree.
+  - VS Code Antigravity extension did not expose workspace skill slash typeahead in the rehearsal surface; autonomous skill discovery and natural-language invocation were validated and are the accepted fallback.
+  - Phase 2 is accepted on the candidate branch and pending merge into `main`.
 
 - [ ] **Phase 3 — Master tracker**
   - Branch: `learning/master-tracker-v1`
