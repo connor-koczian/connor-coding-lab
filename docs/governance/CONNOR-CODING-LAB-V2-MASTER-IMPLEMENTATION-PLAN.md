@@ -113,7 +113,6 @@ connor-coding-lab/
 |-- Connor-Coding-Lab.code-workspace
 |
 |-- .agents/
-|   |-- agents.md
 |   |-- rules/
 |   |   |-- core-mentor.md
 |   |   |-- learning-model.md
@@ -121,27 +120,26 @@ connor-coding-lab/
 |   |   |-- git-and-change-control.md
 |   |   |-- project-engineering.md
 |   |   `-- system-maintenance.md
-|   |-- skills/
-|   |   |-- start-session/SKILL.md
-|   |   |-- teach-concept/SKILL.md
-|   |   |-- prompt-coach/SKILL.md
-|   |   |-- plan-feature/SKILL.md
-|   |   |-- build-feature/SKILL.md
-|   |   |-- debug-with-connor/SKILL.md
-|   |   |-- test-and-verify/SKILL.md
-|   |   |-- review-diff/SKILL.md
-|   |   |-- update-master-tracker/SKILL.md
-|   |   |-- create-project/SKILL.md
-|   |   `-- safe-maintenance/SKILL.md
-|   `-- workflows/
-|       |-- start.md
-|       |-- mission.md
-|       |-- build.md
-|       |-- debug.md
-|       |-- review.md
-|       |-- finish.md
-|       |-- new-project.md
-|       `-- maintenance.md
+|   `-- skills/
+|       |-- start-session/SKILL.md
+|       |-- teach-concept/SKILL.md
+|       |-- prompt-coach/SKILL.md
+|       |-- plan-feature/SKILL.md
+|       |-- build-feature/SKILL.md
+|       |-- debug-with-connor/SKILL.md
+|       |-- test-and-verify/SKILL.md
+|       |-- review-diff/SKILL.md
+|       |-- update-master-tracker/SKILL.md
+|       |-- create-project/SKILL.md
+|       |-- safe-maintenance/SKILL.md
+|       |-- start/SKILL.md
+|       |-- mission/SKILL.md
+|       |-- build/SKILL.md
+|       |-- debug/SKILL.md
+|       |-- review/SKILL.md
+|       |-- finish/SKILL.md
+|       |-- new-project/SKILL.md
+|       `-- maintenance/SKILL.md
 |
 |-- missions/
 |   |-- README.md
