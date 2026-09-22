@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 3 ACCEPTED / PENDING MERGE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 4 CANDIDATE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -715,16 +715,22 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Controlled simulated `/finish` test changed only the relevant Linux/Terminal capability, its detail section and one clearly labelled session-log entry; unrelated capabilities, historical missions and governance remained unchanged.
   - The simulated learner-state mutation was restored completely; the rehearsal working tree returned clean.
   - `CAN DIRECT AI` and `CAN VERIFY AI` remained distinct throughout acceptance.
-  - Phase 3 is behaviourally accepted on the candidate branch and pending merge into `main`.
+  - Phase 3 merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64` after behavioural acceptance.
 
 - [ ] **Phase 4 — VS Code / cockpit UX**
   - Branch: `ux/vscode-mission-control-v1`
-  - Multi-root workspace design.
-  - Markdown preview-first behaviour.
-  - Integrated terminal behaviour.
-  - Curated extension recommendations.
-  - Safe startup tasks.
-  - Visual mission navigation.
+  - Candidate implementation in progress.
+  - Added canonical `Connor-Coding-Lab.code-workspace`.
+  - Added a transitional three-root cockpit: Mission Control, Python Basics and Snake Game, without submodules.
+  - Hid nested historical project folders from the Mission Control root to avoid duplicate Explorer/search results.
+  - Added Markdown preview-first editing while preserving raw Markdown Git diffs.
+  - Added a safe automatic interactive Mission Control terminal task for trusted workspaces.
+  - Added workspace/folder settings intended to keep the terminal neutral and project execution explicit through `uv run ...`.
+  - Added curated Antigravity/Python/Pylance/Python-Environments/debugpy/Ruff extension recommendations.
+  - Added visible Git-status, lab-menu, Python run/test/lint and Snake run tasks.
+  - Disabled smart commit and automatic fetch to preserve Git learning and avoid private-remote authentication noise.
+  - Added `docs/mentor/VSCODE-COCKPIT-V1-IMPLEMENTATION.md` with terminal/user-setting boundaries and rehearsal acceptance.
+  - Phase 4 remains incomplete until the ThinkPad confirms workspace layout, neutral automatic terminal, Markdown preview behaviour, skills discovery and task execution.
 
 - [ ] **Phase 5 — AI-native curriculum**
   - Branch: `learning/ai-native-curriculum-v1`
