@@ -149,8 +149,12 @@ Observed on the repaired head:
 
 **Phase 2 behavioural acceptance result: PASS.**
 
-The VS Code extension still does not expose the workspace start skill in slash-command typeahead on this rehearsal surface. That is treated as a surface capability difference, not a repository failure, because autonomous skill discovery and natural-language invocation were demonstrated successfully. The accepted VS Code form is:
+After the repaired branch was reloaded in VS Code, slash autocomplete displayed the workspace skills, including `start`, `start-session` and `new-project`. This supersedes the earlier first-pass observation that `/start` was absent from typeahead.
 
-`Start my Connor Coding Lab session. Use the workspace start skill if one is available.`
+Slash-command discovery on the rehearsal VS Code surface therefore passes. Connor may use:
+
+`/start`
+
+Natural-language invocation remains a valid fallback, but it is no longer required on the tested surface.
 
 Phase 2 is accepted on the candidate branch and is ready for PR integration review.
