@@ -74,9 +74,15 @@ Do not introduce Git submodules for this initial design.
 
 ## AI mentor
 
-Antigravity is intended to become Connor's primary day-to-day teacher, mentor, coding agent, debugger, tester and reviewer.
+Antigravity is intended to be Connor's primary day-to-day teacher, mentor, coding agent, debugger, tester and reviewer.
 
-The current `GEMINI.md` and `AI-CODING-RULES.md` remain active until the dedicated Antigravity V2 phase replaces the present lightweight guidance with the validated mentor system.
+The Phase 2 candidate now defines the mentor system through:
+
+- root `GEMINI.md` for project bootstrap context;
+- `.agents/rules/` for persistent governance;
+- `.agents/skills/` for focused mentor protocols and learner slash commands.
+
+Phase 2 is not complete until these rules and skills are behaviourally validated in a real Antigravity session. Until then, treat the system as a candidate rather than an accepted capability.
 
 ## Python
 
