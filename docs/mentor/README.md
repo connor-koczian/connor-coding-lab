@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phase 2 candidate is implemented on `agent/antigravity-mentor-v1`.**
+**Phase 2 is accepted and merged into `main`. Phase 3 tracker integration is implemented on `learning/master-tracker-v1` pending behavioural acceptance.**
 
 The system now has three durable layers:
 
@@ -12,7 +12,9 @@ The system now has three durable layers:
 2. `.agents/rules/` — persistent workspace governance;
 3. `.agents/skills/` — focused task protocols and learner slash commands.
 
-The canonical progress tracker is deliberately **not** created here. That is Phase 3.
+The canonical learner-state file now exists at `progress/CONNOR-MASTER-TRACKER.md`.
+
+Phase 3 also activates `.agents/skills/update-master-tracker/SKILL.md` and integrates tracker authority into session start/finish behaviour.
 
 ## Learner commands
 
@@ -35,7 +37,7 @@ Google states that legacy Workflows are deprecated and will be retired on 2026-1
 
 Creating new workflow files now would introduce immediate migration debt.
 
-See `ANTIGRAVITY-V2-IMPLEMENTATION.md` for the evidence and acceptance checks.
+See `ANTIGRAVITY-V2-IMPLEMENTATION.md` for Phase 2 evidence and `MASTER-TRACKER-V1-IMPLEMENTATION.md` for the Phase 3 evidence/update protocol and acceptance checks.
 
 ## Governance boundary
 
