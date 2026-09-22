@@ -697,7 +697,7 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Implemented evidence/validation behaviour and governance self-modification boundaries.
   - ThinkPad behavioural acceptance found and repaired evidence-grounding defects in `start` and `mission`.
   - Re-test passed on 2026-09-22: verified paths/commands, evidence-qualified runtime claims, no invented tracker state, and a clean Git working tree.
-  - VS Code Antigravity extension did not expose workspace skill slash typeahead in the rehearsal surface; autonomous skill discovery and natural-language invocation were validated and are the accepted fallback.
+  - After the repaired branch was reloaded in VS Code, Antigravity slash autocomplete displayed the workspace `start`, `start-session` and other skills; `/start` discovery therefore passed on the rehearsal surface. Natural-language invocation remains a valid fallback.
   - Phase 2 is accepted on the candidate branch and pending merge into `main`.
 
 - [ ] **Phase 3 — Master tracker**
