@@ -1,19 +1,32 @@
 # 📈 Progress
 
-This directory is reserved for Connor's canonical learning state.
+This directory contains Connor's canonical learner-state record.
 
-## Master tracker
+## Canonical tracker
 
-The V2 design requires one canonical file:
+The single current learner-state file is:
 
-`CONNOR-MASTER-TRACKER.md`
+[`CONNOR-MASTER-TRACKER.md`](CONNOR-MASTER-TRACKER.md)
 
-It will be implemented in the dedicated master-tracker phase.
+Connor is **not** expected to maintain it manually. Antigravity updates it after meaningful learner sessions using evidence from Connor's own explanations, decisions, execution, debugging and verification.
 
-Connor will **not** be expected to maintain it manually. Antigravity will update it after meaningful sessions using evidence from the work.
+## What the tracker is not
 
-The tracker will distinguish capabilities such as:
+It is not:
 
+- a score for how much AI-generated code exists;
+- a list of every project feature;
+- a claim that Connor completed a mission because the mission file exists;
+- a second curriculum;
+- a reward system that automatically promotes skills.
+
+## Evidence standard
+
+AI output and repository artefacts may provide context, but they are not sufficient learner evidence by themselves.
+
+The tracker distinguishes:
+
+- NOT STARTED;
 - INTRODUCED;
 - GUIDED;
 - CAN EXPLAIN;
@@ -22,10 +35,24 @@ The tracker will distinguish capabilities such as:
 - CAN VERIFY AI;
 - INDEPENDENT.
 
-This distinction matters because AI producing a correct result is not evidence that Connor personally understands or can verify it.
+`CAN DIRECT AI` and `CAN VERIFY AI` are deliberately separate.
 
-## Current Phase 1 boundary
+The detailed update protocol is implemented by:
 
-No master tracker is created yet.
+- `.agents/skills/update-master-tracker/SKILL.md`;
+- `docs/mentor/MASTER-TRACKER-V1-IMPLEMENTATION.md`.
 
-Creating an impressive-looking tracker before its update rules and evidence model exist would make it decorative rather than authoritative.
+## Normal session flow
+
+At session start, Antigravity reads the tracker before making claims about Connor's current level.
+
+At session end, Antigravity:
+
+1. reviews what Connor personally demonstrated;
+2. separates learner evidence from AI execution;
+3. updates only materially affected tracker sections;
+4. preserves uncertainty;
+5. inspects the tracker diff;
+6. records one concise session-log entry when warranted.
+
+A meaningful session may legitimately leave the tracker unchanged if it produced no new learner evidence.
