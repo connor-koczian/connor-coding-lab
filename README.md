@@ -42,15 +42,29 @@ Connor's real `neon-city` project **does not exist yet**.
 
 The existing Neon City preview is an AI-built technology demonstration. Connor's eventual Neon City project will be created deliberately when he is ready to make the design decisions himself.
 
-## Run the current lab
+## Open the learner cockpit
 
-From the repository root:
+The Phase 4 candidate workspace is:
+
+`Connor-Coding-Lab.code-workspace`
+
+Open that file in VS Code for the intended Mission Control + Python Basics + Snake Game cockpit.
+
+The workspace is designed to provide:
+
+- rendered Markdown navigation;
+- Antigravity skills;
+- Git/source-control access;
+- an integrated Mission Control terminal;
+- visible run/test tasks.
+
+The current launcher remains available from the repository root:
 
 ```bash
 ./scripts/run-lab.sh
 ```
 
-This is the current launcher while the V2 `lab` control tooling is developed.
+The dedicated V2 `lab` control command is a later phase.
 
 ## Target repository model
 
@@ -84,7 +98,9 @@ The accepted Phase 2 mentor system defines:
 
 Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `main` at `32c8b62a80d3c1f2a62cd680bbd7e3abe8e019c1`.
 
-Phase 3 now adds the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`. The Phase 3 candidate remains subject to tracker-specific behavioural acceptance before merge.
+Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
+
+Phase 4 now builds the VS Code learner cockpit on `ux/vscode-mission-control-v1`.
 
 ## Python
 
