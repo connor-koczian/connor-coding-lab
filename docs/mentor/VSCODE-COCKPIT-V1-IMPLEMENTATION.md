@@ -192,3 +192,30 @@ On the rehearsal ThinkPad:
 If terminal auto-activation persists because the Python Environments user-level setting overrides the repository setting, record that evidence and apply the smallest explicit Connor-user configuration repair before re-testing.
 
 Phase 4 must not be marked complete solely from static JSON inspection.
+
+
+## Rehearsal checkpoint — 2026-09-22
+
+User-observed on the rehearsal ThinkPad after opening the Phase 4 workspace:
+
+- automatic task `Connor Lab: Mission Control Terminal` executed;
+- terminal remained interactive;
+- `pwd` returned `/home/connor/Projects/connor-coding-lab`;
+- `SHELL=/usr/bin/zsh`;
+- `VIRTUAL_ENV=<none>`;
+- current branch was `ux/vscode-mission-control-v1`;
+- branch tracked `origin/ux/vscode-mission-control-v1`;
+- working tree was clean.
+
+This confirms the core terminal requirement and resolves the earlier concern that VS Code/Python tooling might silently attach the Mission Control terminal to `python-basics/.venv`.
+
+Still required before Phase 4 acceptance:
+
+- verify the three intended Explorer roots and no duplicate nested project display;
+- verify `START-HERE.md` opens in rendered Markdown Preview by default;
+- verify Antigravity still discovers `/start` in the cockpit workspace;
+- run `Connor Lab: Git Status`;
+- run `Python Basics: Tests` and record the actual result;
+- verify final Git state remains clean.
+
+Markdown source-diff behaviour is statically configured and should be exercised if a convenient bounded diff exists; do not create permanent learner-content changes merely to satisfy this check.
