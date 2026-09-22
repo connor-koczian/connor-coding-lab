@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 3 CANDIDATE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 3 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -700,16 +700,22 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - After the repaired branch was reloaded in VS Code, Antigravity slash autocomplete displayed the workspace `start`, `start-session` and other skills; `/start` discovery therefore passed on the rehearsal surface. Natural-language invocation remains a valid fallback.
   - Phase 2 merged into `main` at `32c8b62a80d3c1f2a62cd680bbd7e3abe8e019c1` after behavioural acceptance.
 
-- [ ] **Phase 3 — Master tracker**
+- [x] **Phase 3 — Master tracker**
   - Branch: `learning/master-tracker-v1`
-  - Candidate implementation in progress.
+  - PR: `#13`
   - Added canonical `progress/CONNOR-MASTER-TRACKER.md`.
   - Seeded a conservative repository-supported baseline with no capability above INTRODUCED from historical artefacts alone.
   - Implemented learner evidence classes and guarded capability-state promotion.
   - Activated the `update-master-tracker` protocol.
   - Integrated tracker authority into `start-session` and evidence-based updates into `finish`.
-  - Added `docs/mentor/MASTER-TRACKER-V1-IMPLEMENTATION.md` with the acceptance protocol.
-  - Phase 3 remains incomplete until rehearsal Antigravity behaviour confirms that start reads the tracker and routine finish/update behaviour does not inflate learner competence.
+  - Rehearsal `/start` read the tracker correctly and preserved the conservative baseline.
+  - First `/start` exposed an incorrect system-`python3` suggestion for the uv-managed Python project; repaired by requiring declared project-workflow inspection before run/setup/test commands.
+  - Re-test used the documented `uv` workflow correctly.
+  - Anti-inflation test confirmed that advanced Snake/AI artefacts do not promote Connor's competence.
+  - Controlled simulated `/finish` test changed only the relevant Linux/Terminal capability, its detail section and one clearly labelled session-log entry; unrelated capabilities, historical missions and governance remained unchanged.
+  - The simulated learner-state mutation was restored completely; the rehearsal working tree returned clean.
+  - `CAN DIRECT AI` and `CAN VERIFY AI` remained distinct throughout acceptance.
+  - Phase 3 is behaviourally accepted on the candidate branch and pending merge into `main`.
 
 - [ ] **Phase 4 — VS Code / cockpit UX**
   - Branch: `ux/vscode-mission-control-v1`
