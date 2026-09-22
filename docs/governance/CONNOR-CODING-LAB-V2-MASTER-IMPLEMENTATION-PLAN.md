@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** APPROVED DESIGN — IMPLEMENTATION NOT STARTED  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 1 COMPLETE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -677,13 +677,15 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Current pre-V2 `main` frozen at `07871cbf2e96e919b63437a5c91bec8e86a2ffea`.
   - Backup branch: `backup/pre-v2-2026-09-22`.
 
-- [ ] **Phase 1 — Mission Control foundation**
+- [x] **Phase 1 — Mission Control foundation**
   - Branch: `foundation/mission-control-v2`
-  - Establish target control-plane structure.
-  - Create visual Connor entry point.
-  - Establish governance/progress locations.
-  - Preserve historical project directories unchanged.
-  - Remove/document stale learner-facing contradictions where in scope.
+  - PR: `#11`
+  - Established the target control-plane information architecture.
+  - Added root visual Mission Control entry point.
+  - Established governance, mentor, learning, missions, practice, progress and showcase boundaries.
+  - Preserved historical project directories unchanged.
+  - Replaced the old HQ start page with a compatibility pointer.
+  - Documented transition debt instead of opportunistically rewriting later-phase material.
 
 - [ ] **Phase 2 — Antigravity mentor system**
   - Branch: `agent/antigravity-mentor-v1`
