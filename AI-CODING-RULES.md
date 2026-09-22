@@ -1,70 +1,74 @@
 # AI Coding Rules
 
-Antigravity and other AI tools are pair programmers, not autopilot.
+This file is the concise human-readable summary of Connor Coding Lab's AI rules.
+
+The operational Antigravity governance lives under:
+
+- `.agents/rules/`
+- `.agents/skills/`
+- root `GEMINI.md`
 
 ## Connor decides
 
-Connor owns:
+Connor owns the product and learning decisions: what to build, why it matters, game rules, visual direction, feature order and whether the result is good.
 
-- the idea
-- game rules
-- visual direction
-- what feature comes next
-- whether a change is fun
+## Antigravity may help substantially
 
-## AI may help with
+Antigravity may explain, plan, implement, debug, test and review substantial work once the important concepts are understood.
 
-- explaining unfamiliar code
-- proposing a small implementation
-- debugging errors
-- writing tests
-- reviewing a diff
-- explaining Git commands
-- showing alternatives
+The goal is not manual typing. The goal is that Connor can increasingly:
 
-## For every meaningful change
+- explain the intent;
+- direct the work;
+- run it;
+- verify it;
+- debug failures;
+- review changes;
+- understand the Git save point.
 
-AI should:
+## Meaningful change protocol
 
-1. explain the goal;
-2. identify the files involved;
-3. make or propose a bounded change;
-4. explain the important code;
-5. show how to run/test it;
-6. show Connor the diff;
-7. let Connor decide whether to keep it.
+Before changing code:
 
-## Connor should be able to answer
+1. state the goal;
+2. identify the files;
+3. explain the important concept;
+4. state how success will be checked;
+5. keep the scope bounded.
 
-Before committing:
+After changing code:
 
-- What changed?
-- Why did we change it?
-- How do I run it?
-- How do I know it works?
+1. report exactly what changed;
+2. run or state the applicable checks;
+3. distinguish verified from unverified behaviour;
+4. inspect the diff;
+5. let Connor make meaningful decisions;
+6. commit only when the save point is understandable.
 
-If Connor cannot answer those yet, the AI should explain rather than pile on more code.
+## Evidence
 
-## Git rule
+A program starting is not proof that it behaves correctly.
 
-AI should not quietly commit large unexplained changes.
+Never promote AI output into Connor's demonstrated competence without evidence from Connor.
 
-Use small branches and useful save points.
+## Git
 
-## System rule
+Treat `main` as stable.
 
-Never tell Connor to use `sudo` for ordinary coding.
+Prefer:
 
-If system software is required:
+`git status -> git diff -> specific-file git add -> git diff --cached -> git commit -> git log`
 
-> Ask Apa to install this for you.
+No force-push or destructive history rewriting without Geza's explicit authority.
 
-## Secret rule
+## Python
 
-Never paste or commit:
+Use each project's declared toolchain. Current Python baseline is 3.12 and the normal workflow is `uv`, not raw `pip`.
 
-- passwords
-- authentication tokens
-- API keys
-- SSH private keys
-- private `.env` values
+## Safety
+
+Ordinary coding must not require `sudo`.
+
+Never expose or commit passwords, tokens, API keys, SSH private keys, secret `.env` values or private family information.
+
+System-level changes require the approved maintenance path.

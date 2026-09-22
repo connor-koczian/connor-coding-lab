@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 1 COMPLETE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 2 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -113,7 +113,6 @@ connor-coding-lab/
 |-- Connor-Coding-Lab.code-workspace
 |
 |-- .agents/
-|   |-- agents.md
 |   |-- rules/
 |   |   |-- core-mentor.md
 |   |   |-- learning-model.md
@@ -121,27 +120,26 @@ connor-coding-lab/
 |   |   |-- git-and-change-control.md
 |   |   |-- project-engineering.md
 |   |   `-- system-maintenance.md
-|   |-- skills/
-|   |   |-- start-session/SKILL.md
-|   |   |-- teach-concept/SKILL.md
-|   |   |-- prompt-coach/SKILL.md
-|   |   |-- plan-feature/SKILL.md
-|   |   |-- build-feature/SKILL.md
-|   |   |-- debug-with-connor/SKILL.md
-|   |   |-- test-and-verify/SKILL.md
-|   |   |-- review-diff/SKILL.md
-|   |   |-- update-master-tracker/SKILL.md
-|   |   |-- create-project/SKILL.md
-|   |   `-- safe-maintenance/SKILL.md
-|   `-- workflows/
-|       |-- start.md
-|       |-- mission.md
-|       |-- build.md
-|       |-- debug.md
-|       |-- review.md
-|       |-- finish.md
-|       |-- new-project.md
-|       `-- maintenance.md
+|   `-- skills/
+|       |-- start-session/SKILL.md
+|       |-- teach-concept/SKILL.md
+|       |-- prompt-coach/SKILL.md
+|       |-- plan-feature/SKILL.md
+|       |-- build-feature/SKILL.md
+|       |-- debug-with-connor/SKILL.md
+|       |-- test-and-verify/SKILL.md
+|       |-- review-diff/SKILL.md
+|       |-- update-master-tracker/SKILL.md
+|       |-- create-project/SKILL.md
+|       |-- safe-maintenance/SKILL.md
+|       |-- start/SKILL.md
+|       |-- mission/SKILL.md
+|       |-- build/SKILL.md
+|       |-- debug/SKILL.md
+|       |-- review/SKILL.md
+|       |-- finish/SKILL.md
+|       |-- new-project/SKILL.md
+|       `-- maintenance/SKILL.md
 |
 |-- missions/
 |   |-- README.md
@@ -245,9 +243,9 @@ Task-specific mentor behaviours loaded when relevant, including:
 - create a new project correctly;
 - guide safe maintenance.
 
-### Layer 3 — workflows
+### Layer 3 — learner command skills
 
-Connor should have memorable operating workflows such as:
+Connor should have memorable operating commands such as:
 
 - `/start`
 - `/mission`
@@ -258,7 +256,9 @@ Connor should have memorable operating workflows such as:
 - `/new-project`
 - `/maintenance`
 
-The actual syntax and Antigravity file conventions must be re-verified against current Antigravity documentation at implementation time. Do not blindly preserve a stale guessed format.
+**Current implementation decision (verified 2026-09-22):** Google Antigravity now treats Agent Skills as the durable mechanism for reusable procedures and slash commands. Legacy `.agents/workflows/*.md` are deprecated and scheduled for retirement on 2026-11-01. Therefore V2 implements these learner commands as skills under `.agents/skills/<command>/SKILL.md` rather than creating new deprecated workflow files.
+
+This preserves the approved learner-facing slash-command experience while following current Antigravity conventions.
 
 ---
 
@@ -687,14 +687,18 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Replaced the old HQ start page with a compatibility pointer.
   - Documented transition debt instead of opportunistically rewriting later-phase material.
 
-- [ ] **Phase 2 — Antigravity mentor system**
+- [x] **Phase 2 — Antigravity mentor system**
   - Branch: `agent/antigravity-mentor-v1`
-  - Re-verify current Antigravity project instruction/skills/workflow format.
-  - Implement persistent mentor rules.
-  - Implement skills.
-  - Implement workflows.
-  - Implement evidence/validation behaviour.
-  - Implement governance self-modification boundary.
+  - PR: `#12`
+  - Re-verified current Antigravity project instruction/rules/skills format against official documentation.
+  - Implemented 6 persistent mentor rules under `.agents/rules/`.
+  - Implemented 19 workspace skills under `.agents/skills/`, including the 8 approved learner command skills.
+  - Preserved the learner command model as skills rather than deprecated workflow files.
+  - Implemented evidence/validation behaviour and governance self-modification boundaries.
+  - ThinkPad behavioural acceptance found and repaired evidence-grounding defects in `start` and `mission`.
+  - Re-test passed on 2026-09-22: verified paths/commands, evidence-qualified runtime claims, no invented tracker state, and a clean Git working tree.
+  - After the repaired branch was reloaded in VS Code, Antigravity slash autocomplete displayed the workspace `start`, `start-session` and other skills; `/start` discovery therefore passed on the rehearsal surface. Natural-language invocation remains a valid fallback.
+  - Phase 2 is accepted on the candidate branch and pending merge into `main`.
 
 - [ ] **Phase 3 — Master tracker**
   - Branch: `learning/master-tracker-v1`
