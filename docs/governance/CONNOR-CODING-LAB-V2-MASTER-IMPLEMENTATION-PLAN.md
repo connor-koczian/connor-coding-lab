@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 1 COMPLETE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 2 CANDIDATE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -245,9 +245,9 @@ Task-specific mentor behaviours loaded when relevant, including:
 - create a new project correctly;
 - guide safe maintenance.
 
-### Layer 3 — workflows
+### Layer 3 — learner command skills
 
-Connor should have memorable operating workflows such as:
+Connor should have memorable operating commands such as:
 
 - `/start`
 - `/mission`
@@ -258,7 +258,9 @@ Connor should have memorable operating workflows such as:
 - `/new-project`
 - `/maintenance`
 
-The actual syntax and Antigravity file conventions must be re-verified against current Antigravity documentation at implementation time. Do not blindly preserve a stale guessed format.
+**Current implementation decision (verified 2026-09-22):** Google Antigravity now treats Agent Skills as the durable mechanism for reusable procedures and slash commands. Legacy `.agents/workflows/*.md` are deprecated and scheduled for retirement on 2026-11-01. Therefore V2 implements these learner commands as skills under `.agents/skills/<command>/SKILL.md` rather than creating new deprecated workflow files.
+
+This preserves the approved learner-facing slash-command experience while following current Antigravity conventions.
 
 ---
 
@@ -689,12 +691,13 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
 
 - [ ] **Phase 2 — Antigravity mentor system**
   - Branch: `agent/antigravity-mentor-v1`
-  - Re-verify current Antigravity project instruction/skills/workflow format.
-  - Implement persistent mentor rules.
-  - Implement skills.
-  - Implement workflows.
+  - Re-verify current Antigravity project instruction/rules/skills format against official documentation.
+  - Implement persistent mentor rules under `.agents/rules/`.
+  - Implement focused task skills under `.agents/skills/`.
+  - Implement the approved learner slash-command experience as skills, not deprecated workflow files.
   - Implement evidence/validation behaviour.
   - Implement governance self-modification boundary.
+  - Validate discovery and behaviour in a real Antigravity session before marking Phase 2 complete.
 
 - [ ] **Phase 3 — Master tracker**
   - Branch: `learning/master-tracker-v1`
