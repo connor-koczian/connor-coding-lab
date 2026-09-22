@@ -159,3 +159,29 @@ Before Phase 3 is merged:
 9. Git status/diff after read-only acceptance tests remains clean.
 
 Phase 3 is not complete until these behaviours are exercised on the rehearsal environment.
+
+
+## Behavioural acceptance result — 2026-09-22
+
+The Phase 3 candidate was exercised on the rehearsal ThinkPad in Connor's VS Code/Antigravity environment.
+
+Observed:
+
+- `/start` read `progress/CONNOR-MASTER-TRACKER.md` and used the conservative learner baseline;
+- an initial `/start` suggested system `python3` for the uv-managed `python-basics` project;
+- that defect was repaired by requiring project-workflow inspection before run/setup/test commands;
+- the repaired `/start` used the documented `uv run python ...` workflow;
+- inspection of the advanced Snake project did not promote Connor merely because complex code or AI-built work existed;
+- a controlled simulated `/finish` test promoted only Linux/Terminal from NOT STARTED to GUIDED and updated the matching detail section plus one clearly labelled simulated session-log entry;
+- no unrelated capability was promoted;
+- `CAN DIRECT AI` and `CAN VERIFY AI` remained unchanged and distinct;
+- no historical mission was marked complete;
+- no governance file changed;
+- nothing was staged or committed during the simulated learner-state update;
+- the simulated tracker mutation was restored afterwards and the working tree returned clean.
+
+The rehearsal terminal also auto-activated the `python-basics/.venv` environment when VS Code/Python tooling selected that project. This is not a tracker defect. Phase 4 owns the cockpit/terminal behaviour and must establish a neutral Mission Control terminal while retaining explicit project execution through `uv run ...`.
+
+**Phase 3 behavioural acceptance: PASS.**
+
+Phase 3 is ready for PR integration review.
