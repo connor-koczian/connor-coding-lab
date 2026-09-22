@@ -1,72 +1,37 @@
-# 🚀 Connor's Coding HQ
+# 🚀 Connor's Coding HQ — Compatibility Start Page
 
-Hi Connor.
+This was the original Coding HQ start page.
 
-Apa set this computer up for you so you can learn how to make your own games, programs and ideas.
+Connor Coding Lab V2 now has one new root entry point:
 
-You do **not** need to understand everything yet.
+➡️ [`../START-HERE.md`](../START-HERE.md)
 
-Your job is simply to:
+Use that page first.
 
-- try things
-- ask questions
-- make mistakes
-- fix things
-- build cool stuff
+## Why this file still exists
 
-You already have real developer tools.
+The original HQ missions are being preserved while Mission Control V2 is built. They still contain useful learning material and should not disappear in a bulk reorganisation.
 
-## Start the Coding Lab
+Current legacy missions remain in this folder.
 
-From a terminal at the repository root, you can open the launcher:
+## Current launcher
 
-    ./scripts/run-lab.sh
+From the repository root:
 
-That menu runs the accepted games and tools from stable `main`. You do not need to change Git branches just to play or explore them.
+```bash
+./scripts/run-lab.sh
+```
 
-## Your screen
+That remains the accepted launcher until the V2 lab-control phase replaces or evolves it.
 
-Look at VS Code.
+## Antigravity
 
-### 👈 Left side — your projects
+Antigravity is being redesigned as Connor's primary AI mentor, teacher and coding agent.
 
-This is where your files live.
+The full V2 mentor system is **not implemented yet**. Until that dedicated phase is complete, use the current repository guidance and do not assume future slash workflows or tracker automation already exist.
 
-You will see folders like:
+## Next
 
-- `python-basics`
-- `snake-game`
-- `web-playground`
-- `experiments`
+Go to:
 
-### 👇 Bottom — the terminal
-
-The terminal lets you talk directly to the computer.
-
-When you see:
-
-    ❯
-
-the computer is waiting for you to type something.
-
-### 👉 Right side — Antigravity
-
-Antigravity is your AI coding helper.
-
-You can ask it questions when you are stuck.
-
-It should help you understand things, not just do everything for you.
-
----
-
-# 🎯 Your first mission
-
-Open:
-
-`MISSION-01-EXPLORE-YOUR-CODING-BASE.md`
-
-Complete the challenges.
-
-Then show Apa.
-
-⭐ Reward: Developer Level 1
+➡️ [`../START-HERE.md`](../START-HERE.md)
