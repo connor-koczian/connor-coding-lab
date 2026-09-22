@@ -126,6 +126,24 @@ Examples:
 - avoid capability promotion when evidence is insufficient;
 - leave a useful next challenge.
 
+## ThinkPad behavioural acceptance — first start test
+
+The first Phase 3 `/start` test on the rehearsal ThinkPad confirmed that Antigravity:
+
+- read the canonical `progress/CONNOR-MASTER-TRACKER.md`;
+- reported the conservative baseline rather than inventing stronger learner state;
+- identified the Phase 3 branch and a clean working tree;
+- selected a bounded Python-basics next task.
+
+The same test exposed one tooling defect: the briefing proposed Ubuntu/system `python3` for the uv-managed `python-basics` project instead of following the project's documented `uv` workflow.
+
+Repair applied:
+
+- `start-session` now requires inspection of the target project's declared README/pyproject/lockfile/scripts before presenting run/setup/test commands;
+- uv-managed projects must use the documented `uv` workflow rather than system `python3`, raw `pip`, or an unrelated environment.
+
+This repair requires one short `/start` re-test before continuing the tracker mutation tests.
+
 ## Phase 3 behavioural acceptance
 
 Before Phase 3 is merged:
