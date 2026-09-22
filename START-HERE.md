@@ -48,8 +48,8 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | Neon City technology preview | ✅ AI-built showcase |
 | Snake: OVERDRIVE | ✅ AI-built showcase |
 | Your real Neon City project | ⏳ Not created yet |
-| V2 Antigravity mentor system | 🚧 Being built |
-| V2 master progress tracker | 🚧 Being built |
+| V2 Antigravity mentor system | ✅ Accepted and merged |
+| V2 master progress tracker | 🧪 Phase 3 candidate — implemented, awaiting behavioural acceptance |
 | V2 mission library | 🚧 Being built |
 
 A preview is not the same thing as your own project.
@@ -144,7 +144,7 @@ You do not need to know every answer immediately. Antigravity's job is to help y
 - [`missions/`](missions/) — things to do and build.
 - [`learning/`](learning/) — the concepts and roadmap behind the missions.
 - [`practice/`](practice/) — small experiments where mistakes are expected.
-- [`progress/`](progress/) — the future canonical record of what you can explain, use, direct and verify.
+- [`progress/CONNOR-MASTER-TRACKER.md`](progress/CONNOR-MASTER-TRACKER.md) — the canonical record of what you can explain, use, direct and verify.
 - [`showcase/`](showcase/) — reference work built mainly by AI.
 - `python-basics/` — existing historical learning work.
 - `snake-game/` — existing historical project.
