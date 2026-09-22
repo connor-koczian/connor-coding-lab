@@ -1,117 +1,141 @@
 # Connor Coding Lab
 
-Connor's long-term programming, game-development and Git learning repository.
+Connor's AI-native programming, game-development and software-engineering environment.
 
-The goal is progressive independence: understand → build → run → break → debug → improve → test → commit → explain.
+This repository is being redesigned into **Mission Control**: the place that tells Connor where he is, what he is learning, what to do next, how to run it, how to verify it, and what harder challenge is available.
 
 ## Start here
 
 Connor should open:
 
-- `00-CONNOR-HQ/00-START-HERE-CONNOR.md`
-- `00-CONNOR-HQ/LEARNING-PATH.md`
-- `00-CONNOR-HQ/GIT-PLAYBOOK.md`
+- [`START-HERE.md`](START-HERE.md)
 
-Repository-wide AI guidance lives in:
+The previous `00-CONNOR-HQ/` material remains available during the V2 transition, but it is no longer the long-term navigation model.
 
-- `AI-CODING-RULES.md`
-- `GEMINI.md`
+## Current V2 status
 
-Parent/admin material lives under `docs/admin/`.
+The approved architecture and phased implementation programme live at:
 
-For the next Dell rebuild session, start with:
+- [`docs/governance/CONNOR-CODING-LAB-V2-MASTER-IMPLEMENTATION-PLAN.md`](docs/governance/CONNOR-CODING-LAB-V2-MASTER-IMPLEMENTATION-PLAN.md)
 
-- `docs/admin/NEXT-DELL-BUILD.md`
-- `docs/admin/INSTALL-UBUNTU.md`
-- `docs/admin/ACCEPTANCE-CHECKLIST.md`
+Important: the V2 design is being implemented in bounded phases. A folder or feature described in the master plan must not be treated as implemented merely because it appears in the target architecture.
 
-## Run the lab
+## What exists today
 
-Connor's normal starting point is the stable `main` branch. From the repository root:
+### Historical learning projects
 
-    ./scripts/run-lab.sh
+- `python-basics/` — Connor's existing Python learning project.
+- `snake-game/` — Connor's substantial historical Snake project and preserved save points.
 
-The menu can launch Python Basics, Classic Snake, Campaign Snake, the original browser Snake, the AI-built Neon City technology preview, and the environment/hardware checks. Connor does not need to switch branches to run accepted work.
+These remain in this repository during the early V2 phases so their meaningful history is not casually rewritten.
 
-## Repository layout
+### Current AI-built showcases
 
-### `00-CONNOR-HQ/`
+- `demos/neon-city-preview/`
+- `demos/snake-overdrive/`
 
-Connor-facing missions, learning progression, Git guidance and achievements.
+These are reference/showcase material. They are not evidence that Connor designed or built those systems himself.
 
-### `python-basics/`
+### Neon City
 
-Small Python programs for syntax, control flow, functions, debugging, Ruff and the first simple tests.
+Connor's real `neon-city` project **does not exist yet**.
 
-### `snake-game/`
+The existing Neon City preview is an AI-built technology demonstration. Connor's eventual Neon City project will be created deliberately when he is ready to make the design decisions himself.
 
-Connor's first substantial historical game project. Its imported Git history and save points are intentionally preserved.
+## Run the current lab
 
-The current Pygame game, Classic Snake and historical browser Snake remain here so they can be compared rather than rewritten into a new architecture.
+From the repository root:
 
-### `experiments/`
+```bash
+./scripts/run-lab.sh
+```
 
-Small disposable investigations. Experiments may fail; important ideas should graduate into a real project deliberately.
+This is the current launcher while the V2 `lab` control tooling is developed.
 
-### `web-playground/`
+## Target repository model
 
-New HTML, CSS and JavaScript learning work. Historical browser Snake remains under `snake-game/web/`.
+The long-term model is:
 
-### `demos/neon-city-preview/`
+```text
+~/Projects/Connor/
+|
+|-- connor-coding-lab/          # Mission Control / learning control plane
+|
+`-- projects/
+    |-- python-basics/
+    |-- snake-game/
+    |-- neon-city/
+    `-- future-projects/
+```
 
-An AI-built technology demonstration for Connor to explore. It is explicitly not Connor's own game and exists to show where movement, maps, vehicles, missions and game-state skills can eventually lead.
+Small practice stays in Mission Control. Serious continuing projects eventually become independent Git repositories.
 
-### `neon-city/`
+Do not introduce Git submodules for this initial design.
 
-Reserved for Connor's next flagship project. It will start small and be built with Connor one save point at a time; Connor decides its world, mechanics, characters, vehicles and missions.
+## AI mentor
 
-## Python environments
+Antigravity is intended to become Connor's primary day-to-day teacher, mentor, coding agent, debugger, tester and reviewer.
 
-Each Python project owns its own `pyproject.toml` and `uv.lock`.
+The current `GEMINI.md` and `AI-CODING-RULES.md` remain active until the dedicated Antigravity V2 phase replaces the present lightweight guidance with the validated mentor system.
 
-There is intentionally no root Python workspace yet. That keeps project boundaries visible while Connor is learning.
+## Python
 
-Both Python projects now declare Python 3.12 as their repository baseline. `uv` should install/manage that interpreter and recreate each project's environment from its lock file.
+Repository baseline: Python 3.12.
 
-Do not copy old `.venv` directories between computers. Recreate environments with `uv sync`.
+Each current Python project owns its own `pyproject.toml` and `uv.lock`.
 
-## Git workflow
+Use `uv` rather than raw `pip` as the normal project workflow.
+
+Do not copy `.venv` directories between machines.
+
+## Git
 
 Treat `main` as stable.
 
-Before work:
+For bounded work:
 
-    cd ~/Projects/connor-coding-lab
-    git status
+```bash
+git status
+git switch main
+git pull --ff-only
+git switch -c <bounded-branch-name>
+```
 
-For a bounded mission or feature:
+Inspect changes before committing:
 
-    git switch main
-    git pull --ff-only
-    git switch -c mission/short-name
+```bash
+git status
+git diff
+git add path/to/file
+git diff --cached
+```
 
-Inspect changes:
+Connor should understand these concepts; once he does, Antigravity may increasingly perform the mechanical Git operations while Connor reviews what will happen and what was recorded.
 
-    git status
-    git diff
+## Administration
 
-Stage only the intended files:
+Parent/admin material lives under `docs/admin/`.
 
-    git add path/to/file
-    git diff --cached
+Governance and the V2 implementation authority live under `docs/governance/`.
 
-Then commit a useful save point.
+Mentor-system documentation is being established under `docs/mentor/`.
 
 ## Safety
 
-Ordinary development must not require `sudo`.
+Ordinary coding must not require `sudo`.
 
-Never commit passwords, tokens, API keys, SSH private keys or secret `.env` values.
+Never commit passwords, tokens, API keys, SSH private keys, secret `.env` values, or private family information.
+
+## Dell boundary
+
+The Dell remains outside repository implementation authority until Geza explicitly confirms Father's ASUS migration is accepted and the Dell is released for Connor.
+
+Do not treat repository progress as authority to wipe, repartition, install Ubuntu, or alter BIOS/storage settings.
 
 ## Repository ownership
 
-During preparation this repository is hosted under `WebshopCompany`.
+During preparation, the canonical repository remains:
 
-The intended long-term home is `connor-koczian/connor-coding-lab`. Any handover must preserve the imported Python Basics and Snake histories.
+`WebshopCompany/connor-coding-lab`
 
-The repository must not be described as Dell-ready until the fresh-clone acceptance checks in `docs/admin/ACCEPTANCE-CHECKLIST.md` have actually passed.
+The eventual handover to Connor's GitHub ownership happens only after the complete V2 environment is implemented, rehearsed and accepted.
