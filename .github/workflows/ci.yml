@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.17"
+
+      - name: Install Python 3.12
+        run: uv python install 3.12
+
+      - name: Check repository policy
+        run: ./scripts/check-repo-policy.sh
+
+      - name: Check shell syntax
+        run: |
+          bash -n             scripts/lab             scripts/run-lab.sh             scripts/check-environment.sh             scripts/show-my-computer.sh             scripts/check-repo-policy.sh
+
+      - name: Run read-only lab doctor
+        run: ./scripts/lab doctor
+
+      - name: Validate Python Basics
+        working-directory: python-basics
+        run: |
+          uv sync --locked
+          uv run ruff check .
+          uv run pytest
+
+      - name: Validate Snake dependency environment
+        working-directory: snake-game
+        run: |
+          uv sync --locked
+          uv run python - <<'PY'
+          import pygame
+
+          print(f"Pygame import OK: {pygame.version.ver}")
+          PY

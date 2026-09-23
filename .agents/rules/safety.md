@@ -37,3 +37,23 @@ Do not run opaque destructive commands.
 Repository work does not authorise physical Dell lifecycle changes.
 
 Until Geza explicitly confirms Father's ASUS migration is accepted and the Dell is released for Connor, do not wipe, repartition, erase, install Ubuntu, change BIOS/storage settings or otherwise mutate the Dell.
+
+
+## AI, connectors and internet boundaries
+
+Do not send secrets, private family data or unnecessary personal information to external models, connectors, websites or services.
+
+Before using an external service, downloaded script, extension or package, establish what it does, what data it receives and what permissions/network access it needs.
+
+Local development servers are not authority to expose a service publicly. Do not create tunnels, port forwarding, public shares or firewall changes without Geza's explicit authority.
+
+## Credential incident response
+
+If a real credential reaches tracked files or output:
+
+1. stop using it;
+2. tell Geza;
+3. revoke/rotate it at the source;
+4. only then consider Git-history cleanup.
+
+Deleting the visible file does not make an exposed credential safe.

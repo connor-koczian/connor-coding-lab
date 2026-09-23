@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 6 ACCEPTED / PENDING MERGE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 CANDIDATE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -768,14 +768,21 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - `lab doctor` reported `DOCTOR: PASS` as normal user `connor`, with Git, uv, VS Code, Python 3.12 and required repository metadata present, a clean working tree, and no active project virtual environment.
   - Legacy `run-lab.sh` compatibility menu exited cleanly; legacy `check-environment.sh` visibly forwarded to the read-only doctor.
   - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `084f9220b3a1fcf5255343b81dfd9d5adcf1e07a`.
-  - Phase 6 behaviourally accepted on PR #16 and pending merge into `main`.
+  - Phase 6 merged into `main` at `9f62b7fea276f98a463ddd23bd3e3281b7fad0fb` after behavioural acceptance.
 
 - [ ] **Phase 7 — Safety, governance and CI**
   - Branch: `governance/safety-ci-v1`
-  - Add minimal useful CI.
-  - Finalise Git/change-control documentation.
-  - Add security/dependency/internet/AI boundaries.
-  - Configure branch protection if supported and appropriate.
+  - Candidate implementation in progress from Phase 6 merged `main`.
+  - Added minimal GitHub Actions CI for repository policy, shell syntax, read-only lab doctor, Python Basics Ruff/pytest and Snake Pygame import.
+  - CI uses read-only `contents` permission and pinned action revisions.
+  - Added executable `scripts/check-repo-policy.sh` to reject tracked secret/private-key style files, detect private-key headers without printing secret contents, verify core control files and executable script modes.
+  - Added `SECURITY.md` covering secrets, credential response, dependencies/downloaded code, internet/network exposure, AI/connector data sharing and administrator boundaries.
+  - Extended Antigravity safety and Git/change-control rules with external-service, credential-incident and CI/protected-main expectations.
+  - Added `docs/governance/MAIN-BRANCH-PROTECTION.md` with the deliberately small target ruleset for `main`.
+  - No repository ruleset existed at Phase 7 start. Classic branch-protection inspection returned 403 because the current GitHub integration lacks administration permission.
+  - Branch protection therefore remains a post-merge manual GitHub setting: require PR + Phase 7 CI check, block force pushes and block deletion.
+  - Added `docs/mentor/SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md` with acceptance sequence.
+  - Phase 7 remains incomplete until PR CI passes, merged-main CI passes, and the documented `main` ruleset is enabled and re-verified.
 
 - [ ] **Phase 8 — Historical project repository extraction**
   - Separate migration transaction.

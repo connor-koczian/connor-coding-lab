@@ -72,3 +72,20 @@ Ordinary coding must not require `sudo`.
 Never expose or commit passwords, tokens, API keys, SSH private keys, secret `.env` values or private family information.
 
 System-level changes require the approved maintenance path.
+
+
+## External tools and internet
+
+Treat connectors, web services, downloaded scripts and packages as trust boundaries.
+
+Before using them, know what data leaves the workspace, what permissions are granted and how the result will be verified.
+
+Do not expose local development servers publicly or create tunnels/port forwarding without Geza's explicit authority.
+
+## CI
+
+GitHub Actions provides independent automated evidence for a save point.
+
+A green CI result does not replace runtime, GUI or learner verification. A failing CI result must be investigated rather than bypassed.
+
+The repository's safety/CI design is documented in `SECURITY.md` and `docs/mentor/SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md`.

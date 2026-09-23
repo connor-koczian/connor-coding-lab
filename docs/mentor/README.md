@@ -58,3 +58,8 @@ See [AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md](AI-NATIVE-CURRICULUM-V1-IMPLEMEN
 ## Phase 6 lab control implementation
 
 See [LAB-CONTROL-V2-IMPLEMENTATION.md](LAB-CONTROL-V2-IMPLEMENTATION.md) for the learner-facing `./scripts/lab` command, transparency rules and behavioural acceptance requirements.
+
+
+## Phase 7 safety, governance and CI
+
+See [SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md](SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md) for the repository policy checks, CI design and post-merge `main` protection gate.
