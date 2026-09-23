@@ -27,7 +27,7 @@ Important: the V2 design is being implemented in bounded phases. A folder or fea
 - `python-basics/` — Connor's existing Python learning project.
 - `snake-game/` — Connor's substantial historical Snake project and preserved save points.
 
-These remain in this repository during the early V2 phases so their meaningful history is not casually rewritten.
+Their histories have now been extracted safely into independent private repositories under `WebshopCompany`. The embedded copies remain temporarily during Phase 9 so the cockpit/tooling can be rewired and validated before removal.
 
 ### Current AI-built showcases
 
@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–7 are accepted and merged. `main` is protected by PR + required `validate` CI. Phase 8 begins with a read-only history/extraction assessment before any project migration.
+Phases 4–8 are complete at their current gates. `main` is protected by PR + required `validate` CI. Python Basics and Snake now have independent history-preserving repositories; Phase 9 will rewire Mission Control to those repositories before the embedded copies are removed.
 
 ## Python
 
