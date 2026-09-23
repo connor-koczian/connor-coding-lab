@@ -69,3 +69,17 @@ Phase 1 is complete when:
 4. Historical projects remain unchanged.
 5. No later-phase capability is falsely presented as implemented.
 6. The Phase 1 diff is reviewed and accepted.
+
+
+## Phase 8 extraction state — 2026-09-23
+
+The two historical projects have now been extracted into independent private repositories while preserving Connor's original commit identities.
+
+| Project | Independent repository | Extracted head | Final tree |
+| --- | --- | --- | --- |
+| Python Basics | `WebshopCompany/python-basics` | `82f11181755839cac40c50419e972f534c0cf634` | `91f57117b5cafc2c88c3e86e3dd9bc6d49658706` |
+| Snake Game | `WebshopCompany/snake-game` | `7d6fa8b0c1b13d1bad14028be3556b4d6035449b` | `43330b81e8afab839ead624f5e0f0f12e1453c5e` |
+
+Python preserves its original three Connor commits unchanged. Snake preserves its original ten Connor commits unchanged.
+
+The embedded `python-basics/` and `snake-game/` directories remain temporarily present in Mission Control. Their removal is **not** an extraction shortcut: Phase 9 must first update the multi-root workspace, learner tooling, CI, missions/navigation and acceptance documentation to use the independent repositories, then validate the replacement layout before the embedded copies are removed.
