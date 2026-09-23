@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 CANDIDATE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 PRE-MERGE ACCEPTED / PENDING MAIN CI + PROTECTION  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -782,7 +782,9 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - No repository ruleset existed at Phase 7 start. Classic branch-protection inspection returned 403 because the current GitHub integration lacks administration permission.
   - Branch protection therefore remains a post-merge manual GitHub setting: require PR + Phase 7 CI check, block force pushes and block deletion.
   - Added `docs/mentor/SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md` with acceptance sequence.
-  - Phase 7 remains incomplete until PR CI passes, merged-main CI passes, and the documented `main` ruleset is enabled and re-verified.
+  - PR CI run `35834432161` / job `validate` completed successfully. Logs confirmed read-only `contents` token permission, repository-policy PASS, shell-syntax PASS, Lab Doctor PASS WITH EXPECTED CI WARNING (no VS Code CLI), Python Basics Ruff PASS + pytest `1 passed`, and Snake Pygame 2.6.1 import PASS.
+  - ThinkPad rehearsal passed repository policy, Bash syntax and Lab Doctor as normal user `connor`; `.env` and `*.pem` ignore rules were observed; tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final tree was clean at candidate head `fb9d09e014faa86a1cb7e22639ef8a5062c68d5e`.
+  - Phase 7 pre-merge acceptance is complete. Full Phase 7 completion still requires merged-main CI success and the documented `main` ruleset to be enabled and re-verified.
 
 - [ ] **Phase 8 — Historical project repository extraction**
   - Separate migration transaction.
