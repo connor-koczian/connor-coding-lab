@@ -78,9 +78,10 @@ runtime or battery behaviour proves inadequate.
 - Ubuntu Desktop 26.04.1 LTS amd64
 - normal daily user: `connor`
 - separate administrator account controlled by Geza
-- workspace: `/home/connor/Projects/connor-coding-lab`
+- workspace root: `/home/connor/Projects/Connor/`
 - Git
 - Visual Studio Code
+- Antigravity extension
 - `uv`
 - Python 3.12 for new work after the dedicated 3.12 migration is accepted
 - Ruff and pytest where the individual project declares them
