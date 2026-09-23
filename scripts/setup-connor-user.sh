@@ -11,7 +11,11 @@ echo "== Connor Coding Lab: user setup =="
 echo "User: $(whoami)"
 echo "Home: ${HOME}"
 
-mkdir -p "${HOME}/Projects"
+workspace_root="${HOME}/Projects/Connor"
+repo="${workspace_root}/connor-coding-lab"
+projects_root="${workspace_root}/projects"
+
+mkdir -p "${projects_root}"
 
 if [[ -n "${VIRTUAL_ENV:-}" ]]; then
   echo
@@ -38,29 +42,59 @@ git config --global pull.ff only
 
 if command -v code >/dev/null 2>&1; then
   echo
-  echo "Installing the beginner VS Code extensions..."
+  echo "Installing the curated VS Code Python toolchain..."
   code --install-extension ms-python.python >/dev/null
+  code --install-extension ms-python.vscode-pylance >/dev/null
+  code --install-extension ms-python.vscode-python-envs >/dev/null
+  code --install-extension ms-python.debugpy >/dev/null
   code --install-extension charliermarsh.ruff >/dev/null
 
+  if command -v jq >/dev/null 2>&1; then
+    settings_dir="${HOME}/.config/Code/User"
+    settings_file="${settings_dir}/settings.json"
+    mkdir -p "${settings_dir}"
+
+    if [[ ! -f "${settings_file}" ]]; then
+      printf '{}\n' >"${settings_file}"
+    fi
+
+    tmp_settings="$(mktemp)"
+    jq '
+      .["python-envs.terminal.autoActivationType"] = "off"
+      | .["python-envs.alwaysUseUv"] = true
+      | .["telemetry.telemetryLevel"] = "off"
+    ' "${settings_file}" >"${tmp_settings}"
+    mv "${tmp_settings}" "${settings_file}"
+  else
+    echo "WARNING: jq is unavailable; VS Code user settings were not updated."
+  fi
+
   echo "VS Code extensions:"
-  code --list-extensions | grep -E '^(ms-python\.python|charliermarsh\.ruff)$' || true
+  code --list-extensions | grep -E '^(ms-python\.python|ms-python\.vscode-pylance|ms-python\.vscode-python-envs|ms-python\.debugpy|charliermarsh\.ruff)$' || true
 else
   echo "WARNING: VS Code is not installed or 'code' is not on PATH."
 fi
 
-repo="${HOME}/Projects/connor-coding-lab"
-
 echo
-if [[ -d "$repo/.git" ]]; then
-  echo "Repository found: $repo"
-  git -C "$repo" status --short --branch
+if [[ -d "${repo}/.git" ]]; then
+  echo "Mission Control found: ${repo}"
+  git -C "${repo}" status --short --branch
 else
-  echo "Repository not found at:"
-  echo "  $repo"
+  echo "Mission Control not found at:"
+  echo "  ${repo}"
   echo
-  echo "Transfer or clone the complete repository there before acceptance testing."
-  echo "Do not recreate it by copying only project folders."
+  echo "Clone the final repositories into the approved multi-repository topology before acceptance."
 fi
+
+for project in python-basics snake-game; do
+  project_repo="${projects_root}/${project}"
+  if [[ -d "${project_repo}/.git" ]]; then
+    echo "Project found: ${project_repo}"
+    git -C "${project_repo}" status --short --branch
+  else
+    echo "Project not found yet: ${project_repo}"
+  fi
+done
 
 echo
 echo "== Versions =="
@@ -73,3 +107,5 @@ fi
 
 echo
 echo "User setup complete."
+echo "Next: sign VS Code into Connor's own GitHub account after Phase 12, then open:"
+echo "  ${repo}/Connor-Coding-Lab.code-workspace"
