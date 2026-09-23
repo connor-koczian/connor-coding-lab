@@ -79,7 +79,7 @@ fi
 
 echo
 echo "-- Workspace ------------------------------------------------"
-repo="${HOME}/Projects/connor-coding-lab"
+repo="${HOME}/Projects/Connor/connor-coding-lab"
 
 if [[ -d "$repo/.git" ]]; then
   line "Repository:" "$repo"
