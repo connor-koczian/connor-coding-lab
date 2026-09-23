@@ -89,3 +89,55 @@ On the rehearsal ThinkPad:
 Optional GUI/game/browser runs may add evidence but are not required if their unchanged underlying commands were already validated in earlier phases.
 
 Static inspection alone is not sufficient acceptance.
+
+
+## Behavioural acceptance — 2026-09-23
+
+ThinkPad rehearsal was completed against candidate head `084f9220b3a1fcf5255343b81dfd9d5adcf1e07a`.
+
+### User-observed rehearsal
+
+Geza reported completing the prescribed Phase 6 acceptance block, including:
+
+- Bash syntax check for `scripts/lab`, `scripts/run-lab.sh` and `scripts/check-environment.sh`;
+- `lab help`;
+- `lab status`;
+- `lab projects`;
+- `lab doctor`;
+- inspection-only `lab git status` / `lab git diff`;
+- Python Basics launched through `lab run python-basics` with controlled input;
+- compatibility launcher menu;
+- compatibility environment-check shim.
+
+The captured output directly confirms:
+
+- the compatibility menu displayed the current run options and exited with **See you next mission.**;
+- `scripts/check-environment.sh` explicitly forwarded to `./scripts/lab doctor`;
+- the compatibility check stated that the V2 doctor is read-only and does not silently sync or repair projects;
+- `lab doctor` ran as normal user `connor`;
+- Git 2.34.1, uv 0.12.17 and VS Code 1.138.0 were present;
+- Mission Control Git metadata, `START-HERE.md`, V2 mission catalogue, learner tracker, Python Basics metadata and Snake metadata were present;
+- Python 3.12 was available through uv;
+- the working tree was clean;
+- there was no active project virtual environment;
+- final doctor result: **DOCTOR: PASS**;
+- doctor explicitly separated environment readiness from project runtime/test evidence.
+
+### Final state
+
+- Tracker SHA-256: `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`
+- Working tree: clean
+- Final candidate HEAD: `084f9220b3a1fcf5255343b81dfd9d5adcf1e07a`
+
+### Acceptance classification
+
+- Script syntax / command-surface rehearsal: **PASS (user-reported execution)**
+- Read-only doctor behaviour: **PASS**
+- Compatibility menu: **PASS**
+- Compatibility environment-check shim: **PASS**
+- Normal-user / neutral-shell boundary: **PASS**
+- Tracker non-mutation: **PASS**
+- Final repository cleanliness: **PASS**
+- No Dell lifecycle work: **PASS**
+
+Phase 6 is behaviourally accepted. PR #16 may proceed through final exact-state review and normal merge if current GitHub authority remains unchanged.
