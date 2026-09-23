@@ -46,19 +46,23 @@ Do not create project virtual environments manually. `uv sync` should recreate t
 
 ## Connor workspace
 
-Create:
+Create the final topology:
 
-    /home/connor/Projects
+```text
+/home/connor/Projects/Connor/
+|-- connor-coding-lab/
+`-- projects/
+    |-- python-basics/
+    `-- snake-game/
+```
 
-Clone the repository as one repository:
+Clone all three repositories independently. Do not use Git submodules and do not copy old `.venv` directories.
 
-    cd /home/connor/Projects
-    git clone https://github.com/WebshopCompany/connor-coding-lab.git
-    cd connor-coding-lab
+After Phase 12, use the Connor-owned repository URLs. Do not leave the Dell dependent on Geza's WebshopCompany credentials.
 
-After the final GitHub handover, update this document to the Connor-owned repository URL before the Dell is considered final.
+Open:
 
-Open `/home/connor/Projects/connor-coding-lab` as the VS Code workspace root.
+`/home/connor/Projects/Connor/connor-coding-lab/Connor-Coding-Lab.code-workspace`
 
 Do not depend on custom shell aliases for the learning missions.
 
@@ -77,3 +81,8 @@ Run the exact fresh-clone checks in:
 `docs/admin/ACCEPTANCE-CHECKLIST.md`
 
 The Dell is not ready merely because Ubuntu and VS Code start successfully.
+
+
+## Final workstation authority
+
+Use [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md) for the final VS Code, Antigravity, account, Git, Python and user-settings baseline.

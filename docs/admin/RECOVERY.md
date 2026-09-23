@@ -5,10 +5,12 @@ The repository and Git history are the source of truth. A copied virtual environ
 ## If the laptop is replaced or rebuilt
 
 1. install/configure Git, VS Code and `uv`;
-2. create `~/Projects`;
-3. clone `connor-coding-lab`;
-4. run `uv sync` inside each Python project;
-5. run the fresh-clone acceptance checklist.
+2. create `~/Projects/Connor/projects`;
+3. clone Mission Control to `~/Projects/Connor/connor-coding-lab`;
+4. clone Python Basics and Snake Game independently under `~/Projects/Connor/projects/`;
+5. run `uv sync --locked` inside each Python project;
+6. open the canonical multi-root workspace;
+7. run the fresh-clone acceptance checklist.
 
 Do not restore old `.venv` directories.
 

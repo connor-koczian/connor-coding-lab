@@ -115,7 +115,7 @@ Open `http://127.0.0.1:8000/`.
 
 Confirm page load, controls, restart behaviour and no obvious browser-console runtime error. Stop the server with Ctrl+C.
 
-## 7. VS Code / Antigravity cockpit
+## 7. VS Code / Antigravity cockpit and account baseline
 
 Open:
 
@@ -131,9 +131,17 @@ Confirm:
 
 - each Source Control repository is independent;
 - the integrated Mission Control terminal starts neutral;
+- `VIRTUAL_ENV` is unset in the neutral Mission Control terminal;
 - Python/Snake tasks execute from their named project roots;
+- the curated extension set is present: Antigravity, Python, Pylance, Python Environments, Python Debugger and Ruff;
+- Connor-user setting `python-envs.terminal.autoActivationType` is `off`;
+- Connor-user setting `python-envs.alwaysUseUv` is `true`;
+- Connor-user setting `telemetry.telemetryLevel` is `off`;
+- Antigravity is the primary learner-facing AI surface;
+- Copilot is not required for the baseline and does not distract from the intended mentor workflow;
 - `/start` discovers current Mission Control skills and reads the canonical tracker;
-- Antigravity can inspect the independent project roots before proposing current commands.
+- Antigravity can inspect the independent project roots before proposing current commands;
+- `/finish` applies the evidence gate and does not promote capability without Connor evidence.
 
 ## 8. CI and safety
 
@@ -157,6 +165,31 @@ From Mission Control, use:
 
 Validate the AI-built browser demonstrations separately from Connor's historical project evidence.
 
+## 10. Account and credential boundary
+
+Confirm:
+
+- Connor's normal Linux user is not an administrator;
+- Git identity belongs to Connor after Phase 12;
+- repository remotes point to Connor-owned repositories after Phase 12;
+- no Geza GitHub token, SSH private key, browser session or VS Code account remains in Connor's profile;
+- VS Code Settings Sync, if enabled, is attached only to Connor's account;
+- normal Git pull/push/PR operations work without Geza credentials after Phase 12.
+
+## 11. Reboot-to-learning acceptance
+
+After final Dell build and account setup:
+
+1. reboot;
+2. log in as Connor;
+3. open `Connor-Coding-Lab.code-workspace`;
+4. confirm the neutral Mission Control terminal starts;
+5. run `./scripts/lab doctor`;
+6. invoke `/start`;
+7. verify current tracker/project discovery without parent intervention.
+
 ## Definition of Done
 
 The multi-repository environment is accepted only when all applicable checks above pass from a clean target-layout rehearsal and remaining exceptions are explicitly recorded.
+
+For Dell-specific final acceptance, this checklist must be used together with [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md).

@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 10 ACCEPTED / PHASE 11 NEXT  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 11 IMPLEMENTED / ACCEPTANCE PR  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -833,9 +833,18 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Practical feedback: target paths, project discovery, menu/runtime behaviour and mentor session flow were usable on the ThinkPad; no Phase 10 blocker was observed.
   - Phase 10 accepted on 2026-09-23.
 
-- [ ] **Phase 11 — Dell handover authority V2**
-  - Update future Dell build docs to match final architecture.
-  - Do not execute Dell lifecycle work.
+- [x] **Phase 11 — Dell handover authority V2**
+  - Final Dell software/account/workstation authority added at `docs/admin/DELL-WORKSTATION-V2.md`.
+  - Dell setup, Ubuntu runbook, next-build handover, recovery guide, hardware baseline and acceptance checklist updated to the accepted three-repository topology.
+  - Final workspace path is `/home/connor/Projects/Connor/` with independent Mission Control, Python Basics and Snake repositories.
+  - Antigravity remains the intended primary mentor; Copilot is not part of the baseline.
+  - Connor-user VS Code baseline includes neutral Python terminal behaviour, uv preference and telemetry disabled.
+  - Curated extension baseline is Antigravity + Python/Pylance/Python Environments/Python Debugger + Ruff.
+  - `scripts/setup-connor-user.sh` now configures the final topology/tooling/user-settings model without creating accounts, credentials or GitHub ownership.
+  - `scripts/show-my-computer.sh` now uses the final Mission Control path.
+  - GitHub/VS Code identity and credential separation are explicitly deferred to Phase 12 and final Dell acceptance.
+  - No Dell lifecycle work was executed; physical Dell authority remains with `gk-home-lab`.
+  - Phase 11 implementation complete on bounded branch `docs/phase11-dell-handover-v2`; merge requires normal CI/PR acceptance.
 
 - [ ] **Phase 12 — GitHub ownership handover**
   - Only after the system is accepted.
