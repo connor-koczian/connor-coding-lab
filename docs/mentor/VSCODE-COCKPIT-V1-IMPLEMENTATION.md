@@ -219,3 +219,37 @@ Still required before Phase 4 acceptance:
 - verify final Git state remains clean.
 
 Markdown source-diff behaviour is statically configured and should be exercised if a convenient bounded diff exists; do not create permanent learner-content changes merely to satisfy this check.
+
+
+## Behavioural acceptance — 2026-09-23
+
+User-observed on the rehearsal ThinkPad against the current PR #14 candidate:
+
+- local branch fast-forwarded to GitHub head `10eca457ad8701667f03e0b3b558d642033b3ae1`;
+- Explorer showed exactly the intended workspace roots: **Mission Control**, **Python Basics**, and **Snake Game**;
+- `python-basics` and `snake-game` were not duplicated as nested visible folders under Mission Control;
+- `START-HERE.md` opened as rendered Markdown Preview by default;
+- Antigravity still discovered the workspace `/start` skill;
+- `Connor Lab: Git Status` ran successfully and reported:
+  `## ux/vscode-mission-control-v1...origin/ux/vscode-mission-control-v1`;
+- `Python Basics: Tests` ran the declared `uv run pytest` workflow under Python 3.12.14 / pytest 9.1.1 and passed: **1 passed in 0.01s**;
+- final `git status` reported a clean working tree;
+- final `git diff` was empty;
+- final ThinkPad HEAD was `10eca457ad8701667f03e0b3b558d642033b3ae1`.
+
+The earlier 2026-09-22 checkpoint had already confirmed the automatic terminal starts interactively at the repository root with `SHELL=/usr/bin/zsh` and `VIRTUAL_ENV=<none>`.
+
+### Acceptance classification
+
+- Workspace root layout: **PASS**
+- Neutral automatic terminal: **PASS**
+- Markdown preview-first behaviour: **PASS**
+- Antigravity skill discovery: **PASS**
+- Git-status task: **PASS**
+- Python test task: **PASS**
+- Startup/task mutation safety: **PASS**
+- Final repository cleanliness: **PASS**
+- Optional Snake GUI task: **NOT RUN / NOT A MERGE BLOCKER**
+- Markdown source-diff behaviour: **STATICALLY CONFIGURED; not forced through a synthetic learner-content mutation**
+
+Phase 4 is behaviourally accepted. PR #14 may proceed through final diff/mergeability review and normal merge if current GitHub authority remains unchanged.
