@@ -42,7 +42,11 @@ git config --global pull.ff only
 
 if command -v code >/dev/null 2>&1; then
   echo
-  echo "Installing the curated VS Code Python toolchain..."
+  echo "Installing the curated VS Code extensions..."
+  code --install-extension google.google-antigravity >/dev/null || {
+    echo "WARNING: Antigravity extension installation failed."
+    echo "Install/authorise it manually using the current supported provider flow."
+  }
   code --install-extension ms-python.python >/dev/null
   code --install-extension ms-python.vscode-pylance >/dev/null
   code --install-extension ms-python.vscode-python-envs >/dev/null
@@ -70,7 +74,7 @@ if command -v code >/dev/null 2>&1; then
   fi
 
   echo "VS Code extensions:"
-  code --list-extensions | grep -E '^(ms-python\.python|ms-python\.vscode-pylance|ms-python\.vscode-python-envs|ms-python\.debugpy|charliermarsh\.ruff)$' || true
+  code --list-extensions | grep -E '^(google\.google-antigravity|ms-python\.python|ms-python\.vscode-pylance|ms-python\.vscode-python-envs|ms-python\.debugpy|charliermarsh\.ruff)$' || true
 else
   echo "WARNING: VS Code is not installed or 'code' is not on PATH."
 fi
@@ -107,5 +111,6 @@ fi
 
 echo
 echo "User setup complete."
-echo "Next: sign VS Code into Connor's own GitHub account after Phase 12, then open:"
+echo "Next: open the canonical workspace:"
 echo "  ${repo}/Connor-Coding-Lab.code-workspace"
+echo "Then complete the Antigravity sign-in/authorisation step using an eligible account under the provider's current rules."
