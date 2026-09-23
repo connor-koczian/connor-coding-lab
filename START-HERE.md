@@ -56,6 +56,7 @@ Python Basics and Snake are separate Git repositories and the Phase 9 cockpit br
 | V2 safety / CI | ✅ Accepted, merged and protected |
 | Historical project extraction | ✅ Phase 8 complete |
 | Multi-repository cockpit | ✅ Phase 9 accepted on ThinkPad |
+| Fresh-clone ThinkPad rehearsal | ✅ Phase 10 accepted |
 
 A preview is not the same thing as your own project.
 
