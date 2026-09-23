@@ -94,3 +94,59 @@ After merge:
 
 - merged-main CI succeeds;
 - configure and verify the documented `main` ruleset.
+
+
+## Pre-merge acceptance — 2026-09-23
+
+### GitHub Actions PR evidence
+
+PR CI run `35834432161`, job `validate`, completed with conclusion **success**.
+
+The inspected logs confirmed:
+
+- GitHub token permission: `Contents: read`;
+- repository policy: **PASS**;
+- no tracked secret/private-key style paths detected;
+- no tracked private-key headers detected;
+- core governance/control files present as regular files;
+- key learner scripts retained executable Git mode;
+- shell syntax checks: **PASS**;
+- Lab Doctor: **PASS WITH WARNINGS** because the hosted runner correctly lacks the VS Code CLI;
+- Python 3.12.14 installed through uv 0.12.17;
+- Python Basics `uv sync --locked`: **PASS**;
+- Ruff: **All checks passed!**;
+- pytest: **1 passed in 0.01s**;
+- Snake `uv sync --locked`: **PASS**;
+- Pygame import: **2.6.1**.
+
+This CI evidence is headless. It does not claim interactive Snake or browser behaviour.
+
+### ThinkPad evidence
+
+ThinkPad rehearsal against candidate head `fb9d09e014faa86a1cb7e22639ef8a5062c68d5e` confirmed:
+
+- `scripts/check-repo-policy.sh`: **REPOSITORY POLICY: PASS**;
+- shell syntax: **BASH_SYNTAX=PASS**;
+- Lab Doctor as normal user `connor`: **DOCTOR: PASS**;
+- Git 2.34.1, uv 0.12.17, VS Code 1.138.0 and Python 3.12 through uv were present;
+- no active project virtual environment;
+- `.env` matched the `.gitignore` secret rule;
+- `private.pem` matched the `*.pem` ignore rule;
+- canonical learner tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`;
+- final working tree was clean.
+
+### Pre-merge classification
+
+- CI workflow execution: **PASS**
+- Workflow permission boundary: **PASS**
+- Repository policy: **PASS**
+- Shell syntax: **PASS**
+- Python Basics lint/test: **PASS**
+- Snake dependency/Pygame import: **PASS**
+- ThinkPad policy/doctor rehearsal: **PASS**
+- Learner-state non-mutation: **PASS**
+- Final repository cleanliness: **PASS**
+
+Phase 7 is **pre-merge accepted**.
+
+It is not fully complete until merged-main CI succeeds and the documented `main` ruleset is actually enabled and re-verified.
