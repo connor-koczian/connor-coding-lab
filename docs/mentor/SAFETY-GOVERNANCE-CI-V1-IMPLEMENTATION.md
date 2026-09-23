@@ -150,3 +150,62 @@ ThinkPad rehearsal against candidate head `fb9d09e014faa86a1cb7e22639ef8a5062c68
 Phase 7 is **pre-merge accepted**.
 
 It is not fully complete until merged-main CI succeeds and the documented `main` ruleset is actually enabled and re-verified.
+
+
+## Final Phase 7 acceptance — 2026-09-23
+
+Phase 7 implementation merged through PR #17 to `main` at:
+
+`63c1c14a99eb5568e7c88a0b6f079abe78bf7804`
+
+### Merged-main CI
+
+Push-triggered CI run `35835236186` completed with conclusion **success** on that exact `main` commit.
+
+The required GitHub check-run is:
+
+- workflow: `CI`
+- job/check: `validate`
+- provider: GitHub Actions
+
+### Live main-branch protection
+
+CURRENT GitHub ruleset authority was re-fetched after Geza saved the ruleset.
+
+Observed ruleset:
+
+- name: **Main branch protection**
+- ruleset ID: `23868188`
+- enforcement: **active**
+- target: default branch (`main`)
+- bypass actors: **none**
+- current user bypass: **never**
+- require pull request before merging: **enabled**
+- required approving reviews: **0**
+- block branch deletion: **enabled**
+- block force pushes / non-fast-forward updates: **enabled**
+- required status check: `validate`
+- required-check integration: GitHub Actions, integration ID `15368`
+- strict "branch must be up to date" policy: **disabled**
+- linear history: **not required**
+- merge queue: **not required**
+- signed commits: **not required**
+
+This is the intended deliberately small protection model.
+
+### Final classification
+
+- PR CI: **PASS**
+- exact-head PR CI after acceptance-record commits: **PASS**
+- ThinkPad repository-policy / syntax / doctor gate: **PASS**
+- merged-main CI: **PASS**
+- active ruleset verified: **PASS**
+- PR required: **PASS**
+- required `validate` check: **PASS**
+- force-push protection: **PASS**
+- deletion protection: **PASS**
+- bypass list empty: **PASS**
+
+**Phase 7: COMPLETE.**
+
+The next programme activity is Phase 8 **read-only history-preserving extraction assessment**. No project extraction, deletion or new repository migration is authorised merely by closing Phase 7.
