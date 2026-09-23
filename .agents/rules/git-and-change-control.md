@@ -26,3 +26,19 @@ Do not force-push, rewrite learning history, use `git reset --hard`, or use dest
 Do not commit a large change Connor cannot explain at the appropriate level.
 
 Imported `python-basics` and `snake-game` history must be preserved until the dedicated migration phase.
+
+
+## CI and protected main
+
+CI is independent evidence for a save point, not proof that every behaviour works.
+
+For substantive work:
+
+- inspect the CI result before merge;
+- inspect failed steps rather than retrying blindly;
+- do not bypass a required check merely to make a PR green;
+- keep interactive GUI/runtime claims separate from headless CI evidence.
+
+The intended `main` protection target is documented at `docs/governance/MAIN-BRANCH-PROTECTION.md`.
+
+Do not weaken branch protection or required checks merely to avoid fixing a real defect.

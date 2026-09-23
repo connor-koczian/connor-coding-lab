@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phase 4 and Phase 5 are accepted and merged. Phase 6 builds the learner-facing lab control tooling on `tooling/lab-control-v2`.
+Phases 4–6 are accepted and merged. Phase 7 builds repository safety, governance and CI on `governance/safety-ci-v1`.
 
 ## Python
 
@@ -175,3 +175,10 @@ During preparation, the canonical repository remains:
 `WebshopCompany/connor-coding-lab`
 
 The eventual handover to Connor's GitHub ownership happens only after the complete V2 environment is implemented, rehearsed and accepted.
+
+
+## Repository safety and CI
+
+See [SECURITY.md](SECURITY.md) for the practical rules around secrets, dependencies, external services, AI/connectors and administrator boundaries.
+
+Phase 7 introduces a small GitHub Actions CI workflow that provides independent checks without claiming interactive GUI/game behaviour.
