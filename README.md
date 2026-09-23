@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–8 are complete. `main` is protected by PR + required `validate` CI. Phase 9 is implementing the live multi-repository cockpit around the independent Python Basics and Snake repositories.
+Phases 4–9 are accepted at their completed gates. `main` is protected by PR + required `validate` CI. The live cockpit now uses independent Mission Control, Python Basics and Snake repositories; Phase 10 is the next full ThinkPad rehearsal gate.
 
 ## Python
 
