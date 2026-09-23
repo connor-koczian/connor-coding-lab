@@ -4,7 +4,7 @@
 
 ## Where am I?
 
-The historical Snake project, without restructuring or extracting its repository.
+The independent **Snake Game** repository with Connor's preserved historical save points.
 
 ## What am I learning?
 
@@ -23,7 +23,7 @@ Turning a game-design idea into a bounded mechanic and gameplay acceptance check
 
 ## How do I run it?
 
-Use the project's current `uv` workflow and preserve historical project structure.
+Use the Snake Game repository's current `uv` workflow and preserve its historical commit lineage.
 
 ## How do I know it worked?
 
