@@ -25,7 +25,7 @@ Do not force-push, rewrite learning history, use `git reset --hard`, or use dest
 
 Do not commit a large change Connor cannot explain at the appropriate level.
 
-Imported `python-basics` and `snake-game` history must be preserved until the dedicated migration phase.
+Python Basics and Snake Game now live in independent repositories. Preserve their original Connor history and do not rewrite it. Treat each repository's `main` as stable and use its own status/diff/branch/PR workflow.
 
 
 ## CI and protected main
