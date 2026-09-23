@@ -65,7 +65,7 @@ The next meaningful learner session should establish live evidence rather than t
 | Debugging | Evidence-led debugging loop | **NOT STARTED** | Governance teaches the loop; no canonical learner demonstration is recorded yet. |
 | Git / GitHub | Inspecting status/diff and creating save points | **NOT STARTED** | Historical mission material exists, but mission completion is not proven by the repository. |
 | Linux / Terminal | Navigation with `pwd`, `ls`, `cd` | **NOT STARTED** | Historical mission material exists, but no canonical live demonstration is recorded yet. |
-| Testing | Running and interpreting automated tests | **NOT STARTED** | A pytest exists in `python-basics/`; its existence is not proof Connor can use or explain testing. |
+| Testing | Running and interpreting automated tests | **NOT STARTED** | A pytest exists in the independent Python Basics repository; its existence is not proof Connor can use or explain testing. |
 | Software Design | Breaking a change into goal/files/concept/acceptance checks | **NOT STARTED** | Mentor system supports this; Connor's own demonstration is not yet recorded. |
 | Game Development | Game/product design decisions | **INTRODUCED** | Historical Snake README attributes design direction to Connor and implementation to Antigravity. |
 | Web Development | HTML/CSS/JavaScript development | **NOT STARTED** | AI-built showcases do not count as Connor capability. |
