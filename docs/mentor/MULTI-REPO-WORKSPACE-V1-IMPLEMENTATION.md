@@ -125,3 +125,43 @@ Acceptance must prove:
 12. learner tracker capability states remain unchanged unless Connor personally supplies new evidence.
 
 Static CI alone is not enough to merge Phase 9.
+
+
+## Acceptance result — 2026-09-23
+
+**Result: PASS**
+
+Static GitHub CI:
+
+- Mission Control candidate run `35839739778` — `validate` SUCCESS.
+- Python Basics independent `main` CI — SUCCESS.
+- Snake Game independent `main` CI — SUCCESS.
+
+ThinkPad target-layout rehearsal used:
+
+```text
+/home/connor/Projects/Connor/
+|-- connor-coding-lab/
+`-- projects/
+    |-- python-basics/
+    `-- snake-game/
+```
+
+Observed evidence:
+
+- all three repositories were independent, clean and at the expected candidate/main heads;
+- original Python and Snake history ancestry checks passed;
+- Mission Control contained no embedded `python-basics/` or `snake-game/` copies;
+- full `./scripts/lab doctor` reported `DOCTOR: PASS`;
+- `./scripts/lab status` reported all three repositories independently;
+- Python Basics ran through Mission Control using uv-managed Python 3.12.14;
+- Ruff passed;
+- pytest reported `1 passed`;
+- Snake used uv-managed Python 3.12.14 and compiled successfully;
+- learner tracker SHA remained unchanged;
+- Classic Snake, Campaign Snake and browser Snake were interactively exercised successfully;
+- the full learner menu was exercised successfully in the Phase 9 rehearsal workspace;
+- Antigravity `/start` loaded the current tracker, inspected the independent Python Basics root at `/home/connor/Projects/Connor/projects/python-basics`, inspected its current `pyproject.toml` and README, ran `uv run pytest`, selected a current Python mission and produced current independent-project commands;
+- no old `connor-coding-lab/python-basics` or `connor-coding-lab/snake-game` project path was invented.
+
+This rehearsal is system evidence only. It does not promote Connor's learner capability state.
