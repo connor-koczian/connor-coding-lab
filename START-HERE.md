@@ -35,7 +35,7 @@ This repository is gradually becoming the control centre for:
 - Antigravity's teaching system;
 - links to your real project repositories.
 
-Your bigger projects will eventually live as separate Git repositories while still appearing together in one development workspace.
+Python Basics and Snake now exist as separate Git repositories. Phase 9 will wire those independent repositories into the same learner workspace before the temporary embedded copies are removed.
 
 ---
 
@@ -43,8 +43,8 @@ Your bigger projects will eventually live as separate Git repositories while sti
 
 | Area | Current state |
 | --- | --- |
-| Python Basics | ✅ Existing learning project |
-| Snake Game | ✅ Existing historical project |
+| Python Basics | ✅ Independent repository extracted; transitional embedded copy still present |
+| Snake Game | ✅ Independent repository extracted; transitional embedded copy still present |
 | Neon City technology preview | ✅ AI-built showcase |
 | Snake: OVERDRIVE | ✅ AI-built showcase |
 | Your real Neon City project | ⏳ Not created yet |
@@ -54,6 +54,8 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | V2 mission library | ✅ Accepted and merged |
 | V2 lab control command | ✅ Accepted and merged |
 | V2 safety / CI | ✅ Accepted, merged and protected |
+| Historical project extraction | ✅ Phase 8 complete |
+| Multi-repository cockpit | ⏳ Phase 9 next |
 
 A preview is not the same thing as your own project.
 

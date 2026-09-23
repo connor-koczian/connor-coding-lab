@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 COMPLETE / PHASE 8 READ-ONLY ASSESSMENT NEXT  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 8 EXTRACTION COMPLETE / PHASE 9 NEXT  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -789,13 +789,18 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Geza created repository ruleset `Main branch protection` (ID `23868188`) and CURRENT GitHub verification confirmed it is active on the default branch with no bypass actors, PR required, 0 required approvals, deletion blocked, force-push blocked, and required status check `validate` bound to GitHub Actions integration `15368`.
   - Phase 7 is complete. Phase 8 may begin only as a read-only history/extraction assessment before any migration transaction.
 
-- [ ] **Phase 8 — Historical project repository extraction**
-  - Separate migration transaction.
-  - Extract `python-basics` history.
-  - Extract `snake-game` history.
-  - Validate histories.
-  - Create independent WebshopCompany repositories if required.
-  - Only then remove live project copies from Mission Control working tree.
+- [x] **Phase 8 — Historical project repository extraction**
+  - Separate history-preserving migration completed from protected Mission Control `main`.
+  - Created private `WebshopCompany/python-basics` and `WebshopCompany/snake-game` repositories without synthetic initial commits.
+  - Python Basics preserves Connor's original 3 commits unchanged through original head `97c51706c44b521f3473c8936f4931850c11ef69`; two bounded post-import commits reproduce the current project state.
+  - Python Basics extracted head: `82f11181755839cac40c50419e972f534c0cf634`; final tree: `91f57117b5cafc2c88c3e86e3dd9bc6d49658706`.
+  - Python validation passed with uv-managed Python 3.12.14, Ruff, pytest (`1 passed`) and controlled interactive runtime input.
+  - Snake preserves Connor's original 10 commits unchanged through original head `a31761a0ea3503c71db8eea6d3279ef0bc8ab8ab`; one bounded post-import commit applies the Python 3.12 baseline.
+  - Snake extracted head: `7d6fa8b0c1b13d1bad14028be3556b4d6035449b`; final tree: `43330b81e8afab839ead624f5e0f0f12e1453c5e`.
+  - Snake validation passed with uv-managed Python 3.12.14, Pygame 2.6.1 import and Python bytecode compilation.
+  - GitHub verification independently confirmed commit counts (Python 5, Snake 11), exact original lineage and exact final tree identities.
+  - Mission Control `main` remained unchanged during extraction.
+  - Embedded project directories remain temporarily in Mission Control until Phase 9 rewires the cockpit, tooling, CI, missions and documentation to the independent repositories and validates the replacement topology.
 
 - [ ] **Phase 9 — Multi-repository workspace integration**
   - Wire Mission Control and independent projects into one workspace/Antigravity project.

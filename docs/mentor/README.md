@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phases 2–5 are accepted and merged into `main`. Phase 6 lab control tooling is implemented on `tooling/lab-control-v2` pending behavioural acceptance.**
+**Phases 2–8 are accepted at their completed gates. Phase 9 multi-repository workspace integration is next.**
 
 The system now has three durable layers:
 
@@ -63,3 +63,8 @@ See [LAB-CONTROL-V2-IMPLEMENTATION.md](LAB-CONTROL-V2-IMPLEMENTATION.md) for the
 ## Phase 7 safety, governance and CI
 
 See [SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md](SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md) for the repository policy checks, CI design and post-merge `main` protection gate.
+
+
+## Phase 8 historical project extraction
+
+See [HISTORICAL-PROJECT-EXTRACTION.md](HISTORICAL-PROJECT-EXTRACTION.md) for the exact preserved Python/Snake histories, extracted repository heads, tree identities and validation evidence.
