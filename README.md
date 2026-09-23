@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–10 are accepted at their completed gates. `main` is protected by PR + required `validate` CI. Fresh-clone ThinkPad rehearsal has passed; Phase 11 is the next Dell handover/final workstation-configuration design gate.
+Phases 4–10 are accepted. Phase 11 defines the final Dell/workstation handover design on its bounded branch; `main` remains protected by PR + required `validate` CI.
 
 ## Python
 
