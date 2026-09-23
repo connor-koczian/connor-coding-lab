@@ -51,7 +51,8 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | V2 Antigravity mentor system | ✅ Accepted and merged |
 | V2 master progress tracker | ✅ Accepted and merged |
 | V2 VS Code learner cockpit | ✅ Accepted and merged |
-| V2 mission library | 🧪 Phase 5 candidate — starter curriculum implemented, awaiting behavioural acceptance |
+| V2 mission library | ✅ Accepted and merged |
+| V2 lab control command | 🧪 Phase 6 candidate — implemented, awaiting behavioural acceptance |
 
 A preview is not the same thing as your own project.
 
@@ -61,7 +62,7 @@ When your real Neon City begins, **you** decide its world, mechanics, characters
 
 ## 🖥️ Open your cockpit
 
-The intended Phase 4 workspace is:
+The canonical learner workspace is:
 
 `Connor-Coding-Lab.code-workspace`
 
@@ -76,13 +77,17 @@ You should then have:
 - **Source Control** — Git changes and history;
 - **Integrated Terminal** — your real shell, available from the workspace.
 
-The Phase 4 candidate is designed to open a neutral Mission Control terminal automatically in a trusted workspace. It should **not** silently activate `python-basics/.venv`; project commands should use `uv run ...` explicitly.
+The accepted workspace opens a neutral Mission Control terminal automatically in a trusted workspace. It should **not** silently activate `python-basics/.venv`; project commands use `uv run ...` explicitly.
 
-You can still launch the current menu manually:
+The Phase 6 learner control command is:
 
 ```bash
-./scripts/run-lab.sh
+./scripts/lab help
 ```
+
+It can show status/projects, run known targets, perform a read-only doctor check and provide inspection-only Git shortcuts. It prints the real delegated command before execution.
+
+The older `./scripts/run-lab.sh` command remains as a compatibility menu.
 
 ---
 

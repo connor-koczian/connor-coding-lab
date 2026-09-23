@@ -44,7 +44,7 @@ The existing Neon City preview is an AI-built technology demonstration. Connor's
 
 ## Open the learner cockpit
 
-The Phase 4 candidate workspace is:
+The accepted learner workspace is:
 
 `Connor-Coding-Lab.code-workspace`
 
@@ -58,13 +58,25 @@ The workspace is designed to provide:
 - an integrated Mission Control terminal;
 - visible run/test tasks.
 
-The current launcher remains available from the repository root:
+The Phase 6 control command is:
 
 ```bash
-./scripts/run-lab.sh
+./scripts/lab help
 ```
 
-The dedicated V2 `lab` control command is a later phase.
+Useful examples:
+
+```bash
+./scripts/lab status
+./scripts/lab projects
+./scripts/lab doctor
+./scripts/lab run python-basics
+./scripts/lab git status
+```
+
+The wrapper prints real delegated commands before execution and deliberately keeps Git mutation, installation and administrator work explicit.
+
+`./scripts/run-lab.sh` remains as a compatibility launcher for the interactive menu.
 
 ## Target repository model
 
@@ -100,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phase 4 now builds the VS Code learner cockpit on `ux/vscode-mission-control-v1`.
+Phase 4 and Phase 5 are accepted and merged. Phase 6 builds the learner-facing lab control tooling on `tooling/lab-control-v2`.
 
 ## Python
 

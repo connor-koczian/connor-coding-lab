@@ -1,0 +1,374 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+usage() {
+  cat <<'EOF'
+Connor Coding Lab control command
+
+Usage:
+  ./scripts/lab help
+  ./scripts/lab start
+  ./scripts/lab status
+  ./scripts/lab projects
+  ./scripts/lab run <target>
+  ./scripts/lab doctor
+  ./scripts/lab git <status|diff|staged|log|branch>
+  ./scripts/lab computer
+  ./scripts/lab maintenance
+  ./scripts/lab menu
+
+Run targets:
+  python-basics
+  snake-classic
+  snake-campaign
+  browser-snake
+  neon-city-preview
+  snake-overdrive
+
+Rules:
+  - The command prints the real directory and command before execution.
+  - doctor is read-only: it does not install, sync, update or repair.
+  - lab git is inspection-only. Staging/commit/push stay explicit Git work.
+  - system administration is not hidden behind this command.
+EOF
+}
+
+print_command() {
+  local cwd="$1"
+  shift
+  printf 'Directory: %s\n' "$cwd"
+  printf 'Command:  '
+  printf '%q ' "$@"
+  printf '\n'
+}
+
+run_in() {
+  local cwd="$1"
+  shift
+  print_command "$cwd" "$@"
+  (
+    cd "$cwd"
+    "$@"
+  )
+}
+
+require_command() {
+  local command_name="$1"
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    printf 'ERROR: required command not found: %s\n' "$command_name" >&2
+    printf 'Run ./scripts/lab doctor and use /maintenance if tooling needs repair.\n' >&2
+    exit 1
+  fi
+}
+
+open_url() {
+  local url="$1"
+  if command -v xdg-open >/dev/null 2>&1 && [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+    printf 'Opening:  %s\n' "$url"
+    (sleep 1; xdg-open "$url" >/dev/null 2>&1 || true) &
+  else
+    printf 'Browser:  open %s manually\n' "$url"
+  fi
+}
+
+show_status() {
+  echo "== Connor Coding Lab status =="
+  printf 'Repository: %s\n' "$repo"
+  printf 'Branch:     %s\n' "$(git -C "$repo" branch --show-current 2>/dev/null || echo '<not a Git repository>')"
+  printf 'HEAD:       %s\n' "$(git -C "$repo" log -1 --pretty='%h %s' 2>/dev/null || echo '<unavailable>')"
+  echo
+  echo "Git working tree:"
+  git -C "$repo" status --short --branch
+  echo
+  printf 'Mission catalogue: %s\n' "$repo/missions/README.md"
+  printf 'Learner tracker:   %s\n' "$repo/progress/CONNOR-MASTER-TRACKER.md"
+}
+
+show_projects() {
+  cat <<EOF
+== Current project map ==
+
+Mission Control
+  path: $repo
+  role: learning/control plane
+
+Python Basics
+  path: $repo/python-basics
+  run:  ./scripts/lab run python-basics
+
+Snake Game
+  path: $repo/snake-game
+  run:  ./scripts/lab run snake-classic
+        ./scripts/lab run snake-campaign
+        ./scripts/lab run browser-snake
+
+AI-built showcases
+  run:  ./scripts/lab run neon-city-preview
+        ./scripts/lab run snake-overdrive
+
+Note: Python Basics and Snake Game are still historical folders inside
+Mission Control until the dedicated history-preserving migration phase.
+EOF
+}
+
+doctor() {
+  local failures=0
+  local warnings=0
+
+  pass() { printf 'PASS  %s\n' "$1"; }
+  fail() { printf 'FAIL  %s\n' "$1"; failures=$((failures + 1)); }
+  warn() { printf 'WARN  %s\n' "$1"; warnings=$((warnings + 1)); }
+
+  echo "== Connor Coding Lab doctor =="
+  echo "Read-only checks only. No install, sync, update or repair is performed."
+  echo
+
+  if [[ "${EUID}" -eq 0 ]]; then
+    fail "running as a normal user (currently root)"
+  else
+    pass "running as normal user $(whoami)"
+  fi
+
+  if command -v git >/dev/null 2>&1; then
+    pass "$(git --version)"
+  else
+    fail "Git installed"
+  fi
+
+  if command -v uv >/dev/null 2>&1; then
+    pass "$(uv --version)"
+  else
+    fail "uv installed"
+  fi
+
+  if command -v code >/dev/null 2>&1; then
+    pass "VS Code $(code --version | head -n 1)"
+  else
+    warn "VS Code command-line launcher not found"
+  fi
+
+  [[ -d "$repo/.git" ]] && pass "Mission Control Git repository present" || fail "Mission Control Git repository present"
+  [[ -f "$repo/START-HERE.md" ]] && pass "START-HERE.md present" || fail "START-HERE.md present"
+  [[ -f "$repo/missions/README.md" ]] && pass "V2 mission catalogue present" || fail "V2 mission catalogue present"
+  [[ -f "$repo/progress/CONNOR-MASTER-TRACKER.md" ]] && pass "canonical learner tracker present" || fail "canonical learner tracker present"
+  [[ -f "$repo/python-basics/pyproject.toml" ]] && pass "Python Basics project metadata present" || fail "Python Basics project metadata present"
+  [[ -f "$repo/snake-game/pyproject.toml" ]] && pass "Snake project metadata present" || fail "Snake project metadata present"
+
+  if command -v uv >/dev/null 2>&1; then
+    if uv python find 3.12 >/dev/null 2>&1; then
+      pass "Python 3.12 available through uv"
+    else
+      fail "Python 3.12 available through uv"
+    fi
+  fi
+
+  if [[ -d "$repo/.git" ]]; then
+    if [[ -z "$(git -C "$repo" status --porcelain)" ]]; then
+      pass "working tree clean"
+    else
+      warn "working tree has changes; inspect with ./scripts/lab git status and ./scripts/lab git diff"
+    fi
+  fi
+
+  if [[ -n "${VIRTUAL_ENV:-}" ]]; then
+    warn "active VIRTUAL_ENV=${VIRTUAL_ENV}; Mission Control should normally use a neutral shell"
+  else
+    pass "no active project virtual environment in this shell"
+  fi
+
+  echo
+  if [[ "$failures" -gt 0 ]]; then
+    printf 'DOCTOR: FAIL (%d failure(s), %d warning(s))\n' "$failures" "$warnings"
+    exit 1
+  fi
+
+  if [[ "$warnings" -gt 0 ]]; then
+    printf 'DOCTOR: PASS WITH WARNINGS (%d warning(s))\n' "$warnings"
+  else
+    echo "DOCTOR: PASS"
+  fi
+
+  echo "Project runtime/tests are separate evidence; doctor does not claim they pass."
+}
+
+ensure_uv_python_312() {
+  require_command uv
+  if ! uv python find 3.12 >/dev/null 2>&1; then
+    echo "ERROR: Python 3.12 is not currently available through uv." >&2
+    echo "Run ./scripts/lab doctor, then use /maintenance for any repair." >&2
+    exit 1
+  fi
+}
+
+run_target() {
+  local target="${1:-}"
+
+  case "$target" in
+    python-basics)
+      require_command uv
+      run_in "$repo/python-basics" uv run python src/python_basics/hello.py
+      ;;
+    snake-classic)
+      require_command uv
+      run_in "$repo/snake-game" uv run python src/snake_game/classic_snake.py
+      ;;
+    snake-campaign)
+      require_command uv
+      run_in "$repo/snake-game" uv run python src/snake_game/__init__.py
+      ;;
+    browser-snake)
+      require_command uv
+      echo "Press Ctrl+C in this terminal when the browser server is finished."
+      open_url "http://127.0.0.1:8000/"
+      run_in "$repo/snake-game" uv run python -m http.server 8000 --directory web
+      ;;
+    neon-city-preview)
+      ensure_uv_python_312
+      echo "AI-built showcase. This is not evidence of Connor's capability."
+      echo "Press Ctrl+C in this terminal when the browser server is finished."
+      open_url "http://127.0.0.1:8001/"
+      run_in "$repo/demos/neon-city-preview" uv run --no-project --python 3.12 python -m http.server 8001
+      ;;
+    snake-overdrive)
+      ensure_uv_python_312
+      echo "AI-built showcase. This is not evidence of Connor's capability."
+      echo "Press Ctrl+C in this terminal when the browser server is finished."
+      open_url "http://127.0.0.1:8002/"
+      run_in "$repo/demos/snake-overdrive" uv run --no-project --python 3.12 python -m http.server 8002
+      ;;
+    "")
+      echo "ERROR: choose a run target." >&2
+      echo >&2
+      show_projects >&2
+      exit 2
+      ;;
+    *)
+      printf 'ERROR: unknown run target: %s\n' "$target" >&2
+      show_projects >&2
+      exit 2
+      ;;
+  esac
+}
+
+git_inspect() {
+  local action="${1:-status}"
+  case "$action" in
+    status)
+      run_in "$repo" git status
+      ;;
+    diff)
+      run_in "$repo" git diff
+      ;;
+    staged)
+      run_in "$repo" git diff --cached
+      ;;
+    log)
+      run_in "$repo" git log -5 --oneline --decorate
+      ;;
+    branch)
+      run_in "$repo" git branch --show-current
+      ;;
+    *)
+      echo "ERROR: lab git is inspection-only." >&2
+      echo "Use one of: status, diff, staged, log, branch" >&2
+      echo "Staging, commit, pull, push and history changes remain explicit Git work." >&2
+      exit 2
+      ;;
+  esac
+}
+
+show_maintenance_boundary() {
+  cat <<'EOF'
+== Maintenance boundary ==
+
+Workspace/project inspection:
+  ./scripts/lab doctor
+  ./scripts/lab status
+
+Antigravity maintenance help:
+  /maintenance
+
+Normal coding should not require sudo.
+
+If work requires sudo, system packages, accounts, services, security settings,
+disks, BIOS or other machine-wide changes, stop at the administrator boundary.
+The Dell physical lifecycle remains under gk-home-lab authority.
+EOF
+}
+
+start_lab() {
+  show_status
+  echo
+  echo "Next:"
+  echo "  1. Read START-HERE.md."
+  echo "  2. Use /start in Antigravity."
+  echo "  3. Work one bounded mission."
+  echo
+  if command -v code >/dev/null 2>&1 && [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+    print_command "$repo" code --reuse-window START-HERE.md
+    (
+      cd "$repo"
+      code --reuse-window START-HERE.md
+    )
+  else
+    printf 'Open: %s\n' "$repo/START-HERE.md"
+  fi
+}
+
+menu() {
+  clear 2>/dev/null || true
+  echo "============================================================"
+  echo "                 CONNOR CODING LAB"
+  echo "============================================================"
+  echo
+  echo "Choose what you want to run:"
+  echo
+  echo "  1) Python Basics"
+  echo "  2) Classic Snake"
+  echo "  3) Campaign Snake"
+  echo "  4) Original Browser Snake"
+  echo "  5) Neon City — AI Technology Preview"
+  echo "  6) Snake: OVERDRIVE — AI Showcase"
+  echo "  7) Show My Computer"
+  echo "  8) Lab Doctor (read-only)"
+  echo "  q) Quit"
+  echo
+
+  read -r -p "Mission > " choice
+
+  case "$choice" in
+    1) run_target python-basics ;;
+    2) run_target snake-classic ;;
+    3) run_target snake-campaign ;;
+    4) run_target browser-snake ;;
+    5) run_target neon-city-preview ;;
+    6) run_target snake-overdrive ;;
+    7) "$repo/scripts/show-my-computer.sh" ;;
+    8) doctor ;;
+    q|Q) echo "See you next mission." ;;
+    *) echo "That is not a menu option yet."; exit 2 ;;
+  esac
+}
+
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  help|-h|--help) usage ;;
+  start) start_lab ;;
+  status) show_status ;;
+  projects) show_projects ;;
+  run) run_target "${1:-}" ;;
+  doctor) doctor ;;
+  git) git_inspect "${1:-status}" ;;
+  computer) "$repo/scripts/show-my-computer.sh" ;;
+  maintenance) show_maintenance_boundary ;;
+  menu) menu ;;
+  *)
+    printf 'ERROR: unknown lab command: %s\n\n' "$command" >&2
+    usage >&2
+    exit 2
+    ;;
+esac
