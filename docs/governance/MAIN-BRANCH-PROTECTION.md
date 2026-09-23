@@ -55,3 +55,30 @@ The current GitHub integration can inspect repository rulesets but does not have
 ## Future ownership
 
 When repositories are eventually transferred to Connor, re-check ruleset ownership/bypass behaviour. Do not assume organisation settings transfer unchanged.
+
+
+## Observed active state — 2026-09-23
+
+The target above is now implemented and verified from CURRENT GitHub authority.
+
+Observed repository ruleset:
+
+- name: **Main branch protection**
+- ID: `23868188`
+- enforcement: **active**
+- target condition: `~DEFAULT_BRANCH`, currently `main`
+- bypass list: empty
+- current user can bypass: never
+- deletion rule: enabled
+- non-fast-forward / force-push rule: enabled
+- pull-request rule: enabled
+- required approvals: 0
+- allowed merge methods: merge, squash, rebase
+- required-status-check rule: enabled
+- required check: `validate`
+- required-check integration ID: `15368` (GitHub Actions)
+- strict required-status-check policy / "up to date before merge": disabled
+
+Merged-main CI run `35835236186` completed successfully on `main` commit `63c1c14a99eb5568e7c88a0b6f079abe78bf7804` before the required check was selected.
+
+The repository is therefore protected according to the Phase 7 target. Re-check this record if the repository is transferred to Connor or organisation/repository settings change.
