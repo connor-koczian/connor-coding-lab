@@ -24,11 +24,13 @@ The repositories are siblings in one workspace. They are **not** Git submodules.
 
 ## Project authority
 
-- Mission Control: `WebshopCompany/connor-coding-lab`
-- Python Basics: `WebshopCompany/python-basics`
-- Snake Game: `WebshopCompany/snake-game`
+Current canonical repositories after the Phase 12 ownership handover:
 
-Phase 8 preserved the original Connor histories before this integration change.
+- Mission Control: `connor-koczian/connor-coding-lab`
+- Python Basics: `connor-koczian/python-basics`
+- Snake Game: `connor-koczian/snake-game`
+
+Phase 8 originally extracted the projects under `WebshopCompany`; those historical extraction records remain valid. Phase 12 changed ownership/publication authority without rewriting Connor's preserved histories.
 
 ## Cockpit
 

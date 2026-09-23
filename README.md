@@ -2,7 +2,7 @@
 
 Connor's AI-native programming, game-development and software-engineering environment.
 
-This repository is being redesigned into **Mission Control**: the place that tells Connor where he is, what he is learning, what to do next, how to run it, how to verify it, and what harder challenge is available.
+This repository is **Mission Control**: the place that tells Connor where he is, what he is learning, what to do next, how to run it, how to verify it, and what harder challenge is available.
 
 ## Start here
 
@@ -10,7 +10,7 @@ Connor should open:
 
 - [`START-HERE.md`](START-HERE.md)
 
-The previous `00-CONNOR-HQ/` material remains available during the V2 transition, but it is no longer the long-term navigation model.
+The previous `00-CONNOR-HQ/` material remains preserved as historical material, but it is no longer the long-term navigation model.
 
 ## Current V2 status
 
@@ -18,14 +18,14 @@ The approved architecture and phased implementation programme live at:
 
 - [`docs/governance/CONNOR-CODING-LAB-V2-MASTER-IMPLEMENTATION-PLAN.md`](docs/governance/CONNOR-CODING-LAB-V2-MASTER-IMPLEMENTATION-PLAN.md)
 
-Important: the V2 design is being implemented in bounded phases. A folder or feature described in the master plan must not be treated as implemented merely because it appears in the target architecture.
+The V2 design was implemented through bounded phases. Current GitHub state and the phase tracker in the master plan determine what is accepted; target architecture text alone is not implementation evidence.
 
 ## What exists today
 
 ### Historical learning projects
 
-- `WebshopCompany/python-basics` — Connor's independent Python learning project.
-- `WebshopCompany/snake-game` — Connor's independent historical Snake project and preserved save points.
+- `connor-koczian/python-basics` — Connor's independent Python learning project.
+- `connor-koczian/snake-game` — Connor's independent historical Snake project and preserved save points.
 
 The project repositories are separate Git histories. Mission Control links them together through the multi-root workspace; there are no Git submodules.
 
@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–10 are accepted. Phase 11 defines the final Dell/workstation handover design on its bounded branch; `main` remains protected by PR + required `validate` CI.
+Phases 4–12 are accepted. Phase 12 completed the GitHub ownership/publication handover to Connor. Phase 13 is the separately authorised Dell deployment and must not begin until the Dell is explicitly released.
 
 ## Python
 
@@ -170,11 +170,13 @@ Do not treat repository progress as authority to wipe, repartition, install Ubun
 
 ## Repository ownership
 
-During preparation, the canonical repository remains:
+The canonical public Connor-owned repositories are:
 
-`WebshopCompany/connor-coding-lab`
+- `connor-koczian/connor-coding-lab` — Mission Control;
+- `connor-koczian/python-basics` — Python Basics;
+- `connor-koczian/snake-game` — Snake Game.
 
-The eventual handover to Connor's GitHub ownership happens only after the complete V2 environment is implemented, rehearsed and accepted.
+The corresponding `WebshopCompany` repositories are private preparation/archive copies, not current learner authority.
 
 
 ## Repository safety and CI

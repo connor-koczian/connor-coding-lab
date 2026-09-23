@@ -26,7 +26,7 @@ Antigravity can do substantial implementation work. You still need enough unders
 
 You are in **Connor Coding Lab Mission Control**.
 
-This repository is gradually becoming the control centre for:
+This repository is the control centre for:
 
 - your missions;
 - your learning roadmap;
@@ -57,7 +57,9 @@ Python Basics and Snake are separate Git repositories and the Phase 9 cockpit br
 | Historical project extraction | ✅ Phase 8 complete |
 | Multi-repository cockpit | ✅ Phase 9 accepted on ThinkPad |
 | Fresh-clone ThinkPad rehearsal | ✅ Phase 10 accepted |
-| Dell workstation/handover design | 🧪 Phase 11 candidate |
+| Dell workstation/handover design | ✅ Phase 11 accepted |
+| GitHub ownership/publication handover | ✅ Phase 12 complete |
+| Dell Ubuntu deployment | ⛔ Phase 13 blocked until explicit Dell release |
 
 A preview is not the same thing as your own project.
 

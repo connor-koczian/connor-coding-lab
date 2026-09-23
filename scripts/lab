@@ -132,16 +132,16 @@ show_projects() {
 Mission Control
   path: $repo
   role: learning/control plane
-  remote: WebshopCompany/connor-coding-lab
+  remote: connor-koczian/connor-coding-lab
 
 Python Basics
   path: $python_repo
-  remote: WebshopCompany/python-basics
+  remote: connor-koczian/python-basics
   run:  ./scripts/lab run python-basics
 
 Snake Game
   path: $snake_repo
-  remote: WebshopCompany/snake-game
+  remote: connor-koczian/snake-game
   run:  ./scripts/lab run snake-classic
         ./scripts/lab run snake-campaign
         ./scripts/lab run browser-snake

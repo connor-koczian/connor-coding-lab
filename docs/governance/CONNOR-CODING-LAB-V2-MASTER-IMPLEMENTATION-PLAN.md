@@ -1,9 +1,9 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 11 IMPLEMENTED / ACCEPTANCE PR  
+**Status:** IMPLEMENTATION COMPLETE THROUGH PHASE 12 — PHASE 13 BLOCKED PENDING EXPLICIT DELL RELEASE
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
-**Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
+**Canonical Mission Control repository:** `connor-koczian/connor-coding-lab`
 **Frozen pre-V2 baseline commit:** `07871cbf2e96e919b63437a5c91bec8e86a2ffea`  
 **Frozen pre-V2 backup branch:** `backup/pre-v2-2026-09-22`
 
@@ -85,17 +85,19 @@ Do not introduce Git submodules initially. Use sibling repositories plus a multi
 
 ---
 
-## 4. Preparation and ownership authority
+## 4. Repository ownership authority
 
-Until final acceptance:
+Phase 12 completed the deliberate GitHub ownership/publication handover on 2026-09-23.
 
-- canonical authority remains `WebshopCompany/connor-coding-lab`;
-- any extracted project repositories remain under `WebshopCompany`;
-- do not assume transfer to `connor-koczian` has happened;
-- current GitHub state always wins over chat history;
-- imported `python-basics` and `snake-game` history must be preserved.
+Canonical public Connor-owned repositories:
 
-Only after the complete environment is implemented, rehearsed and accepted should repositories be deliberately handed over to Connor's GitHub ownership.
+- Mission Control: `connor-koczian/connor-coding-lab`;
+- Python Basics: `connor-koczian/python-basics`;
+- Snake Game: `connor-koczian/snake-game`.
+
+The corresponding `WebshopCompany` repositories remain private preparation/archive copies and are not current learner authority.
+
+Current GitHub state always wins over chat history. Imported `python-basics` and `snake-game` history must remain preserved; Phase 12 does not authorise history rewriting.
 
 ---
 
@@ -842,15 +844,22 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Curated extension baseline is Antigravity + Python/Pylance/Python Environments/Python Debugger + Ruff.
   - `scripts/setup-connor-user.sh` now configures the final topology/tooling/user-settings model without creating accounts, credentials or GitHub ownership.
   - `scripts/show-my-computer.sh` now uses the final Mission Control path.
-  - GitHub/VS Code identity and credential separation are explicitly deferred to Phase 12 and final Dell acceptance.
+  - GitHub/VS Code identity and credential separation were explicitly deferred to Phase 12 and final Dell acceptance.
   - No Dell lifecycle work was executed; physical Dell authority remains with `gk-home-lab`.
-  - Phase 11 implementation complete on bounded branch `docs/phase11-dell-handover-v2`; merge requires normal CI/PR acceptance.
+  - Phase 11 was merged and accepted on `main` at `5d0b48be60831b2e87f730878fb9f2f59a8c86bf`.
 
-- [ ] **Phase 12 — GitHub ownership handover**
-  - Only after the system is accepted.
-  - Deliberately transfer appropriate repositories to Connor.
-  - Preserve history and remotes.
-  - Revalidate workspace/CI/access.
+- [x] **Phase 12 — GitHub ownership handover**
+  - Completed on 2026-09-23 after the implemented/rehearsed V2 environment was accepted for ownership transfer.
+  - Canonical repositories are now `connor-koczian/connor-coding-lab`, `connor-koczian/python-basics` and `connor-koczian/snake-game`.
+  - All three repositories are public and Connor-owned; the corresponding `WebshopCompany` repositories remain private preparation/archive copies.
+  - Mission Control migration head: `5d0b48be60831b2e87f730878fb9f2f59a8c86bf`.
+  - Python Basics migration head: `55778063bc1fc6e547bedf7eea95664274e78b61`.
+  - Snake Game migration head: `7af14048e972ab079eb52ce875995d8707b3314e`.
+  - Original Connor histories were preserved; no historical commits were rewritten.
+  - The ThinkPad remotes use Connor's repositories and Connor's Git identity for new work.
+  - All three Connor-owned repositories completed their publication CI successfully.
+  - `main` is protected and requires the `validate` status check. The ownership-handover protection configuration also requires PR-based integration; detailed protection fields must be re-checked if repository settings change.
+  - Learner capability/progress is unchanged by repository ownership migration.
 
 - [ ] **Phase 13 — Dell deployment**
   - Only after separate explicit Dell release.
@@ -859,7 +868,7 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
 
 ---
 
-## 22. Acceptance standard before handover
+## 22. Acceptance standard
 
 Do not call V2 ready until evidence demonstrates, as applicable:
 
@@ -903,7 +912,7 @@ V2 is complete only when:
 9. Safety and governance are enforced without unnecessary bureaucracy.
 10. Fresh-clone and ThinkPad rehearsal pass.
 11. Dell handover documentation matches the final design.
-12. GitHub ownership is transferred only after acceptance.
+12. GitHub ownership was transferred after acceptance and current authority points to Connor's repositories.
 13. Dell deployment occurs only after explicit external release.
 
 ---
@@ -916,10 +925,11 @@ Every implementation session must begin with:
 2. verify the pre-V2 backup branch still points to `07871cbf2e96e919b63437a5c91bec8e86a2ffea`;
 3. read this entire document;
 4. inspect changes made since the previous phase;
-5. continue the **first incomplete phase** in the tracker above on its bounded branch;
-6. do not skip behavioural acceptance requirements merely because static implementation exists;
-7. do not split `python-basics` or `snake-game` before their dedicated migration phase;
-8. do not touch the Dell without separate `gk-home-lab` release authority.
+5. continue the **first incomplete phase** in the tracker above on its bounded branch, subject to its release gate;
+6. do not begin Phase 13 unless Geza explicitly releases the Dell for Connor;
+7. do not skip behavioural acceptance requirements merely because static implementation exists;
+8. preserve the existing independent `python-basics` and `snake-game` histories and repository boundaries;
+9. do not touch the Dell without separate `gk-home-lab` release authority.
 
 Continue from the phase tracker in this file rather than reconstructing or redesigning the programme from chat history.
 

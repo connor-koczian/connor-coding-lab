@@ -18,11 +18,11 @@ Use a clean rehearsal location:
 
 Clone each repository independently. Do not use Git submodules and do not copy old `.venv` directories.
 
-Expected preparation repositories:
+Expected canonical repositories:
 
-- `WebshopCompany/connor-coding-lab`
-- `WebshopCompany/python-basics`
-- `WebshopCompany/snake-game`
+- `connor-koczian/connor-coding-lab`
+- `connor-koczian/python-basics`
+- `connor-koczian/snake-game`
 
 ## 2. Git independence
 
@@ -170,11 +170,11 @@ Validate the AI-built browser demonstrations separately from Connor's historical
 Confirm:
 
 - Connor's normal Linux user is not an administrator;
-- Git identity belongs to Connor after Phase 12;
-- repository remotes point to Connor-owned repositories after Phase 12;
+- Git identity belongs to Connor;
+- repository remotes point to the canonical Connor-owned repositories;
 - no Geza GitHub token, SSH private key, browser session or VS Code account remains in Connor's profile;
 - VS Code Settings Sync, if enabled, is attached only to Connor's account;
-- normal Git pull/push/PR operations work without Geza credentials after Phase 12.
+- normal Git pull/push/PR operations work without Geza credentials.
 
 ## 11. Reboot-to-learning acceptance
 
