@@ -23,7 +23,7 @@ Do not enable merely for appearance:
 - deployment requirements;
 - administrator-only workflows Connor cannot understand.
 
-If GitHub presents an approval-count field, use **0 required approvals** during the current preparation phase. The PR itself remains the reviewable change boundary.
+If GitHub presents an approval-count field, use **0 required approvals** for the current learner repository posture. The PR itself remains the reviewable change boundary.
 
 ## Required CI check
 
@@ -52,9 +52,9 @@ Therefore Phase 7 uses this sequence:
 
 The current GitHub integration can inspect repository rulesets but does not have administration permission to configure classic branch protection. Protection must not be claimed until the repository setting is actually observed.
 
-## Future ownership
+## Connor ownership
 
-When repositories are eventually transferred to Connor, re-check ruleset ownership/bypass behaviour. Do not assume organisation settings transfer unchanged.
+Phase 12 transferred publication authority to Connor-owned repositories. Protection must be checked against the Connor repositories rather than assumed to have carried over from `WebshopCompany`.
 
 
 ## Observed active state — 2026-09-23
@@ -81,4 +81,14 @@ Observed repository ruleset:
 
 Merged-main CI run `35835236186` completed successfully on `main` commit `63c1c14a99eb5568e7c88a0b6f079abe78bf7804` before the required check was selected.
 
-The repository is therefore protected according to the Phase 7 target. Re-check this record if the repository is transferred to Connor or organisation/repository settings change.
+This section records the pre-transfer Phase 7 protection state on the preparation repository.
+
+## Post-handover state — 2026-09-23
+
+Canonical repository: `connor-koczian/connor-coding-lab`.
+
+The Phase 12 handover configured protected `main` with PR-based integration and required `validate` CI. CURRENT GitHub branch metadata independently confirms that `main` is protected and that `validate` is required with enforcement for everyone.
+
+Publication CI run `35851754414` completed successfully on Connor-owned `main` commit `5d0b48be60831b2e87f730878fb9f2f59a8c86bf`.
+
+The current ChatGPT GitHub integration can read the public branch summary but receives `403 Resource not accessible by integration` from the detailed branch-protection endpoint. Therefore detailed fields such as approval count, administrator enforcement, force-push/deletion switches and strict/up-to-date policy must be re-checked from Connor's repository settings if they are changed or need fresh independent verification.

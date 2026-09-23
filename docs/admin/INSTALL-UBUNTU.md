@@ -87,16 +87,13 @@ Then inspect and validate:
 
 ## 5. Repository source of truth
 
-During preparation, the canonical remote is:
+Canonical public repositories are:
 
-`WebshopCompany/connor-coding-lab`
+- `connor-koczian/connor-coding-lab`;
+- `connor-koczian/python-basics`;
+- `connor-koczian/snake-game`.
 
-The long-term intended home is:
-
-`connor-koczian/connor-coding-lab`
-
-Clone or transfer all three independent repositories so their Git histories remain intact.
-Do not recreate them by copying working directories without their `.git` histories.
+Re-fetch CURRENT authority from these repositories before the Dell build. Clone all three independently so their Git histories remain intact. Do not recreate them by copying working directories without their `.git` histories.
 
 ## 6. Final acceptance
 
@@ -114,6 +111,6 @@ hardware, Git, Python, Pygame, browser and VS Code checks.
 
 ## 7. Workstation/account configuration
 
-Apply [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md) after repository ownership handover and before final acceptance.
+Apply [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md) during workstation setup and before final acceptance. The repository ownership handover is already complete.
 
 This includes Antigravity, VS Code user settings, Git identity/authentication and the explicit requirement that Connor's normal account remain non-admin.

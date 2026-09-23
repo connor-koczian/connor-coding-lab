@@ -58,7 +58,7 @@ Create the final topology:
 
 Clone all three repositories independently. Do not use Git submodules and do not copy old `.venv` directories.
 
-After Phase 12, use the Connor-owned repository URLs. Do not leave the Dell dependent on Geza's WebshopCompany credentials.
+Use the canonical Connor-owned repository URLs: `connor-koczian/connor-coding-lab`, `connor-koczian/python-basics` and `connor-koczian/snake-game`. Do not leave the Dell dependent on Geza's WebshopCompany credentials.
 
 Open:
 

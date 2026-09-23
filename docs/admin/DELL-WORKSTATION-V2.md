@@ -38,17 +38,17 @@ Canonical workspace:
 
 ## 4. GitHub identity
 
-After Phase 12, Connor uses his own personal GitHub account and the three repositories are handed over deliberately to Connor ownership.
+Phase 12 is complete. Connor's personal GitHub account owns the three canonical public repositories: `connor-koczian/connor-coding-lab`, `connor-koczian/python-basics` and `connor-koczian/snake-game`.
 
 Do not leave Geza's GitHub credentials, tokens, SSH keys or browser sessions in Connor's Linux profile.
 
-Configure Git username/email only from Connor's real GitHub identity during Phase 12. Do not invent an email address in provisioning scripts.
+Configure the Dell Git username/email from Connor's established GitHub identity. Do not invent an email address in provisioning scripts and do not replace Connor's identity with Geza's.
 
 ## 5. VS Code account and sync
 
 VS Code itself does not require an account.
 
-After Phase 12, Connor may sign VS Code into his own GitHub account for GitHub integration and optional Settings Sync.
+Connor may sign VS Code into his own GitHub account for GitHub integration and optional Settings Sync.
 
 Settings Sync is optional. If enabled:
 
@@ -151,7 +151,7 @@ pull.ff = only
 
 No force-push aliases or destructive shortcuts.
 
-After Phase 12, normal network Git operations authenticate as Connor against Connor-owned repositories.
+Normal network Git operations authenticate as Connor against Connor-owned repositories.
 
 ## 11. What provisioning may automate
 
@@ -182,7 +182,7 @@ After the physical Dell is separately released and built, prove:
 
 1. Connor logs in as a normal user.
 2. The three independent repositories exist under `~/Projects/Connor/`.
-3. Remotes point to Connor-owned repositories after Phase 12.
+3. Remotes point to the canonical Connor-owned repositories.
 4. VS Code opens the canonical multi-root workspace.
 5. the neutral terminal opens with no active project venv;
 6. the curated extension set is present;

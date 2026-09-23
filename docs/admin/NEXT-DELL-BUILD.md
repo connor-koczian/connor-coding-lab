@@ -7,12 +7,14 @@ runbooks and the current `main` branch.
 
 ## Current preparation state
 
-Repository source of truth during preparation:
+Canonical repository source of truth:
 
-`WebshopCompany/connor-coding-lab`
+`connor-koczian/connor-coding-lab`
+
+The project repositories are `connor-koczian/python-basics` and `connor-koczian/snake-game`.
 
 Treat current GitHub `main` as canonical. Do not assume a SHA copied into this
-document is still current; re-fetch `main` at the start of the Dell session.
+document is still current; re-fetch CURRENT authority from Connor's repositories at the start of the Dell session.
 
 The preparation phase has already established:
 
@@ -117,9 +119,7 @@ Target topology:
     `-- snake-game/
 ```
 
-Phase 12 must complete the deliberate ownership handover before the final Dell is considered ready for Connor's normal Git workflow.
-
-All three repositories must preserve their existing histories.
+Phase 12 ownership handover is complete. Use the Connor-owned repositories for the final Dell and preserve all three existing histories.
 
 ### 5. Geza/admin provisioning
 
@@ -217,7 +217,7 @@ It does not:
 - create the administrator account;
 - add Connor to sudo;
 - configure private GitHub credentials;
-- transfer repository ownership;
+- change repository ownership;
 - guess hardware workarounds;
 - declare hardware good without physical testing.
 
