@@ -79,3 +79,64 @@ Before Phase 5 is marked complete:
 7. no historical project migration or Dell lifecycle work may be smuggled into Phase 5.
 
 Static documentation presence alone is not sufficient behavioural acceptance.
+
+
+## Behavioural acceptance — 2026-09-23
+
+ThinkPad rehearsal was completed against candidate head `b5ac256e531debbb9dba75993aa6d6832fe96f0a`.
+
+### /start behaviour
+
+Antigravity:
+
+- read the current branch/Git state;
+- read `progress/CONNOR-MASTER-TRACKER.md`;
+- read the V2 mission catalogue and starter mission;
+- inspected current `python-basics` files and project configuration;
+- selected **Mission FND-01 — First Evidence Cycle** from the conservative baseline;
+- verified the real `uv` run/test commands before presenting them;
+- did not invent higher learner capability;
+- did not mutate the tracker or working tree merely to select a mission.
+
+The tracker SHA-256 observed after this rehearsal was:
+
+`e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`
+
+and Git remained clean.
+
+### Bounded starter-mission execution
+
+The rehearsal then executed:
+
+- repository location/status inspection;
+- `printf 'Minecraft\n' | uv run python src/python_basics/hello.py`;
+- `uv run pytest`.
+
+Observed runtime output confirmed that `hello.py` consumed the controlled input and produced its follow-up prompts.
+
+Pytest ran under Python 3.12.14 / pytest 9.1.1 and reported:
+
+`1 passed in 0.01s`
+
+The existing test was also inspected and correctly classified: it tests `python_basics.main()`, not `hello.py`. Therefore the passing pytest result is valid automated-test evidence but is **not** proof of the interactive `hello.py` behaviour. The separate runtime execution provides that evidence.
+
+### Final state
+
+- Tracker SHA-256 unchanged: `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`
+- Working tree: clean
+- Final rehearsal candidate HEAD: `b5ac256e531debbb9dba75993aa6d6832fe96f0a`
+- No historical project migration performed
+- No Dell lifecycle work performed
+
+### Acceptance classification
+
+- Static curriculum/navigation validation: **PASS**
+- V2 `/start` tracker/catalogue integration: **PASS**
+- No learner-state mutation on mission selection: **PASS**
+- Starter mission current-path/command verification: **PASS**
+- Runtime execution evidence: **PASS**
+- Automated test execution: **PASS**
+- Evidence-scope distinction (runtime vs pytest): **PASS**
+- Final repository cleanliness: **PASS**
+
+Phase 5 is behaviourally accepted. PR #15 may proceed through final exact-state review and normal merge if current GitHub authority remains unchanged.
