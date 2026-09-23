@@ -2,6 +2,10 @@
 set -euo pipefail
 
 repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+workspace_root="$(dirname "$repo")"
+projects_root="${CONNOR_PROJECTS_ROOT:-$workspace_root/projects}"
+python_repo="$projects_root/python-basics"
+snake_repo="$projects_root/snake-game"
 
 usage() {
   cat <<'EOF'
@@ -13,7 +17,7 @@ Usage:
   ./scripts/lab status
   ./scripts/lab projects
   ./scripts/lab run <target>
-  ./scripts/lab doctor
+  ./scripts/lab doctor [--mission-control-only]
   ./scripts/lab git <status|diff|staged|log|branch>
   ./scripts/lab computer
   ./scripts/lab maintenance
@@ -29,8 +33,9 @@ Run targets:
 
 Rules:
   - The command prints the real directory and command before execution.
-  - doctor is read-only: it does not install, sync, update or repair.
-  - lab git is inspection-only. Staging/commit/push stay explicit Git work.
+  - doctor is read-only: it does not install, clone, sync, update or repair.
+  - full doctor expects independent projects under ../projects by default.
+  - lab git inspects Mission Control only; project Git remains explicit in each project.
   - system administration is not hidden behind this command.
 EOF
 }
@@ -63,6 +68,16 @@ require_command() {
   fi
 }
 
+require_project() {
+  local name="$1"
+  local path="$2"
+  if [[ ! -d "$path/.git" ]]; then
+    printf 'ERROR: %s independent repository is missing:\n  %s\n' "$name" "$path" >&2
+    echo "Run ./scripts/lab projects to see the expected multi-repository layout." >&2
+    exit 1
+  fi
+}
+
 open_url() {
   local url="$1"
   if command -v xdg-open >/dev/null 2>&1 && [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
@@ -73,14 +88,38 @@ open_url() {
   fi
 }
 
+show_repo_status() {
+  local label="$1"
+  local path="$2"
+
+  echo "$label"
+  printf '  path:   %s\n' "$path"
+
+  if [[ ! -d "$path/.git" ]]; then
+    echo "  state:  MISSING"
+    return
+  fi
+
+  printf '  branch: %s\n' "$(git -C "$path" branch --show-current 2>/dev/null || echo '<unavailable>')"
+  printf '  HEAD:   %s\n' "$(git -C "$path" log -1 --pretty='%h %s' 2>/dev/null || echo '<unavailable>')"
+  local short
+  short="$(git -C "$path" status --short)"
+  if [[ -z "$short" ]]; then
+    echo "  tree:   clean"
+  else
+    echo "  tree:   changes present"
+    printf '%s\n' "$short" | sed 's/^/          /'
+  fi
+}
+
 show_status() {
   echo "== Connor Coding Lab status =="
-  printf 'Repository: %s\n' "$repo"
-  printf 'Branch:     %s\n' "$(git -C "$repo" branch --show-current 2>/dev/null || echo '<not a Git repository>')"
-  printf 'HEAD:       %s\n' "$(git -C "$repo" log -1 --pretty='%h %s' 2>/dev/null || echo '<unavailable>')"
   echo
-  echo "Git working tree:"
-  git -C "$repo" status --short --branch
+  show_repo_status "Mission Control" "$repo"
+  echo
+  show_repo_status "Python Basics" "$python_repo"
+  echo
+  show_repo_status "Snake Game" "$snake_repo"
   echo
   printf 'Mission catalogue: %s\n' "$repo/missions/README.md"
   printf 'Learner tracker:   %s\n' "$repo/progress/CONNOR-MASTER-TRACKER.md"
@@ -93,27 +132,46 @@ show_projects() {
 Mission Control
   path: $repo
   role: learning/control plane
+  remote: WebshopCompany/connor-coding-lab
 
 Python Basics
-  path: $repo/python-basics
+  path: $python_repo
+  remote: WebshopCompany/python-basics
   run:  ./scripts/lab run python-basics
 
 Snake Game
-  path: $repo/snake-game
+  path: $snake_repo
+  remote: WebshopCompany/snake-game
   run:  ./scripts/lab run snake-classic
         ./scripts/lab run snake-campaign
         ./scripts/lab run browser-snake
 
 AI-built showcases
+  path: Mission Control
   run:  ./scripts/lab run neon-city-preview
         ./scripts/lab run snake-overdrive
 
-Note: Python Basics and Snake Game are still historical folders inside
-Mission Control until the dedicated history-preserving migration phase.
+Expected topology:
+
+  <workspace>/
+    connor-coding-lab/
+    projects/
+      python-basics/
+      snake-game/
+
+Each project is an independent Git repository. There are no Git submodules.
 EOF
 }
 
 doctor() {
+  local mode="full"
+  if [[ "${1:-}" == "--mission-control-only" ]]; then
+    mode="mission-control-only"
+  elif [[ -n "${1:-}" ]]; then
+    printf 'ERROR: unknown doctor option: %s\n' "$1" >&2
+    exit 2
+  fi
+
   local failures=0
   local warnings=0
 
@@ -122,7 +180,8 @@ doctor() {
   warn() { printf 'WARN  %s\n' "$1"; warnings=$((warnings + 1)); }
 
   echo "== Connor Coding Lab doctor =="
-  echo "Read-only checks only. No install, sync, update or repair is performed."
+  echo "Read-only checks only. No install, clone, sync, update or repair is performed."
+  printf 'Mode: %s\n' "$mode"
   echo
 
   if [[ "${EUID}" -eq 0 ]]; then
@@ -153,8 +212,7 @@ doctor() {
   [[ -f "$repo/START-HERE.md" ]] && pass "START-HERE.md present" || fail "START-HERE.md present"
   [[ -f "$repo/missions/README.md" ]] && pass "V2 mission catalogue present" || fail "V2 mission catalogue present"
   [[ -f "$repo/progress/CONNOR-MASTER-TRACKER.md" ]] && pass "canonical learner tracker present" || fail "canonical learner tracker present"
-  [[ -f "$repo/python-basics/pyproject.toml" ]] && pass "Python Basics project metadata present" || fail "Python Basics project metadata present"
-  [[ -f "$repo/snake-game/pyproject.toml" ]] && pass "Snake project metadata present" || fail "Snake project metadata present"
+  [[ -f "$repo/Connor-Coding-Lab.code-workspace" ]] && pass "multi-root workspace file present" || fail "multi-root workspace file present"
 
   if command -v uv >/dev/null 2>&1; then
     if uv python find 3.12 >/dev/null 2>&1; then
@@ -166,9 +224,9 @@ doctor() {
 
   if [[ -d "$repo/.git" ]]; then
     if [[ -z "$(git -C "$repo" status --porcelain)" ]]; then
-      pass "working tree clean"
+      pass "Mission Control working tree clean"
     else
-      warn "working tree has changes; inspect with ./scripts/lab git status and ./scripts/lab git diff"
+      warn "Mission Control working tree has changes"
     fi
   fi
 
@@ -176,6 +234,28 @@ doctor() {
     warn "active VIRTUAL_ENV=${VIRTUAL_ENV}; Mission Control should normally use a neutral shell"
   else
     pass "no active project virtual environment in this shell"
+  fi
+
+  if [[ "$mode" == "full" ]]; then
+    [[ -d "$projects_root" ]] && pass "projects directory present: $projects_root" || fail "projects directory present: $projects_root"
+
+    if [[ -d "$python_repo/.git" ]]; then
+      pass "Python Basics independent Git repository present"
+      [[ -f "$python_repo/pyproject.toml" ]] && pass "Python Basics project metadata present" || fail "Python Basics project metadata present"
+      [[ -z "$(git -C "$python_repo" status --porcelain)" ]] && pass "Python Basics working tree clean" || warn "Python Basics working tree has changes"
+    else
+      fail "Python Basics independent Git repository present at $python_repo"
+    fi
+
+    if [[ -d "$snake_repo/.git" ]]; then
+      pass "Snake Game independent Git repository present"
+      [[ -f "$snake_repo/pyproject.toml" ]] && pass "Snake project metadata present" || fail "Snake project metadata present"
+      [[ -z "$(git -C "$snake_repo" status --porcelain)" ]] && pass "Snake working tree clean" || warn "Snake working tree has changes"
+    else
+      fail "Snake Game independent Git repository present at $snake_repo"
+    fi
+  else
+    pass "independent project checks skipped by explicit Mission Control CI mode"
   fi
 
   echo
@@ -208,21 +288,25 @@ run_target() {
   case "$target" in
     python-basics)
       require_command uv
-      run_in "$repo/python-basics" uv run python src/python_basics/hello.py
+      require_project "Python Basics" "$python_repo"
+      run_in "$python_repo" uv run python src/python_basics/hello.py
       ;;
     snake-classic)
       require_command uv
-      run_in "$repo/snake-game" uv run python src/snake_game/classic_snake.py
+      require_project "Snake Game" "$snake_repo"
+      run_in "$snake_repo" uv run python src/snake_game/classic_snake.py
       ;;
     snake-campaign)
       require_command uv
-      run_in "$repo/snake-game" uv run python src/snake_game/__init__.py
+      require_project "Snake Game" "$snake_repo"
+      run_in "$snake_repo" uv run python src/snake_game/__init__.py
       ;;
     browser-snake)
       require_command uv
+      require_project "Snake Game" "$snake_repo"
       echo "Press Ctrl+C in this terminal when the browser server is finished."
       open_url "http://127.0.0.1:8000/"
-      run_in "$repo/snake-game" uv run python -m http.server 8000 --directory web
+      run_in "$snake_repo" uv run python -m http.server 8000 --directory web
       ;;
     neon-city-preview)
       ensure_uv_python_312
@@ -271,9 +355,9 @@ git_inspect() {
       run_in "$repo" git branch --show-current
       ;;
     *)
-      echo "ERROR: lab git is inspection-only." >&2
+      echo "ERROR: lab git is Mission Control inspection-only." >&2
       echo "Use one of: status, diff, staged, log, branch" >&2
-      echo "Staging, commit, pull, push and history changes remain explicit Git work." >&2
+      echo "For project Git, enter that independent project and use Git directly." >&2
       exit 2
       ;;
   esac
@@ -361,7 +445,7 @@ case "$command" in
   status) show_status ;;
   projects) show_projects ;;
   run) run_target "${1:-}" ;;
-  doctor) doctor ;;
+  doctor) doctor "${1:-}" ;;
   git) git_inspect "${1:-status}" ;;
   computer) "$repo/scripts/show-my-computer.sh" ;;
   maintenance) show_maintenance_boundary ;;
