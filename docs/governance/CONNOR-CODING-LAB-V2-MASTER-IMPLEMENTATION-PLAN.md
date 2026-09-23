@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 8 EXTRACTION COMPLETE / PHASE 9 NEXT  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 9 MULTI-REPOSITORY CANDIDATE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -803,8 +803,17 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Embedded project directories remain temporarily in Mission Control until Phase 9 rewires the cockpit, tooling, CI, missions and documentation to the independent repositories and validates the replacement topology.
 
 - [ ] **Phase 9 — Multi-repository workspace integration**
-  - Wire Mission Control and independent projects into one workspace/Antigravity project.
-  - Validate Git independence and navigation.
+  - Branch: `integration/multi-repo-workspace-v1`.
+  - Target topology: `~/Projects/Connor/connor-coding-lab` plus `~/Projects/Connor/projects/python-basics` and `~/Projects/Connor/projects/snake-game`.
+  - Rewired `Connor-Coding-Lab.code-workspace` to the two sibling independent repositories; no Git submodules.
+  - Rewired VS Code Python/Snake tasks to named independent workspace roots.
+  - Reworked `scripts/lab` to discover the sibling project repositories, show independent Git state, run targets from the correct repository and perform a read-only multi-repository doctor.
+  - Added explicit `--mission-control-only` doctor mode for Mission Control CI; local full doctor still requires the two project repositories.
+  - Scoped Mission Control CI to the control plane and workspace JSON. Python Basics and Snake now each have their own independent `validate` CI workflow.
+  - Retired the old destructive `cleanup-legacy-workspace.sh` behaviour because independent project directories must never be treated as disposable legacy folders.
+  - Updated current learner missions, tracker repository references, security text and fresh-clone acceptance to the independent-repository model without promoting learner capability.
+  - Candidate removes the duplicate embedded `python-basics/` and `snake-game/` trees only after independent histories, project CI and replacement paths exist.
+  - Phase 9 remains incomplete until static CI and a clean ThinkPad target-layout rehearsal prove workspace roots, Git independence, launcher behaviour, project execution and Antigravity current-path discovery.
 
 - [ ] **Phase 10 — ThinkPad rehearsal**
   - Fresh clone(s).
