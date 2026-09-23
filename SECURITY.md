@@ -71,13 +71,11 @@ The physical Dell lifecycle remains governed by `gk-home-lab`.
 
 ## CI
 
-GitHub Actions CI is independent evidence for a save point. It currently checks:
+GitHub Actions CI is independent evidence for a save point.
 
-- tracked-file repository policy;
-- shell syntax;
-- read-only lab doctor;
-- Python Basics lockfile environment, Ruff and pytest;
-- Snake lockfile environment and Pygame import.
+Mission Control CI checks its own repository policy, shell syntax, workspace JSON and read-only Mission Control doctor.
+
+Python Basics and Snake Game have their own independent repository CI. Project CI follows each project into its own repository rather than being hidden inside Mission Control.
 
 A green CI run does not prove interactive GUI/game/browser behaviour.
 
