@@ -4,7 +4,7 @@
 
 ## Where am I?
 
-The small historical `python-basics` project.
+The independent **Python Basics** project repository.
 
 ## What am I learning?
 
@@ -23,7 +23,7 @@ Values, input/output and predicting behaviour before execution.
 
 ## How do I run it?
 
-Antigravity must verify the current entry point and commands from `python-basics/pyproject.toml` and project files before running them.
+Antigravity must verify the current entry point and commands from the **Python Basics workspace root** and its `pyproject.toml` before running them.
 
 ## How do I know it worked?
 
