@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 9 ACCEPTED / PHASE 10 NEXT  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 10 ACCEPTED / PHASE 11 NEXT  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -819,15 +819,19 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Learner tracker SHA remained unchanged during the system rehearsal.
   - Phase 9 accepted. Phase 10 is the next incomplete phase.
 
-- [ ] **Phase 10 — ThinkPad rehearsal**
-  - Fresh clone(s).
-  - Full learner flow.
-  - Antigravity session start/finish.
-  - Tracker mutation.
-  - Python/Pygame/browser execution.
-  - Git/PR workflow.
-  - Offline material.
-  - Collect practical feedback.
+- [x] **Phase 10 — ThinkPad rehearsal**
+  - Fresh-cloned Mission Control, Python Basics and Snake Game from final `main` into the target `~/Projects/Connor/` topology.
+  - Verified exact expected heads, `main` branches and clean working trees in all three repositories.
+  - Full multi-repository `./scripts/lab doctor` passed.
+  - Python Basics ran through Mission Control using uv-managed Python 3.12.14; Ruff passed and pytest reported `1 passed`.
+  - Snake Game created its uv environment under Python 3.12.14 and passed static compilation.
+  - All learner menu items and interactive games/showcases were exercised successfully, including Pygame and browser targets.
+  - Antigravity `/start` read the canonical tracker, discovered the independent project roots and selected Mission FND-01 from current evidence.
+  - Antigravity `/finish` correctly detected that no Connor learner evidence had been produced and left capability states unchanged; the evidence gate was therefore exercised without fabricating progress.
+  - Git workflow rehearsal covered branch creation, `git status`, exact-file diff, specific-file staging and cached-diff inspection. This Phase 10 closeout PR supplies the real PR/CI/merge portion of the workflow evidence rather than creating a meaningless rehearsal PR.
+  - Offline navigation and local learning material were verified without depending on GitHub/web access.
+  - Practical feedback: target paths, project discovery, menu/runtime behaviour and mentor session flow were usable on the ThinkPad; no Phase 10 blocker was observed.
+  - Phase 10 accepted on 2026-09-23.
 
 - [ ] **Phase 11 — Dell handover authority V2**
   - Update future Dell build docs to match final architecture.
