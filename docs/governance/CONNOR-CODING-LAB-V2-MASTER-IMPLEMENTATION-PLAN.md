@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 4 CANDIDATE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 4 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -717,20 +717,20 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - `CAN DIRECT AI` and `CAN VERIFY AI` remained distinct throughout acceptance.
   - Phase 3 merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64` after behavioural acceptance.
 
-- [ ] **Phase 4 — VS Code / cockpit UX**
+- [x] **Phase 4 — VS Code / cockpit UX**
   - Branch: `ux/vscode-mission-control-v1`
-  - Candidate implementation in progress.
+  - PR: `#14`
   - Added canonical `Connor-Coding-Lab.code-workspace`.
   - Added a transitional three-root cockpit: Mission Control, Python Basics and Snake Game, without submodules.
   - Hid nested historical project folders from the Mission Control root to avoid duplicate Explorer/search results.
   - Added Markdown preview-first editing while preserving raw Markdown Git diffs.
   - Added a safe automatic interactive Mission Control terminal task for trusted workspaces.
-  - Added workspace/folder settings intended to keep the terminal neutral and project execution explicit through `uv run ...`.
+  - Kept the Mission Control terminal neutral; ThinkPad rehearsal confirmed `VIRTUAL_ENV=<none>`.
   - Added curated Antigravity/Python/Pylance/Python-Environments/debugpy/Ruff extension recommendations.
   - Added visible Git-status, lab-menu, Python run/test/lint and Snake run tasks.
   - Disabled smart commit and automatic fetch to preserve Git learning and avoid private-remote authentication noise.
-  - Added `docs/mentor/VSCODE-COCKPIT-V1-IMPLEMENTATION.md` with terminal/user-setting boundaries and rehearsal acceptance.
-  - Phase 4 remains incomplete until the ThinkPad confirms workspace layout, neutral automatic terminal, Markdown preview behaviour, skills discovery and task execution.
+  - ThinkPad behavioural acceptance on 2026-09-23 confirmed the intended three-root Explorer layout without duplicates, rendered `START-HERE.md`, Antigravity `/start` discovery, Git-status task execution, `Python Basics: Tests` with 1 passing test, and a clean final working tree at the accepted candidate head.
+  - Phase 4 behaviourally accepted on PR #14 and pending merge into `main`.
 
 - [ ] **Phase 5 — AI-native curriculum**
   - Branch: `learning/ai-native-curriculum-v1`
