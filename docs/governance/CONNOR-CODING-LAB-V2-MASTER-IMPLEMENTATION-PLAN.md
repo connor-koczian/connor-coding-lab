@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 6 CANDIDATE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 6 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -751,8 +751,9 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `b5ac256e531debbb9dba75993aa6d6832fe96f0a`.
   - Phase 5 merged into `main` at `9c3fa2ceefa1cf203d0bf9ab547b17b1478ca003` after behavioural acceptance.
 
-- [ ] **Phase 6 — Lab control tooling**
+- [x] **Phase 6 — Lab control tooling**
   - Branch: `tooling/lab-control-v2`
+  - PR: `#16`
   - Candidate implementation in progress from Phase 5 merged `main`.
   - Added executable learner control entry point at `./scripts/lab`.
   - Added help/start/status/projects/run/doctor/git/computer/maintenance/menu capabilities.
@@ -762,7 +763,12 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Converted `scripts/run-lab.sh` and `scripts/check-environment.sh` into compatibility shims to the V2 control command.
   - Updated VS Code tasks to expose Lab Status, Lab Doctor and the V2 Lab Menu.
   - Added `docs/mentor/LAB-CONTROL-V2-IMPLEMENTATION.md` with design and ThinkPad acceptance requirements.
-  - Phase 6 remains incomplete until Bash syntax/static safety checks and ThinkPad behavioural rehearsal pass.
+  - Static validation confirmed executable script modes, valid VS Code task JSON, no hidden `uv sync`, and no Git fetch/pull/push/add/commit operations in the new control command.
+  - ThinkPad rehearsal completed the prescribed Phase 6 command set, including syntax/help/status/projects/doctor/Git-inspection/Python-run and compatibility checks.
+  - `lab doctor` reported `DOCTOR: PASS` as normal user `connor`, with Git, uv, VS Code, Python 3.12 and required repository metadata present, a clean working tree, and no active project virtual environment.
+  - Legacy `run-lab.sh` compatibility menu exited cleanly; legacy `check-environment.sh` visibly forwarded to the read-only doctor.
+  - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `084f9220b3a1fcf5255343b81dfd9d5adcf1e07a`.
+  - Phase 6 behaviourally accepted on PR #16 and pending merge into `main`.
 
 - [ ] **Phase 7 — Safety, governance and CI**
   - Branch: `governance/safety-ci-v1`
