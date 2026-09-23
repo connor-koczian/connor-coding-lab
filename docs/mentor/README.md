@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phase 2 is accepted and merged into `main`. Phase 3 tracker integration is implemented on `learning/master-tracker-v1` pending behavioural acceptance.**
+**Phase 2 and Phase 3 are accepted and merged into `main`. Phase 4 cockpit UX is implemented on `ux/vscode-mission-control-v1` pending behavioural acceptance.**
 
 The system now has three durable layers:
 
@@ -15,6 +15,8 @@ The system now has three durable layers:
 The canonical learner-state file now exists at `progress/CONNOR-MASTER-TRACKER.md`.
 
 Phase 3 also activates `.agents/skills/update-master-tracker/SKILL.md` and integrates tracker authority into session start/finish behaviour.
+
+Phase 4 adds `Connor-Coding-Lab.code-workspace`, curated VS Code settings/extensions/tasks, a neutral Mission Control terminal design and Markdown preview-first navigation.
 
 ## Learner commands
 
@@ -37,7 +39,7 @@ Google states that legacy Workflows are deprecated and will be retired on 2026-1
 
 Creating new workflow files now would introduce immediate migration debt.
 
-See `ANTIGRAVITY-V2-IMPLEMENTATION.md` for Phase 2 evidence and `MASTER-TRACKER-V1-IMPLEMENTATION.md` for the Phase 3 evidence/update protocol and acceptance checks.
+See `ANTIGRAVITY-V2-IMPLEMENTATION.md` for Phase 2 evidence, `MASTER-TRACKER-V1-IMPLEMENTATION.md` for Phase 3, and `VSCODE-COCKPIT-V1-IMPLEMENTATION.md` for the Phase 4 cockpit design and acceptance checks.
 
 ## Governance boundary
 

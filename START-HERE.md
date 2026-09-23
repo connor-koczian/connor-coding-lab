@@ -49,8 +49,9 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | Snake: OVERDRIVE | ✅ AI-built showcase |
 | Your real Neon City project | ⏳ Not created yet |
 | V2 Antigravity mentor system | ✅ Accepted and merged |
-| V2 master progress tracker | 🧪 Phase 3 candidate — implemented, awaiting behavioural acceptance |
-| V2 mission library | 🚧 Being built |
+| V2 master progress tracker | ✅ Accepted and merged |
+| V2 VS Code learner cockpit | 🧪 Phase 4 candidate — implemented, awaiting behavioural acceptance |
+| V2 mission library | 🚧 Later curriculum phase |
 
 A preview is not the same thing as your own project.
 
@@ -58,15 +59,30 @@ When your real Neon City begins, **you** decide its world, mechanics, characters
 
 ---
 
-## ▶️ Start the current lab
+## 🖥️ Open your cockpit
 
-Open the terminal in this repository and run:
+The intended Phase 4 workspace is:
+
+`Connor-Coding-Lab.code-workspace`
+
+Open that workspace in VS Code.
+
+You should then have:
+
+- **Mission Control** — learning/navigation/control-plane material;
+- **Python Basics** — your current Python learning project;
+- **Snake Game** — your historical game project;
+- **Antigravity** — your mentor/coding agent;
+- **Source Control** — Git changes and history;
+- **Integrated Terminal** — your real shell, available from the workspace.
+
+The Phase 4 candidate is designed to open a neutral Mission Control terminal automatically in a trusted workspace. It should **not** silently activate `python-basics/.venv`; project commands should use `uv run ...` explicitly.
+
+You can still launch the current menu manually:
 
 ```bash
 ./scripts/run-lab.sh
 ```
-
-That launches the current accepted games and tools while Mission Control V2 is being built.
 
 ---
 
@@ -159,8 +175,14 @@ If something requires `sudo`, account changes, system packages or other machine-
 
 ---
 
-## 🏁 For now
+## ⚡ Fast start
 
-Explore the current lab, existing missions and projects.
+Once the Phase 4 cockpit is accepted, your normal start should be:
 
-Mission Control V2 is being assembled in stages so that when it becomes your normal environment, the pieces are real, tested and understandable.
+1. open `Connor-Coding-Lab.code-workspace`;
+2. use `/start` in Antigravity;
+3. follow the current mission;
+4. use the integrated terminal and visible tasks to run/test;
+5. inspect Git before saving progress.
+
+The cockpit is still under Phase 4 rehearsal, so report anything that opens in the wrong place, activates the wrong Python environment, hides Git evidence, or behaves differently from these instructions.
