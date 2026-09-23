@@ -23,7 +23,7 @@ The preparation phase has already established:
 - Ruff and pytest are configured where currently used;
 - Dell provisioning/user-setup/environment-check scripts exist;
 - the ThinkPad rehearsal proved the core Python 3.12 / uv / Ruff / pytest / Pygame workflow;
-- Connor's intended workspace is `/home/connor/Projects/connor-coding-lab`;
+- Connor's intended workspace topology is `/home/connor/Projects/Connor/` with independent Mission Control, Python Basics and Snake repositories;
 - Connor should use a normal non-admin account;
 - Geza should retain a separate administrator account;
 - the AI demos are demonstrations only and are not Connor's historical work;
@@ -103,35 +103,30 @@ sudo adduser connor
 
 Do not add Connor to the `sudo` group for ordinary development.
 
-### 4. Put the complete repository on the Dell
+### 4. Put the final three-repository workspace on the Dell
 
-Use the complete Git repository, not copied individual project folders.
+Use the independent Git repositories, not copied working folders and not Git submodules.
 
-Target path:
-
-```text
-/home/connor/Projects/connor-coding-lab
-```
-
-During preparation the canonical remote is:
+Target topology:
 
 ```text
-WebshopCompany/connor-coding-lab
+/home/connor/Projects/Connor/
+|-- connor-coding-lab/
+`-- projects/
+    |-- python-basics/
+    `-- snake-game/
 ```
 
-The intended long-term repository is:
+Phase 12 must complete the deliberate ownership handover before the final Dell is considered ready for Connor's normal Git workflow.
 
-```text
-connor-koczian/connor-coding-lab
-```
-
-Only perform that handover deliberately and preserve the imported history.
+All three repositories must preserve their existing histories.
 
 ### 5. Geza/admin provisioning
 
-From the repository root, as an administrator:
+From Mission Control, as an administrator:
 
 ```bash
+cd /home/connor/Projects/Connor/connor-coding-lab
 sudo ./scripts/admin/provision-ubuntu.sh
 ```
 
@@ -143,9 +138,10 @@ It does not install project Python packages globally.
 
 Log into the graphical desktop as Connor.
 
-From the repository root, without sudo:
+From Mission Control, without sudo:
 
 ```bash
+cd /home/connor/Projects/Connor/connor-coding-lab
 ./scripts/setup-connor-user.sh
 ```
 
@@ -204,7 +200,7 @@ The repository automates/configures:
 - Microsoft's VS Code package;
 - `uv`;
 - Python 3.12;
-- VS Code Python and Ruff extensions;
+- VS Code Antigravity, Python, Pylance, Python Environments, Debugger and Ruff extensions;
 - per-project dependency environments;
 - Python Basics lint/tests;
 - Pygame dependency/import checks;
@@ -233,3 +229,18 @@ Do not build Connor's real `neon-city/` before he chooses its direction.
 
 The next programming session with Connor should begin from his historical work,
 the learning missions and the demos, then let Connor choose the next save point.
+
+
+## Final software/account baseline
+
+Before final acceptance, apply [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md).
+
+That document is the authority for:
+
+- Antigravity as the primary mentor;
+- Copilot not being part of the baseline;
+- VS Code user settings;
+- GitHub/Git identity;
+- account/credential separation;
+- Settings Sync policy;
+- final reboot-to-/start acceptance.
