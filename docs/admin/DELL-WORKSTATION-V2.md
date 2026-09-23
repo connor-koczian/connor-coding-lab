@@ -22,149 +22,146 @@ It does not authorise wiping, repartitioning, BIOS changes, Ubuntu installation 
 
 Each directory is an independent Git repository. There are no Git submodules.
 
-The canonical VS Code workspace is:
+Canonical workspace:
 
 ```text
 /home/connor/Projects/Connor/connor-coding-lab/Connor-Coding-Lab.code-workspace
 ```
 
-## 3. Accounts and identities
-
-### Linux
+## 3. Linux account model
 
 - daily account: `connor`;
-- Connor is not in the sudo group for ordinary development;
+- Connor remains a normal non-admin user;
 - Geza retains a separate administrator account;
-- ordinary coding must not require administrator privileges.
+- ordinary coding must not require `sudo`;
+- Antigravity must not receive unrestricted administrator/root authority.
 
-### GitHub
+## 4. GitHub identity
 
-Connor uses his own personal GitHub account after Phase 12 ownership handover.
+After Phase 12, Connor uses his own personal GitHub account and the three repositories are handed over deliberately to Connor ownership.
 
-Do not leave Geza's GitHub credentials, tokens, SSH keys or browser sessions in Connor's profile.
+Do not leave Geza's GitHub credentials, tokens, SSH keys or browser sessions in Connor's Linux profile.
 
-Git identity must be configured to Connor's own chosen GitHub identity during Phase 12. Do not invent an email address in provisioning scripts.
+Configure Git username/email only from Connor's real GitHub identity during Phase 12. Do not invent an email address in provisioning scripts.
 
-### VS Code sign-in
+## 5. VS Code account and sync
 
 VS Code itself does not require an account.
 
-After Phase 12, sign VS Code into Connor's own GitHub account so GitHub authentication, Copilot and optional Settings Sync belong to Connor rather than Geza.
+After Phase 12, Connor may sign VS Code into his own GitHub account for GitHub integration and optional Settings Sync.
 
-Settings Sync is optional. If enabled, enable it only after the local baseline is correct and review the initial merge/replace choice deliberately.
+Settings Sync is optional. If enabled:
 
-## 4. AI mentor platform
+- first establish the correct local baseline;
+- review the initial merge/replace choice;
+- sync Connor's settings only;
+- do not import Geza's unrelated extensions or account state.
 
-### Current approved surface: GitHub Copilot in VS Code
+## 6. Primary AI mentor: Antigravity
 
-Google's current published Antigravity eligibility excludes under-18 users. Connor must therefore not be signed into Antigravity or use another person's Google account as a workaround.
+Antigravity remains the intended day-to-day mentor, coding agent, debugger, tester and reviewer for Connor Coding Lab.
 
-The current supported mentor surface is GitHub Copilot in VS Code.
+The repository-native control layer remains:
 
-Current VS Code releases ship Copilot Chat as a built-in AI surface. The repository's portable AI control layer is:
-
-- root `AGENTS.md`;
+- root `GEMINI.md`;
 - `.agents/rules/`;
 - `.agents/skills/`;
 - `progress/CONNOR-MASTER-TRACKER.md`.
 
-Current VS Code Copilot supports Agent Skills from `.agents/skills/`, including slash-command invocation. This preserves the intended `/start`, `/mission`, `/build`, `/debug`, `/review`, `/finish`, `/new-project` and `/maintenance` model.
+The learner commands remain:
 
-### Copilot plan
+- `/start`
+- `/mission`
+- `/build`
+- `/debug`
+- `/review`
+- `/finish`
+- `/new-project`
+- `/maintenance`
 
-Preferred:
+Do not replace this architecture with Copilot merely because Copilot is available in VS Code.
 
-1. Connor owns a normal GitHub personal account.
-2. Apply for GitHub Education if his current school evidence meets GitHub's requirements.
-3. If verified, activate Copilot Student.
-4. If verification is pending or unavailable, Copilot Free is an acceptable baseline subject to its usage limits.
-5. Do not purchase a paid Copilot plan merely to complete the Dell build.
+Antigravity sign-in and account authorisation are explicit deployment steps. They must use an account that is eligible under the provider's current rules at deployment time. Do not encode credentials or account workarounds in the repository.
 
-### AI privacy and telemetry baseline
+## 7. Copilot policy
 
-For Connor's VS Code user profile:
+GitHub Copilot is not required for the baseline Connor environment.
 
-- set `telemetry.telemetryLevel` to `off`;
-- review Copilot account privacy/policy controls under Connor's own GitHub account;
-- do not connect unnecessary MCP servers or external services;
-- never provide secrets or private family information to an AI tool;
-- keep provider/model choice subordinate to repository evidence and safety rules.
+Default Phase 11 decision:
 
-## 5. VS Code baseline
+- do not rely on Copilot for the learning system;
+- do not purchase Copilot simply to complete the Dell build;
+- if VS Code exposes Copilot UI by default and Connor is not using it, disable/hide it to reduce confusion;
+- Copilot can be reconsidered later as a secondary comparison tool.
+
+## 8. VS Code baseline
 
 Use current stable Microsoft Visual Studio Code from Microsoft's supported Ubuntu repository.
 
-Repository/workspace settings remain authoritative for the cockpit:
+Curated extension baseline:
 
-- three workspace roots;
+- `google.google-antigravity`;
+- `ms-python.python`;
+- `ms-python.vscode-pylance`;
+- `ms-python.vscode-python-envs`;
+- `ms-python.debugpy`;
+- `charliermarsh.ruff`.
+
+Do not install a large extension collection by default.
+
+Repository/workspace settings provide:
+
+- the three-root cockpit;
 - rendered Markdown-first navigation;
 - neutral Mission Control terminal;
 - no Git smart commit;
 - no automatic Git fetch;
 - sync confirmation;
-- manual project execution through explicit tasks/commands.
+- explicit project execution.
 
-### Python extensions
-
-Curated extension set:
-
-- Microsoft Python;
-- Pylance;
-- Python Environments;
-- Python Debugger;
-- Ruff.
-
-Do not install a large extension collection by default.
-
-### Python terminal policy
-
-Set the Connor-user setting:
+Connor-user VS Code settings should include:
 
 ```json
-"python-envs.terminal.autoActivationType": "off"
+{
+  "python-envs.terminal.autoActivationType": "off",
+  "python-envs.alwaysUseUv": true,
+  "telemetry.telemetryLevel": "off"
+}
 ```
 
-This is user-scoped in current VS Code and prevents the Python Environments extension from silently activating one project's environment in the neutral Mission Control terminal.
+The neutral Mission Control terminal must not silently activate a project virtual environment.
 
-Also set:
-
-```json
-"python-envs.alwaysUseUv": true
-```
-
-Project execution remains explicit with `uv run ...`.
-
-## 6. Python/tooling baseline
+## 9. Python and uv baseline
 
 - project baseline: Python 3.12;
-- Python installed/managed through `uv`;
-- no copied `.venv` directories;
-- no raw `pip` as the normal workflow;
-- project dependencies recreated from committed project metadata/lock files;
-- Ruff/pytest used where declared by the project.
+- `uv` manages Python and project environments;
+- do not copy `.venv` directories between machines;
+- do not use raw `pip` as the normal workflow;
+- recreate project dependencies from committed metadata/lock files;
+- use Ruff/pytest where the project declares them.
 
-## 7. Git baseline
+## 10. Git baseline
 
-Global safe defaults for Connor:
+Safe global defaults:
 
 ```text
 init.defaultBranch = main
 pull.ff = only
 ```
 
-Do not globally configure destructive shortcuts or force-push aliases.
+No force-push aliases or destructive shortcuts.
 
-After Phase 12, normal Git network operations must authenticate as Connor. Until ownership handover, temporary WebshopCompany access remains an admin/preparation concern and must not become Connor's long-term credential model.
+After Phase 12, normal network Git operations authenticate as Connor against Connor-owned repositories.
 
-## 8. What provisioning may automate
+## 11. What provisioning may automate
 
 The final provisioning/user-setup path may automate:
 
-- supported system prerequisites;
-- current stable VS Code installation;
+- supported machine-level prerequisites;
+- stable VS Code installation;
 - `uv` installation for Connor;
 - uv-managed Python 3.12;
-- curated Python/Ruff VS Code extensions;
+- the curated VS Code extension set;
 - safe Connor-user VS Code settings;
 - target directory creation;
 - static/read-only environment checks.
@@ -172,39 +169,36 @@ The final provisioning/user-setup path may automate:
 It must not automate:
 
 - disk wiping or Ubuntu installation;
-- GitHub account creation;
-- GitHub Education verification;
-- Copilot Student activation;
-- browser sign-ins;
-- repository ownership transfer;
-- secret/token creation or copying;
+- private account creation;
+- browser/account sign-ins;
+- GitHub ownership transfer;
+- credential/token creation or copying;
 - administrator elevation for Connor;
-- acceptance claims that require GUI/hardware observation.
+- hardware acceptance claims.
 
-## 9. Dell acceptance after separate release
+## 12. Final Dell acceptance
 
-After the physical build is authorised and completed, acceptance must prove:
+After the physical Dell is separately released and built, prove:
 
 1. Connor logs in as a normal user.
-2. The three-repository topology exists.
-3. All remotes point to Connor-owned repositories after Phase 12.
+2. The three independent repositories exist under `~/Projects/Connor/`.
+3. Remotes point to Connor-owned repositories after Phase 12.
 4. VS Code opens the canonical multi-root workspace.
 5. the neutral terminal opens with no active project venv;
-6. the curated extensions are present;
-7. Connor is signed into his own GitHub account;
-8. Copilot is available under Connor's own eligible plan;
-9. `/start` discovers the repository skills and tracker;
-10. `/finish` applies evidence rules correctly;
-11. `./scripts/lab doctor` passes;
-12. Python/Ruff/pytest pass;
-13. Classic Snake and Campaign Snake work interactively;
-14. browser Snake and showcases work;
-15. no ordinary workflow requires `sudo`;
-16. no Geza credentials remain in Connor's user profile;
-17. reboot -> login -> open workspace -> `/start` works without parent intervention.
+6. the curated extension set is present;
+7. Antigravity is available through an authorised account;
+8. `/start` discovers the rules, skills and tracker;
+9. `/finish` enforces evidence-based learner progress;
+10. `./scripts/lab doctor` passes;
+11. Python/Ruff/pytest pass;
+12. Classic Snake and Campaign Snake work interactively;
+13. browser Snake and showcases work;
+14. ordinary work needs no `sudo`;
+15. no Geza credentials remain in Connor's profile;
+16. reboot -> login -> open workspace -> `/start` works without parent intervention.
 
-## 10. Future Antigravity reconsideration
+## 13. Provider changes
 
-If Google later changes Antigravity eligibility so Connor can legitimately use it, reassess it against the current repository and provider terms at that future date.
+Antigravity, VS Code and account rules can change.
 
-Do not assume future eligibility from this document.
+At actual Dell deployment time, verify current provider documentation before sign-in or extension configuration. Do not assume this Phase 11 document overrides provider eligibility, account or licensing rules.
