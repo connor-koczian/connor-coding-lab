@@ -1,26 +1,23 @@
 # 🧪 Practice
 
-This area is for small, focused experiments.
+Practice isolates one skill so it can be tried, broken and repeated cheaply.
 
-Practice should be cheap to change, break and discard. Examples include:
+Use practice when the purpose is **learning or investigation**, not preserving a long-running product.
 
-- a ten-line Python idea;
-- a debugging puzzle;
-- trying one Git operation;
-- a tiny HTML/CSS experiment;
-- testing how an API or library behaves;
-- comparing two ways to solve the same problem.
+## Practice lanes
 
-## Practice versus project
+- [Python](python/) — tiny behaviour experiments and predictions.
+- [Debugging](debugging/) — controlled bugs and evidence gathering.
+- [Terminal](terminal/) — paths, commands and environment inspection.
+- [Git](git/) — status/diff/staging exercises.
+- [Web](web/) — tiny HTML/CSS/JavaScript experiments.
 
-Use **practice** when the goal is mainly to learn or investigate one thing.
+## Rules
 
-Create or use a **project repository** when Connor intends to keep developing a product over time.
+- It is acceptable for practice to fail.
+- Antigravity should explain the concept before hiding it behind automation.
+- Do not turn every exercise into a repository.
+- Do not promote tracker capability because an AI produced the answer.
+- A useful practice result is often an explanation, prediction or piece of evidence rather than finished code.
 
-Not every exercise deserves its own GitHub repository.
-
-## Rule
-
-Failure is useful evidence here.
-
-Do not promote practice into Connor's demonstrated competence merely because Antigravity produced a working answer.
+Practice can feed a mission when Connor wants to apply the skill to a real project.

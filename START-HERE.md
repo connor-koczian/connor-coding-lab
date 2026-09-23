@@ -50,8 +50,8 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | Your real Neon City project | ⏳ Not created yet |
 | V2 Antigravity mentor system | ✅ Accepted and merged |
 | V2 master progress tracker | ✅ Accepted and merged |
-| V2 VS Code learner cockpit | 🧪 Phase 4 candidate — implemented, awaiting behavioural acceptance |
-| V2 mission library | 🚧 Later curriculum phase |
+| V2 VS Code learner cockpit | ✅ Accepted and merged |
+| V2 mission library | 🧪 Phase 5 candidate — starter curriculum implemented, awaiting behavioural acceptance |
 
 A preview is not the same thing as your own project.
 
@@ -88,15 +88,15 @@ You can still launch the current menu manually:
 
 ## 🎯 Current missions
 
-During the transition, the existing missions remain here:
-
-[`00-CONNOR-HQ/`](00-CONNOR-HQ/)
-
-The new mission system will live under:
+The V2 mission catalogue now lives at:
 
 [`missions/`](missions/)
 
-Do not worry if that area is still small. It is being built deliberately rather than filled with pretend lessons.
+It contains one bounded starter mission for each major track plus a cross-track first evidence cycle.
+
+The older files under [`00-CONNOR-HQ/`](00-CONNOR-HQ/) remain preserved as historical material, but they are no longer the canonical V2 mission catalogue.
+
+Antigravity should use your master tracker plus current project interests to choose a useful mission rather than forcing a rigid lesson order.
 
 ---
 
@@ -177,12 +177,13 @@ If something requires `sudo`, account changes, system packages or other machine-
 
 ## ⚡ Fast start
 
-Once the Phase 4 cockpit is accepted, your normal start should be:
+Your normal start is:
 
 1. open `Connor-Coding-Lab.code-workspace`;
 2. use `/start` in Antigravity;
-3. follow the current mission;
+3. let the tracker and mission catalogue guide one bounded next mission;
 4. use the integrated terminal and visible tasks to run/test;
-5. inspect Git before saving progress.
+5. inspect Git before saving progress;
+6. use `/finish` after meaningful work so only evidence-supported progress is recorded.
 
-The cockpit is still under Phase 4 rehearsal, so report anything that opens in the wrong place, activates the wrong Python environment, hides Git evidence, or behaves differently from these instructions.
+If the cockpit, mission instructions or actual repository state disagree, stop and inspect the current files rather than guessing.

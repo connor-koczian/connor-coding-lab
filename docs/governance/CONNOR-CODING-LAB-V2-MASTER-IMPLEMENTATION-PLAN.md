@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 4 ACCEPTED / PENDING MERGE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 5 ACCEPTED / PENDING MERGE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -730,15 +730,26 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Added visible Git-status, lab-menu, Python run/test/lint and Snake run tasks.
   - Disabled smart commit and automatic fetch to preserve Git learning and avoid private-remote authentication noise.
   - ThinkPad behavioural acceptance on 2026-09-23 confirmed the intended three-root Explorer layout without duplicates, rendered `START-HERE.md`, Antigravity `/start` discovery, Git-status task execution, `Python Basics: Tests` with 1 passing test, and a clean final working tree at the accepted candidate head.
-  - Phase 4 behaviourally accepted on PR #14 and pending merge into `main`.
+  - Phase 4 merged into `main` at `bfef2a2a230bad3f3f0c08337041472639d7ee80` after behavioural acceptance.
 
-- [ ] **Phase 5 — AI-native curriculum**
+- [x] **Phase 5 — AI-native curriculum**
   - Branch: `learning/ai-native-curriculum-v1`
-  - Build the multi-track curriculum.
-  - Create missions and practice.
-  - Introduce AI collaboration engineering from the start.
-  - Preserve project-based, visible outcomes.
-  - Avoid unnecessary repetitive manual coding.
+  - PR: `#15`
+  - Candidate implementation in progress from Phase 4 merged `main`.
+  - Expanded `learning/ROADMAP.md` into a demonstrated-capability, multi-track progression model.
+  - Added track guides for AI collaboration, Python, Linux, Git/GitHub, debugging, testing, game development, web development and software engineering.
+  - Added one bounded starter mission per major track plus a cross-track first evidence cycle.
+  - Added focused practice lanes for Python, debugging, terminal, Git and web work.
+  - Integrated mission selection with the canonical master tracker without mutating learner state during curriculum construction.
+  - Updated `/start` and `/mission` behaviour to use the V2 mission catalogue and evidence rules.
+  - Preserved Connor as designer/decision-maker while allowing Antigravity substantial implementation work with explicit validation.
+  - Preserved historical `00-CONNOR-HQ/`, `python-basics/` and `snake-game/` material unchanged.
+  - Added `docs/mentor/AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md` with Phase 5 design and behavioural acceptance requirements.
+  - Static validation resolved 43 internal Markdown navigation targets with 0 failures and confirmed the tracker, historical Python/Snake projects and Dell lifecycle files were unchanged.
+  - ThinkPad `/start` rehearsal read the canonical tracker and V2 mission catalogue, selected `FND-01 — First Evidence Cycle`, verified current paths/`uv` commands, and did not mutate learner state.
+  - Bounded mission execution ran `hello.py` with controlled input and `uv run pytest`; runtime output was observed, pytest reported 1 passing test, and the test scope was correctly distinguished from `hello.py` behaviour.
+  - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `b5ac256e531debbb9dba75993aa6d6832fe96f0a`.
+  - Phase 5 behaviourally accepted on PR #15 and pending merge into `main`.
 
 - [ ] **Phase 6 — Lab control tooling**
   - Branch: `tooling/lab-control-v2`

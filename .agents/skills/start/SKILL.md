@@ -5,9 +5,15 @@ description: Starts Connor's coding session by establishing current state and se
 
 # /start
 
-Follow the start-session protocol.
+Follow the `start-session` protocol.
 
 Do not modify files merely to start.
+
+Use:
+
+- `progress/CONNOR-MASTER-TRACKER.md` as canonical learner state;
+- `missions/README.md` as the V2 mission catalogue;
+- current repository/project state as runtime authority.
 
 Return a compact mission briefing covering:
 
@@ -18,4 +24,4 @@ Return a compact mission briefing covering:
 - How do I know it worked?
 - What harder challenge could I try?
 
-If the Phase 3 master tracker does not yet exist, say so and use current repository evidence without inventing learner state.
+Do not promote capability, mark a mission complete or mutate the tracker merely because `/start` selected a mission.
