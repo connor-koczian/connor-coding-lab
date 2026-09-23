@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 PRE-MERGE ACCEPTED / PENDING MAIN CI + PROTECTION  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 7 COMPLETE / PHASE 8 READ-ONLY ASSESSMENT NEXT  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -770,7 +770,7 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `084f9220b3a1fcf5255343b81dfd9d5adcf1e07a`.
   - Phase 6 merged into `main` at `9f62b7fea276f98a463ddd23bd3e3281b7fad0fb` after behavioural acceptance.
 
-- [ ] **Phase 7 — Safety, governance and CI**
+- [x] **Phase 7 — Safety, governance and CI**
   - Branch: `governance/safety-ci-v1`
   - Candidate implementation in progress from Phase 6 merged `main`.
   - Added minimal GitHub Actions CI for repository policy, shell syntax, read-only lab doctor, Python Basics Ruff/pytest and Snake Pygame import.
@@ -784,7 +784,10 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - Added `docs/mentor/SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md` with acceptance sequence.
   - PR CI run `35834432161` / job `validate` completed successfully. Logs confirmed read-only `contents` token permission, repository-policy PASS, shell-syntax PASS, Lab Doctor PASS WITH EXPECTED CI WARNING (no VS Code CLI), Python Basics Ruff PASS + pytest `1 passed`, and Snake Pygame 2.6.1 import PASS.
   - ThinkPad rehearsal passed repository policy, Bash syntax and Lab Doctor as normal user `connor`; `.env` and `*.pem` ignore rules were observed; tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final tree was clean at candidate head `fb9d09e014faa86a1cb7e22639ef8a5062c68d5e`.
-  - Phase 7 pre-merge acceptance is complete. Full Phase 7 completion still requires merged-main CI success and the documented `main` ruleset to be enabled and re-verified.
+  - Phase 7 implementation merged through PR #17 into `main` at `63c1c14a99eb5568e7c88a0b6f079abe78bf7804`.
+  - Post-merge push CI run `35835236186` completed successfully on that exact `main` commit; check-run name is `validate` from GitHub Actions.
+  - Geza created repository ruleset `Main branch protection` (ID `23868188`) and CURRENT GitHub verification confirmed it is active on the default branch with no bypass actors, PR required, 0 required approvals, deletion blocked, force-push blocked, and required status check `validate` bound to GitHub Actions integration `15368`.
+  - Phase 7 is complete. Phase 8 may begin only as a read-only history/extraction assessment before any migration transaction.
 
 - [ ] **Phase 8 — Historical project repository extraction**
   - Separate migration transaction.
