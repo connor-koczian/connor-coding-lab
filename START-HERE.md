@@ -53,7 +53,7 @@ Your bigger projects will eventually live as separate Git repositories while sti
 | V2 VS Code learner cockpit | ✅ Accepted and merged |
 | V2 mission library | ✅ Accepted and merged |
 | V2 lab control command | ✅ Accepted and merged |
-| V2 safety / CI | 🧪 Phase 7 candidate — implemented, awaiting CI/protection acceptance |
+| V2 safety / CI | ✅ Accepted, merged and protected |
 
 A preview is not the same thing as your own project.
 
