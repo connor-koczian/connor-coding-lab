@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phases 2–8 are accepted at their completed gates. Phase 9 multi-repository workspace integration is implemented as a candidate pending ThinkPad behavioural acceptance.**
+**Phases 2–10 are accepted at their completed gates. Phase 11 is next.**
 
 The system now has three durable layers:
 
@@ -73,3 +73,8 @@ See [HISTORICAL-PROJECT-EXTRACTION.md](HISTORICAL-PROJECT-EXTRACTION.md) for the
 ## Phase 9 multi-repository workspace
 
 See [MULTI-REPO-WORKSPACE-V1-IMPLEMENTATION.md](MULTI-REPO-WORKSPACE-V1-IMPLEMENTATION.md) for the independent-project topology, CI ownership, launcher changes and ThinkPad acceptance gate.
+
+
+## Phase 10 ThinkPad rehearsal
+
+See [THINKPAD-PHASE10-ACCEPTANCE.md](THINKPAD-PHASE10-ACCEPTANCE.md) for the fresh-clone, runtime, Antigravity, Git-flow and offline acceptance evidence.
