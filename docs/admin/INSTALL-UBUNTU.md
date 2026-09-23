@@ -61,16 +61,20 @@ Code. It does not install Python packages globally.
 
 Log into the graphical desktop as Connor.
 
-The intended workspace is:
+The intended workspace topology is:
 
 ```text
-/home/connor/Projects/connor-coding-lab
+/home/connor/Projects/Connor/
+|-- connor-coding-lab/
+`-- projects/
+    |-- python-basics/
+    `-- snake-game/
 ```
 
 Run, without sudo:
 
 ```bash
-cd ~/Projects/connor-coding-lab
+cd ~/Projects/Connor/connor-coding-lab
 ./scripts/setup-connor-user.sh
 ```
 
@@ -91,19 +95,25 @@ The long-term intended home is:
 
 `connor-koczian/connor-coding-lab`
 
-Do not recreate the project by copying individual project folders. Clone or
-transfer the complete Git repository so the imported Python Basics and Snake
-history remains intact.
+Clone or transfer all three independent repositories so their Git histories remain intact.
+Do not recreate them by copying working directories without their `.git` histories.
 
 ## 6. Final acceptance
 
-Open the repository root in VS Code:
+Open the canonical multi-root workspace in VS Code:
 
 ```bash
-code ~/Projects/connor-coding-lab
+code ~/Projects/Connor/connor-coding-lab/Connor-Coding-Lab.code-workspace
 ```
 
 Complete `docs/admin/ACCEPTANCE-CHECKLIST.md`.
 
 The Dell is ready only after the installed machine passes the applicable
 hardware, Git, Python, Pygame, browser and VS Code checks.
+
+
+## 7. Workstation/account configuration
+
+Apply [DELL-WORKSTATION-V2.md](DELL-WORKSTATION-V2.md) after repository ownership handover and before final acceptance.
+
+This includes Antigravity, VS Code user settings, Git identity/authentication and the explicit requirement that Connor's normal account remain non-admin.
