@@ -1,6 +1,6 @@
 # Connor Coding Lab V2 — Approved Master Implementation Plan
 
-**Status:** IMPLEMENTATION IN PROGRESS — PHASE 5 ACCEPTED / PENDING MERGE  
+**Status:** IMPLEMENTATION IN PROGRESS — PHASE 6 CANDIDATE  
 **Approved by:** Geza  
 **Approval date:** 2026-09-22  
 **Canonical preparation repository:** `WebshopCompany/connor-coding-lab`  
@@ -749,13 +749,20 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - ThinkPad `/start` rehearsal read the canonical tracker and V2 mission catalogue, selected `FND-01 — First Evidence Cycle`, verified current paths/`uv` commands, and did not mutate learner state.
   - Bounded mission execution ran `hello.py` with controlled input and `uv run pytest`; runtime output was observed, pytest reported 1 passing test, and the test scope was correctly distinguished from `hello.py` behaviour.
   - Tracker SHA-256 remained `e88992f52185369bb26ef8de1f81d7a4d8160ed0d18b68f72d58860282997f9f`; final Git state was clean at candidate head `b5ac256e531debbb9dba75993aa6d6832fe96f0a`.
-  - Phase 5 behaviourally accepted on PR #15 and pending merge into `main`.
+  - Phase 5 merged into `main` at `9c3fa2ceefa1cf203d0bf9ab547b17b1478ca003` after behavioural acceptance.
 
 - [ ] **Phase 6 — Lab control tooling**
   - Branch: `tooling/lab-control-v2`
-  - Replace/evolve launcher safely.
-  - Add status/doctor/project/run/help capabilities.
-  - Preserve transparency of underlying tools.
+  - Candidate implementation in progress from Phase 5 merged `main`.
+  - Added executable learner control entry point at `./scripts/lab`.
+  - Added help/start/status/projects/run/doctor/git/computer/maintenance/menu capabilities.
+  - Delegated run/Git actions print the real working directory and command before execution.
+  - `lab doctor` is read-only and does not silently install, sync, repair or mutate Git.
+  - `lab git` is deliberately inspection-only; staging/commit/pull/push remain explicit Git work.
+  - Converted `scripts/run-lab.sh` and `scripts/check-environment.sh` into compatibility shims to the V2 control command.
+  - Updated VS Code tasks to expose Lab Status, Lab Doctor and the V2 Lab Menu.
+  - Added `docs/mentor/LAB-CONTROL-V2-IMPLEMENTATION.md` with design and ThinkPad acceptance requirements.
+  - Phase 6 remains incomplete until Bash syntax/static safety checks and ThinkPad behavioural rehearsal pass.
 
 - [ ] **Phase 7 — Safety, governance and CI**
   - Branch: `governance/safety-ci-v1`

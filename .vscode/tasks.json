@@ -53,9 +53,39 @@
       }
     },
     {
-      "label": "Connor Lab: Run Menu",
+      "label": "Connor Lab: Status",
       "type": "shell",
-      "command": "./scripts/run-lab.sh",
+      "command": "./scripts/lab status",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Connor Lab: Doctor",
+      "type": "shell",
+      "command": "./scripts/lab doctor",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Connor Lab: Lab Menu",
+      "type": "shell",
+      "command": "./scripts/lab menu",
       "options": {
         "cwd": "${workspaceFolder}"
       },

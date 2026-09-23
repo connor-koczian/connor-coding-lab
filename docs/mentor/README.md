@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phase 2 and Phase 3 are accepted and merged into `main`. Phase 4 cockpit UX is implemented on `ux/vscode-mission-control-v1` pending behavioural acceptance.**
+**Phases 2–5 are accepted and merged into `main`. Phase 6 lab control tooling is implemented on `tooling/lab-control-v2` pending behavioural acceptance.**
 
 The system now has three durable layers:
 
@@ -16,7 +16,7 @@ The canonical learner-state file now exists at `progress/CONNOR-MASTER-TRACKER.m
 
 Phase 3 also activates `.agents/skills/update-master-tracker/SKILL.md` and integrates tracker authority into session start/finish behaviour.
 
-Phase 4 adds `Connor-Coding-Lab.code-workspace`, curated VS Code settings/extensions/tasks, a neutral Mission Control terminal design and Markdown preview-first navigation.
+Phase 4 adds the accepted VS Code cockpit. Phase 5 adds the accepted AI-native curriculum and V2 mission catalogue.
 
 ## Learner commands
 
@@ -53,3 +53,8 @@ Changes to those files require deliberate Git review.
 ## Phase 5 curriculum implementation
 
 See [AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md](AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md) for the AI-native curriculum architecture, starter mission set and behavioural acceptance requirements.
+
+
+## Phase 6 lab control implementation
+
+See [LAB-CONTROL-V2-IMPLEMENTATION.md](LAB-CONTROL-V2-IMPLEMENTATION.md) for the learner-facing `./scripts/lab` command, transparency rules and behavioural acceptance requirements.
