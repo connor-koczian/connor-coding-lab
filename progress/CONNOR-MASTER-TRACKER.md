@@ -41,7 +41,7 @@ Use these evidence classes when updating the tracker:
 
 ## Current Position
 
-Connor has historical Python and Snake learning artefacts in the repository, but Phase 3 starts the **canonical evidence model now**.
+Connor has historical Python and Snake learning artefacts in independent project repositories, while Mission Control holds the **canonical evidence model**.
 
 No capability is seeded above **INTRODUCED** from historical repository evidence alone.
 
@@ -60,12 +60,12 @@ The next meaningful learner session should establish live evidence rather than t
 
 | Track | Capability | State | Evidence / reason |
 | --- | --- | --- | --- |
-| AI-native development | Understands that AI can assist implementation while Connor remains the decision-maker | **INTRODUCED** | Historical `snake-game/README.md` explicitly describes Connor as designer and Antigravity as builder. This proves project-role exposure, not independent AI direction. |
-| Programming | Python input/output and string interpolation | **INTRODUCED** | Historical learning artefact `python-basics/src/python_basics/hello.py` uses `input()`, `print()` and an f-string. Current understanding is not yet live-verified. |
+| AI-native development | Understands that AI can assist implementation while Connor remains the decision-maker | **INTRODUCED** | Historical `WebshopCompany/snake-game` README explicitly describes Connor as designer and Antigravity as builder. This proves project-role exposure, not independent AI direction. |
+| Programming | Python input/output and string interpolation | **INTRODUCED** | Historical learning artefact `WebshopCompany/python-basics:src/python_basics/hello.py` uses `input()`, `print()` and an f-string. Current understanding is not yet live-verified. |
 | Debugging | Evidence-led debugging loop | **NOT STARTED** | Governance teaches the loop; no canonical learner demonstration is recorded yet. |
 | Git / GitHub | Inspecting status/diff and creating save points | **NOT STARTED** | Historical mission material exists, but mission completion is not proven by the repository. |
 | Linux / Terminal | Navigation with `pwd`, `ls`, `cd` | **NOT STARTED** | Historical mission material exists, but no canonical live demonstration is recorded yet. |
-| Testing | Running and interpreting automated tests | **NOT STARTED** | A pytest exists in `python-basics/`; its existence is not proof Connor can use or explain testing. |
+| Testing | Running and interpreting automated tests | **NOT STARTED** | A pytest exists in the independent Python Basics repository; its existence is not proof Connor can use or explain testing. |
 | Software Design | Breaking a change into goal/files/concept/acceptance checks | **NOT STARTED** | Mentor system supports this; Connor's own demonstration is not yet recorded. |
 | Game Development | Game/product design decisions | **INTRODUCED** | Historical Snake README attributes design direction to Connor and implementation to Antigravity. |
 | Web Development | HTML/CSS/JavaScript development | **NOT STARTED** | AI-built showcases do not count as Connor capability. |
@@ -141,7 +141,7 @@ No canonical live learner evidence is recorded yet.
 
 **Current state:** NOT STARTED
 
-A small pytest is present in `python-basics/tests/test_main.py`.
+A small pytest is present in the independent Python Basics repository at `tests/test_main.py`.
 
 That proves the project contains an automated test. It does not prove Connor understands what the test checks or can use it.
 
@@ -165,7 +165,7 @@ No canonical learner demonstration is recorded yet.
 
 Historical evidence:
 
-- `snake-game/` exists as a substantial historical project;
+- the independent `WebshopCompany/snake-game` repository preserves the substantial historical project;
 - its README attributes design/game-direction to Connor and implementation to Antigravity.
 
 This supports exposure to game design/product decisions, not independent programming capability.
@@ -194,8 +194,8 @@ A later learner demonstration can establish whether Connor understands why `sudo
 
 | Project | Current role | Evidence status |
 | --- | --- | --- |
-| `python-basics/` | Historical small Python learning project | Present in repository; current runtime not validated by Phase 3 |
-| `snake-game/` | Historical game project / preserved save points | Present in repository; README separates Connor design from Antigravity implementation; current runtime not validated by Phase 3 |
+| `WebshopCompany/python-basics` | Independent historical small Python learning project | Original Connor history preserved; learner capability remains evidence-based |
+| `WebshopCompany/snake-game` | Independent historical game project / preserved save points | Original Connor history preserved; README separates Connor design from Antigravity implementation |
 | Neon City | Future Connor-owned project | Not created yet |
 | AI-built demos | Showcase/reference only | Must not be treated as Connor capability |
 

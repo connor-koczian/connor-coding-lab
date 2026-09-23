@@ -36,24 +36,18 @@ jobs:
 
       - name: Check shell syntax
         run: |
-          bash -n             scripts/lab             scripts/run-lab.sh             scripts/check-environment.sh             scripts/show-my-computer.sh             scripts/check-repo-policy.sh
+          bash -n \
+            scripts/lab \
+            scripts/run-lab.sh \
+            scripts/check-environment.sh \
+            scripts/show-my-computer.sh \
+            scripts/check-repo-policy.sh \
+            scripts/cleanup-legacy-workspace.sh
 
-      - name: Run read-only lab doctor
-        run: ./scripts/lab doctor
+      - name: Run Mission Control doctor
+        run: ./scripts/lab doctor --mission-control-only
 
-      - name: Validate Python Basics
-        working-directory: python-basics
+      - name: Validate workspace JSON
         run: |
-          uv sync --locked
-          uv run ruff check .
-          uv run pytest
-
-      - name: Validate Snake dependency environment
-        working-directory: snake-game
-        run: |
-          uv sync --locked
-          uv run python - <<'PY'
-          import pygame
-
-          print(f"Pygame import OK: {pygame.version.ver}")
-          PY
+          python -m json.tool Connor-Coding-Lab.code-workspace >/dev/null
+          python -m json.tool .vscode/tasks.json >/dev/null

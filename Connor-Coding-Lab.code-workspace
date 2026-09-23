@@ -6,11 +6,11 @@
     },
     {
       "name": "Python Basics",
-      "path": "python-basics"
+      "path": "../projects/python-basics"
     },
     {
       "name": "Snake Game",
-      "path": "snake-game"
+      "path": "../projects/snake-game"
     }
   ],
   "settings": {
@@ -38,16 +38,12 @@
       "editor.wordWrap": "on"
     },
     "files.exclude": {
-      "python-basics": true,
-      "snake-game": true,
       "**/.venv": true,
       "**/__pycache__": true,
       "**/.pytest_cache": true,
       "**/.ruff_cache": true
     },
     "search.exclude": {
-      "python-basics": true,
-      "snake-game": true,
       "**/.venv": true,
       "**/__pycache__": true,
       "**/.pytest_cache": true,

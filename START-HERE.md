@@ -35,7 +35,7 @@ This repository is gradually becoming the control centre for:
 - Antigravity's teaching system;
 - links to your real project repositories.
 
-Python Basics and Snake now exist as separate Git repositories. Phase 9 will wire those independent repositories into the same learner workspace before the temporary embedded copies are removed.
+Python Basics and Snake are separate Git repositories and the Phase 9 cockpit brings them into the same VS Code workspace without submodules.
 
 ---
 
@@ -43,8 +43,8 @@ Python Basics and Snake now exist as separate Git repositories. Phase 9 will wir
 
 | Area | Current state |
 | --- | --- |
-| Python Basics | ✅ Independent repository extracted; transitional embedded copy still present |
-| Snake Game | ✅ Independent repository extracted; transitional embedded copy still present |
+| Python Basics | ✅ Independent Git repository |
+| Snake Game | ✅ Independent Git repository |
 | Neon City technology preview | ✅ AI-built showcase |
 | Snake: OVERDRIVE | ✅ AI-built showcase |
 | Your real Neon City project | ⏳ Not created yet |
@@ -55,7 +55,7 @@ Python Basics and Snake now exist as separate Git repositories. Phase 9 will wir
 | V2 lab control command | ✅ Accepted and merged |
 | V2 safety / CI | ✅ Accepted, merged and protected |
 | Historical project extraction | ✅ Phase 8 complete |
-| Multi-repository cockpit | ⏳ Phase 9 next |
+| Multi-repository cockpit | ✅ Phase 9 accepted on ThinkPad |
 
 A preview is not the same thing as your own project.
 
@@ -80,7 +80,7 @@ You should then have:
 - **Source Control** — Git changes and history;
 - **Integrated Terminal** — your real shell, available from the workspace.
 
-The accepted workspace opens a neutral Mission Control terminal automatically in a trusted workspace. It should **not** silently activate `python-basics/.venv`; project commands use `uv run ...` explicitly.
+The workspace opens a neutral Mission Control terminal automatically in a trusted workspace. It does **not** silently activate a project `.venv`; project commands use `uv run ...` explicitly.
 
 The Phase 6 learner control command is:
 
@@ -170,8 +170,8 @@ You do not need to know every answer immediately. Antigravity's job is to help y
 - [`practice/`](practice/) — small experiments where mistakes are expected.
 - [`progress/CONNOR-MASTER-TRACKER.md`](progress/CONNOR-MASTER-TRACKER.md) — the canonical record of what you can explain, use, direct and verify.
 - [`showcase/`](showcase/) — reference work built mainly by AI.
-- `python-basics/` — existing historical learning work.
-- `snake-game/` — existing historical project.
+- **Python Basics workspace root** — independent historical Python learning repository.
+- **Snake Game workspace root** — independent historical game repository.
 
 ---
 

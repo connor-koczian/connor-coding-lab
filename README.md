@@ -24,10 +24,10 @@ Important: the V2 design is being implemented in bounded phases. A folder or fea
 
 ### Historical learning projects
 
-- `python-basics/` — Connor's existing Python learning project.
-- `snake-game/` — Connor's substantial historical Snake project and preserved save points.
+- `WebshopCompany/python-basics` — Connor's independent Python learning project.
+- `WebshopCompany/snake-game` — Connor's independent historical Snake project and preserved save points.
 
-Their histories have now been extracted safely into independent private repositories under `WebshopCompany`. The embedded copies remain temporarily during Phase 9 so the cockpit/tooling can be rewired and validated before removal.
+The project repositories are separate Git histories. Mission Control links them together through the multi-root workspace; there are no Git submodules.
 
 ### Current AI-built showcases
 
@@ -48,7 +48,7 @@ The accepted learner workspace is:
 
 `Connor-Coding-Lab.code-workspace`
 
-Open that file in VS Code for the intended Mission Control + Python Basics + Snake Game cockpit.
+Open that file in VS Code from the target `~/Projects/Connor/` topology for the Mission Control + independent Python Basics + independent Snake Game cockpit.
 
 The workspace is designed to provide:
 
@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–8 are complete at their current gates. `main` is protected by PR + required `validate` CI. Python Basics and Snake now have independent history-preserving repositories; Phase 9 will rewire Mission Control to those repositories before the embedded copies are removed.
+Phases 4–9 are accepted at their completed gates. `main` is protected by PR + required `validate` CI. The live cockpit now uses independent Mission Control, Python Basics and Snake repositories; Phase 10 is the next full ThinkPad rehearsal gate.
 
 ## Python
 

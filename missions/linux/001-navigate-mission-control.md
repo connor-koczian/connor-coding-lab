@@ -12,10 +12,10 @@ Current directory, relative paths, parent directories and the difference between
 
 ## What do I do next?
 
-1. Run `pwd`.
-2. Run `ls` and identify `START-HERE.md`, `python-basics` and `snake-game`.
-3. Move into one project with `cd`.
-4. Run `pwd` again and explain the changed path.
+1. Run `pwd` in Mission Control.
+2. Run `ls` and identify `START-HERE.md`, `missions`, `learning` and `progress`.
+3. Use `cd ../projects/python-basics` or `cd ../projects/snake-game` to enter one independent project.
+4. Run `pwd` and `git status` there and explain why this is a different Git repository.
 5. Return to Mission Control without closing the terminal.
 6. Ask Antigravity to explain one relative path and one absolute path from the session.
 
@@ -42,4 +42,4 @@ Potential evidence from this mission:
 
 ## Harder challenge
 
-Reach `python-basics/tests` using relative paths, then return to Mission Control in two commands or fewer.
+Reach `../projects/python-basics/tests` from Mission Control using relative paths, then return to Mission Control in two commands or fewer.

@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "exec \"$SHELL\" -l",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "isBackground": true,
       "problemMatcher": [],
@@ -27,7 +27,7 @@
       "type": "shell",
       "command": "code --reuse-window START-HERE.md",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -42,7 +42,7 @@
       "type": "shell",
       "command": "git status --short --branch",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -57,7 +57,7 @@
       "type": "shell",
       "command": "./scripts/lab status",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -72,7 +72,7 @@
       "type": "shell",
       "command": "./scripts/lab doctor",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -87,7 +87,7 @@
       "type": "shell",
       "command": "./scripts/lab menu",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder:Mission Control}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -102,7 +102,7 @@
       "type": "shell",
       "command": "uv run python src/python_basics/hello.py",
       "options": {
-        "cwd": "${workspaceFolder}/python-basics"
+        "cwd": "${workspaceFolder:Python Basics}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -117,7 +117,7 @@
       "type": "shell",
       "command": "uv run pytest",
       "options": {
-        "cwd": "${workspaceFolder}/python-basics"
+        "cwd": "${workspaceFolder:Python Basics}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -132,7 +132,7 @@
       "type": "shell",
       "command": "uv run ruff check .",
       "options": {
-        "cwd": "${workspaceFolder}/python-basics"
+        "cwd": "${workspaceFolder:Python Basics}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -147,7 +147,7 @@
       "type": "shell",
       "command": "uv run python src/snake_game/classic_snake.py",
       "options": {
-        "cwd": "${workspaceFolder}/snake-game"
+        "cwd": "${workspaceFolder:Snake Game}"
       },
       "problemMatcher": [],
       "presentation": {
@@ -162,7 +162,7 @@
       "type": "shell",
       "command": "uv run python src/snake_game/__init__.py",
       "options": {
-        "cwd": "${workspaceFolder}/snake-game"
+        "cwd": "${workspaceFolder:Snake Game}"
       },
       "problemMatcher": [],
       "presentation": {

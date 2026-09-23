@@ -4,7 +4,7 @@ Antigravity is Connor's primary day-to-day teacher, pair programmer, debugger, t
 
 ## Current status
 
-**Phases 2–8 are accepted at their completed gates. Phase 9 multi-repository workspace integration is next.**
+**Phases 2–8 are accepted at their completed gates. Phase 9 multi-repository workspace integration is implemented as a candidate pending ThinkPad behavioural acceptance.**
 
 The system now has three durable layers:
 
@@ -68,3 +68,8 @@ See [SAFETY-GOVERNANCE-CI-V1-IMPLEMENTATION.md](SAFETY-GOVERNANCE-CI-V1-IMPLEMEN
 ## Phase 8 historical project extraction
 
 See [HISTORICAL-PROJECT-EXTRACTION.md](HISTORICAL-PROJECT-EXTRACTION.md) for the exact preserved Python/Snake histories, extracted repository heads, tree identities and validation evidence.
+
+
+## Phase 9 multi-repository workspace
+
+See [MULTI-REPO-WORKSPACE-V1-IMPLEMENTATION.md](MULTI-REPO-WORKSPACE-V1-IMPLEMENTATION.md) for the independent-project topology, CI ownership, launcher changes and ThinkPad acceptance gate.
