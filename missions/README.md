@@ -1,12 +1,8 @@
-# 🎯 Missions
-
-This directory is the long-term home for Connor's V2 missions.
-
-## What a mission is
+# 🎯 V2 Missions
 
 A mission is a bounded piece of learning or engineering work with a visible outcome.
 
-A good mission should answer:
+Every mission must answer:
 
 1. **Where am I?**
 2. **What am I learning?**
@@ -15,20 +11,55 @@ A good mission should answer:
 5. **How do I know it worked?**
 6. **What harder challenge can I try?**
 
-Missions should prefer real outputs: games, graphics, utilities, debugging investigations, websites, simulations and improvements to Connor's own projects.
+## Mission selection
 
-## AI-native rule
+Antigravity should read the canonical tracker first:
 
-A mission does not need to force Connor to type all implementation code.
+`progress/CONNOR-MASTER-TRACKER.md`
 
-Depending on demonstrated understanding, Antigravity may implement substantial parts. Connor should progressively learn to specify the work, understand the important concepts, run it, verify it, debug it, inspect the diff and make meaningful design decisions.
+Then choose a mission that:
 
-## Current transition
+- matches current demonstrated capability;
+- supports Connor's current project or interest where possible;
+- is small enough to understand and verify;
+- produces useful evidence;
+- gives Connor at least one meaningful decision.
 
-The existing missions remain under:
+Do not treat completing a mission as automatic proof of mastery.
 
-[`../00-CONNOR-HQ/`](../00-CONNOR-HQ/)
+## Starter catalogue
 
-They are intentionally not bulk-moved in Phase 1 because existing learning history and navigation should remain usable while the V2 curriculum is developed.
+| Track | Mission | Visible result |
+| --- | --- | --- |
+| Foundations | [First evidence cycle](foundations/001-first-evidence-cycle.md) | Run, inspect and explain one complete development loop |
+| Linux | [Navigate Mission Control](linux/001-navigate-mission-control.md) | Correctly locate repository/project files |
+| AI-native | [Give AI a testable job](ai-native-development/001-testable-request.md) | A bounded specification with acceptance checks |
+| Python | [Predict, change, explain](python/001-predict-change-explain.md) | Small Python behaviour changed and explained |
+| Git/GitHub | [Inspect a save point](git-github/001-inspect-a-save-point.md) | A reviewed Git diff/save-point plan |
+| Testing | [Read the evidence](testing/001-read-a-test-result.md) | A test result interpreted correctly |
+| Debugging | [Reproduce before fixing](debugging/001-reproduce-before-fix.md) | A failure reproduced, explained and fixed |
+| Game development | [Design one Snake change](game-development/001-design-a-snake-change.md) | Connor-defined mechanic change and gameplay check |
+| Web | [Change a browser preview](web/001-change-a-browser-preview.md) | Visible browser change with regression check |
+| Engineering | [Plan before building](engineering/001-plan-before-build.md) | Bounded implementation plan and acceptance criteria |
 
-The substantial V2 mission library is a later implementation phase.
+## Mission contract
+
+A V2 mission should contain:
+
+- goal and visible outcome;
+- concept being learned;
+- verified files/tools or instructions to verify them;
+- bounded steps;
+- run command or runtime route;
+- acceptance checks;
+- Connor decision point;
+- optional harder stretch;
+- tracker evidence that **may** be recorded if Connor demonstrates it.
+
+If repository state has changed, Antigravity must verify paths and commands before presenting them as fact.
+
+## Historical missions
+
+The older files under [`../00-CONNOR-HQ/`](../00-CONNOR-HQ/) are preserved as historical learning material.
+
+They are no longer the canonical V2 mission catalogue. Do not delete or rewrite them merely to make the new structure look tidy.

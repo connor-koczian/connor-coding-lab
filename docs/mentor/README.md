@@ -48,3 +48,8 @@ Antigravity may routinely update learner and project material when authorised by
 It must not silently weaken or redefine root `GEMINI.md`, `.agents/rules/`, safety or change-control policy, or the V2 implementation authority.
 
 Changes to those files require deliberate Git review.
+
+
+## Phase 5 curriculum implementation
+
+See [AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md](AI-NATIVE-CURRICULUM-V1-IMPLEMENTATION.md) for the AI-native curriculum architecture, starter mission set and behavioural acceptance requirements.

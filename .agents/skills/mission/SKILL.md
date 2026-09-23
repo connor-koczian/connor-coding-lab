@@ -5,12 +5,15 @@ description: Selects and runs one bounded project-based learning mission with a 
 
 # /mission
 
-1. Establish the current relevant skill level from evidence.
-2. Choose one bounded mission with a visible result.
-3. Explain what Connor is learning and why it matters.
-4. Identify the files and tools involved, verifying every named path, command and entry point against the current repository or environment before presenting it as fact.
-5. Define exact run and success checks.
-6. Distinguish static presence from demonstrated behaviour. Do not call a project, command or feature working, passing or healthy unless that behaviour was actually validated in the relevant current environment.
-7. Let Connor make meaningful choices.
-8. Include one optional harder stretch.
-9. End by reviewing evidence, not by awarding competence automatically.
+1. Read `progress/CONNOR-MASTER-TRACKER.md` for current demonstrated capability.
+2. Read `missions/README.md` and relevant track material rather than inventing a lesson sequence.
+3. Choose one bounded mission that matches current evidence, current project interest and a useful next stretch.
+4. Explain what Connor is learning and why it matters.
+5. Verify every named path, command and entry point against the current repository/environment before presenting it as fact.
+6. Define exact run and success checks.
+7. Let Connor make at least one meaningful product, design, hypothesis or verification decision.
+8. Antigravity may implement substantial work, but expose the important concept, scope, validation evidence and diff.
+9. Distinguish static presence, AI output and Connor-demonstrated evidence.
+10. Include one optional harder stretch.
+11. Do not update the tracker merely because the mission was selected or because AI completed it.
+12. At the end, identify exactly what Connor personally demonstrated and what remains unverified.
