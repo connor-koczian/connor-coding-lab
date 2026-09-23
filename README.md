@@ -112,7 +112,7 @@ Phase 2 was behaviourally validated on the rehearsal ThinkPad and merged into `m
 
 Phase 3 established and behaviourally validated the canonical learner tracker at `progress/CONNOR-MASTER-TRACKER.md`, then merged into `main` at `f5866c7e29195ed1a4dee4e5d0ecff87f4b98a64`.
 
-Phases 4–6 are accepted and merged. Phase 7 builds repository safety, governance and CI on `governance/safety-ci-v1`.
+Phases 4–7 are accepted and merged. `main` is protected by PR + required `validate` CI. Phase 8 begins with a read-only history/extraction assessment before any project migration.
 
 ## Python
 
@@ -181,4 +181,4 @@ The eventual handover to Connor's GitHub ownership happens only after the comple
 
 See [SECURITY.md](SECURITY.md) for the practical rules around secrets, dependencies, external services, AI/connectors and administrator boundaries.
 
-Phase 7 introduces a small GitHub Actions CI workflow that provides independent checks without claiming interactive GUI/game behaviour.
+Phase 7 established a small GitHub Actions CI workflow and protected `main` with a required PR and `validate` check. CI provides independent checks without claiming interactive GUI/game behaviour.
