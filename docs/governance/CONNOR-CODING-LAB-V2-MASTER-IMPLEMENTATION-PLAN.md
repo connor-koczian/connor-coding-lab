@@ -861,7 +861,7 @@ Implementation must be phased. Do not perform one uncontrolled bulk rewrite.
   - `main` is protected and requires the `validate` status check. The ownership-handover protection configuration also requires PR-based integration; detailed protection fields must be re-checked if repository settings change.
   - Learner capability/progress is unchanged by repository ownership migration.
 
-- [ ] **Phase 13 — Dell deployment**
+- [x] **Phase 13 — Dell deployment — COMPLETE 2026-09-24**
   - Only after separate explicit Dell release.
   - Physical lifecycle remains governed by `gk-home-lab`.
   - Complete fresh-machine acceptance.
